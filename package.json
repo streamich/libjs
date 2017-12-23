@@ -1,0 +1,18 @@
+{
+  "name": "libjs",
+  "version": "0.1.0",
+  "scripts": {
+    "test": "./test/run.sh"
+  },
+  "dependencies": {
+    "fast-extend": "^0.0.2"
+  },
+  "devDependencies": {
+    "@types/node": "^8.5.2",
+    "tap": "^11.0.1",
+    "typescript": "^2.6.2",
+    "ts-node": "^4.0.2",
+    "libsys": "^2.2.0",
+    "static-buffer": "^1.0.1"
+  }
+}

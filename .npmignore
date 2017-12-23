@@ -1,0 +1,8 @@
+/headers
+node_modules
+/docs
+/examples
+/scratch
+.idea
+package-lock.json
+yarn.lock
