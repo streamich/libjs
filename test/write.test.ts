@@ -13,7 +13,7 @@ let res = write(1, str);
 equal(res, str.length);
 pass('writes to console');
 
-const fd = open(filePath, FLAG.O_RDWR | FLAG.O_CREAT | FLAG.O_TRUNC, S.IRWXU);
+const fd = open(filePath, 2 | 64 | 512 /* FLAG.O_RDWR | FLAG.O_CREAT | FLAG.O_TRUNC */, 448 /* S.IRWXU */);
 res = write(fd, str);
 ok(fd > 0);
 equal(res, str.length);
