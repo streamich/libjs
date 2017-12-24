@@ -2,7 +2,8 @@
 node_modules
 /docs
 /examples
-/scratch
+/c++
 .idea
 package-lock.json
 yarn.lock
+/build/

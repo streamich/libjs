@@ -1,8 +1,9 @@
 {
   "name": "libjs",
-  "version": "0.1.0",
+  "version": "0.0.0-development",
   "scripts": {
-    "test": "./test/run.sh"
+    "test": "./test/run.sh",
+    "semantic-release": "semantic-release"
   },
   "dependencies": {
     "fast-extend": "^0.0.2"
@@ -13,6 +14,11 @@
     "typescript": "^2.6.2",
     "ts-node": "^4.0.2",
     "libsys": "^2.2.0",
-    "static-buffer": "^1.0.1"
+    "static-buffer": "^1.0.1",
+    "semantic-release": "^11.0.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/streamich/libjs.git"
   }
 }
