@@ -20,10 +20,10 @@ import {Struct} from './typebase';
 //  - [Asynchronous IO with `epoll` example](https://banu.com/blog/2/how-to-use-epoll-a-complete-example-in-c/epoll-example.c)
 //
 export function socket(domain: AF, type: SOCK, protocol: number): number {
-    return process.syscall(SYS.socket, domain, type, protocol);
+    return libsys.syscall(SYS.socket, domain, type, protocol);
 }
 export function socketAsync(domain: AF, type: SOCK, protocol: number, callback: TCallback) {
-    process.asyscall(SYS.socket, domain, type, protocol, callback);
+    libsys.asyscall(SYS.socket, domain, type, protocol, callback);
 }
 
 // ## connect
@@ -38,11 +38,11 @@ export function socketAsync(domain: AF, type: SOCK, protocol: number, callback: 
 //
 export function connect(fd: number, sockaddr: Isockaddr_in): number {
     const buf = sockaddr_in.pack(sockaddr);
-    return process.syscall(SYS.connect, fd, buf, buf.length);
+    return libsys.syscall(SYS.connect, fd, buf, buf.length);
 }
 export function connectAsync(fd: number, sockaddr: Isockaddr_in, callback: TCallback) {
     const buf = sockaddr_in.pack(sockaddr);
-    process.asyscall(SYS.connect, fd, buf, buf.length, callback);
+    libsys.asyscall(SYS.connect, fd, buf, buf.length, callback);
 }
 
 // ## bind
@@ -57,11 +57,11 @@ export function connectAsync(fd: number, sockaddr: Isockaddr_in, callback: TCall
 //
 export function bind(fd: number, sockaddr: Isockaddr_in, addr_type: Struct): number {
     const buf = addr_type.pack(sockaddr);
-    return process.syscall(SYS.bind, fd, buf, buf.length);
+    return libsys.syscall(SYS.bind, fd, buf, buf.length);
 }
 export function bindAsync(fd: number, sockaddr: Isockaddr_in, addr_type: Struct, callback: TCallback) {
     const buf = addr_type.pack(sockaddr);
-    process.asyscall(SYS.bind, fd, buf, buf.length, callback);
+    libsys.asyscall(SYS.bind, fd, buf, buf.length, callback);
 }
 
 // ## listen
@@ -69,10 +69,10 @@ export function bindAsync(fd: number, sockaddr: Isockaddr_in, addr_type: Struct,
 //     int listen(int sockfd, int backlog);
 //
 export function listen(fd: number, backlog: number): number {
-    return process.syscall(SYS.listen, fd, backlog);
+    return libsys.syscall(SYS.listen, fd, backlog);
 }
 export function listenAsync(fd: number, backlog: number, callback: TCallback) {
-    process.asyscall(SYS.listen, fd, backlog, callback);
+    libsys.asyscall(SYS.listen, fd, backlog, callback);
 }
 
 // ## accept
@@ -82,28 +82,28 @@ export function listenAsync(fd: number, backlog: number, callback: TCallback) {
 //
 export function accept(fd: number, buf: Buffer): number {
     const buflen = int32.pack(buf.length);
-    return process.syscall(SYS.accept, fd, buf, buflen);
+    return libsys.syscall(SYS.accept, fd, buf, buflen);
 }
 export function acceptAsync(fd: number, buf: Buffer, callback: TCallback) {
     const buflen = int32.pack(buf.length);
-    process.asyscall(SYS.accept, fd, buf, buflen, callback);
+    libsys.asyscall(SYS.accept, fd, buf, buflen, callback);
 }
 export function accept4(fd: number, buf: Buffer, flags: SOCK): number {
     const buflen = int32.pack(buf.length);
-    return process.syscall(SYS.accept4, fd, buf, buflen, flags);
+    return libsys.syscall(SYS.accept4, fd, buf, buflen, flags);
 }
 export function accept4Async(fd: number, buf: Buffer, flags: SOCK, callback: TCallback) {
     const buflen = int32.pack(buf.length);
-    process.asyscall(SYS.accept4, fd, buf, buflen, flags, callback);
+    libsys.asyscall(SYS.accept4, fd, buf, buflen, flags, callback);
 }
 
 // ## shutdown
 //
 export function shutdown(fd: number, how: SHUT): number {
-    return process.syscall(SYS.shutdown, fd, how);
+    return libsys.syscall(SYS.shutdown, fd, how);
 }
 export function shutdownAsync(fd: number, how: SHUT, callback: TCallback) {
-    process.asyscall(SYS.shutdown, fd, how, callback);
+    libsys.asyscall(SYS.shutdown, fd, how, callback);
 }
 
 // ## send and sendto
@@ -135,7 +135,7 @@ export function sendto(fd: number, buf: Buffer, flags: MSG = 0, addr?: Isockaddr
         params[5] = addrbuf;
         params[6] = addrbuf.length;
     }
-    return process.syscall.apply(null, params);
+    return libsys.syscall.apply(null, params);
 }
 export function sendtoAsync(fd: number, buf: Buffer, flags: MSG = 0, addr: Isockaddr_in, addr_type: Struct, callback: TCallback) {
     const params: any = [SYS.sendto, fd, buf, buf.length, flags, 0, 0, callback];
@@ -144,7 +144,7 @@ export function sendtoAsync(fd: number, buf: Buffer, flags: MSG = 0, addr: Isock
         params[5] = addrbuf;
         params[6] = addrbuf.length;
     }
-    process.syscall.apply(null, params);
+    libsys.syscall.apply(null, params);
 }
 
 
@@ -162,7 +162,7 @@ export function recv(sockfd: number, buf: Buffer, flags: number = 0): number {
     return recvfrom(sockfd, buf, buf.length, flags, 0, 0);
 }
 export function recvfrom(sockfd: number, buf: TAddress, len: number, flags: number, addr: TAddress, addrlen: TAddress): number {
-    return process.syscall(SYS.recvfrom, sockfd, buf, len, flags, addr, addrlen);
+    return libsys.syscall(SYS.recvfrom, sockfd, buf, len, flags, addr, addrlen);
 }
 
 
@@ -174,7 +174,7 @@ export function recvfrom(sockfd: number, buf: TAddress, len: number, flags: numb
 //     int getsockopt(int sockfd, int level, int optname, void *optval, socklen_t *optlen);
 //
 export function setsockopt(sockfd: number, level: number, optname: IP | IPV6 | SO, optval: Buffer): number {
-    return process.syscall(SYS.setsockopt, sockfd, level, optname, optval, optval.length);
+    return libsys.syscall(SYS.setsockopt, sockfd, level, optname, optval, optval.length);
 }
 
 // TODO: implement the below.

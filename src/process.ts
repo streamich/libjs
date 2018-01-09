@@ -2,8 +2,8 @@
 import {SYS, timespec, NULL} from './platform';
 
 
-const createSyscall = (num) => () => process.syscall(num);
-const createAsyscall = (num) => (callback: TCallback) => process.asyscall(num, callback);
+const createSyscall = (num) => () => libsys.syscall(num);
+const createAsyscall = (num) => (callback: TCallback) => libsys.asyscall(num, callback);
 
 // ### getpid
 //
@@ -68,5 +68,5 @@ export function nanosleep(seconds: number, nanoseconds: number): number {
         tv_sec: [seconds, 0],
         tv_nsec: [nanoseconds, 0],
     });
-    return process.syscall(SYS.nanosleep, buf, NULL);
+    return libsys.syscall(SYS.nanosleep, buf, NULL);
 }

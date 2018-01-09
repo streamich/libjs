@@ -19,22 +19,22 @@ import {noop} from './util';
 // Use `mkdir` to create a directory and `rmdir` to remove one.
 //
 export function mkdir(pathname: string, mode: number): number {
-    return process.syscall(SYS.mkdir, pathname, mode);
+    return libsys.syscall(SYS.mkdir, pathname, mode);
 }
 export function mkdirAsync(pathname: string, mode: number, callback: TCallback) {
-    process.asyscall(SYS.mkdir, pathname, mode, callback);
+    libsys.asyscall(SYS.mkdir, pathname, mode, callback);
 }
 export function mkdirat(dirfd: number, pathname: string, mode: number): number {
-    return process.syscall(SYS.mkdirat, dirfd, pathname, mode);
+    return libsys.syscall(SYS.mkdirat, dirfd, pathname, mode);
 }
 export function mkdiratAsync(dirfd: number, pathname: string, mode: number, callback: TCallback){
-    process.asyscall(SYS.mkdirat, dirfd, pathname, mode, callback);
+    libsys.asyscall(SYS.mkdirat, dirfd, pathname, mode, callback);
 }
 export function rmdir(pathname: string): number {
-    return process.syscall(SYS.rmdir, pathname);
+    return libsys.syscall(SYS.rmdir, pathname);
 }
 export function rmdirAsync(pathname: string, callback: TCallback) {
-    process.asyscall(SYS.rmdir, pathname, callback);
+    libsys.asyscall(SYS.rmdir, pathname, callback);
 }
 
 // ### getcwd
@@ -51,7 +51,7 @@ export function rmdirAsync(pathname: string, callback: TCallback) {
 //
 export function getcwd(): string {
     let buf = new Buffer(264);
-    let res = process.syscall(SYS.getcwd, buf, buf.length);
+    let res = libsys.syscall(SYS.getcwd, buf, buf.length);
 
     if(res < 0) {
         if(res === -ERROR.ERANGE) {
@@ -59,7 +59,7 @@ export function getcwd(): string {
             // > pathname of the working directory, including the terminating
             // > null byte.  You need to allocate a bigger array and try again.
             buf = new Buffer(4096);
-            res = process.syscall(SYS.getcwd, buf, buf.length);
+            res = libsys.syscall(SYS.getcwd, buf, buf.length);
             if(res < 0) throw res;
         } else throw res;
     }
@@ -69,11 +69,11 @@ export function getcwd(): string {
 }
 export function getcwdAsync(callback: TCallbackWithError <number, string>) {
     let buf = new Buffer(264);
-    process.asyscall(SYS.getcwd, buf, buf.length, (res) => {
+    libsys.asyscall(SYS.getcwd, buf, buf.length, (res) => {
         if(res < 0) {
             if(res === -ERROR.ERANGE) {
                 buf = new Buffer(4096);
-                process.asyscall(SYS.getcwd, buf, buf.length, (res) => {
+                libsys.asyscall(SYS.getcwd, buf, buf.length, (res) => {
                     if(res < 0) callback(res);
                     else callback(null, buf.slice(0, res).toString());
                 });
@@ -100,10 +100,10 @@ export function getcwdAsync(callback: TCallbackWithError <number, string>) {
 // appropriately.
 //
 export function getdents64(fd: number, dirp: Buffer): number {
-    return process.syscall(SYS.getdents64, fd, dirp, dirp.length);
+    return libsys.syscall(SYS.getdents64, fd, dirp, dirp.length);
 }
 export function getdents64Async(fd: number, dirp: Buffer, callback: TCallback) {
-    process.asyscall(SYS.getdents64, fd, dirp, dirp.length, callback);
+    libsys.asyscall(SYS.getdents64, fd, dirp, dirp.length, callback);
 }
 
 // ### readdir

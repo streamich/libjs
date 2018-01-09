@@ -14,11 +14,11 @@ import {SYS, FLAG, S, SEEK} from './platform';
 // zero than zero does not necessarily mean *end-of-file*.
 //
 export function read(fd: TNumber, buf: TBuffer): number {
-    return process.syscall(SYS.read, fd, buf, buf.length);
+    return libsys.syscall(SYS.read, fd, buf, buf.length);
 }
 
 export function readAsync(fd: TNumber, buf: TBuffer, callback: TCallback) {
-    process.asyscall(SYS.read, fd, buf, buf.length, callback);
+    libsys.asyscall(SYS.read, fd, buf, buf.length, callback);
 }
 
 
@@ -29,10 +29,10 @@ export function readAsync(fd: TNumber, buf: TBuffer, callback: TCallback) {
 // Write data to a file descriptor.
 //
 export function write(fd: number, buf: string|StaticBuffer): number {
-    return process.syscall(SYS.write, fd, buf, buf.length);
+    return libsys.syscall(SYS.write, fd, buf, buf.length);
 }
 export function writeAsync(fd: number, buf: string|StaticBuffer, callback: TCallback) {
-    process.asyscall(SYS.write, fd, buf, buf.length, callback);
+    libsys.asyscall(SYS.write, fd, buf, buf.length, callback);
 }
 
 
@@ -46,11 +46,11 @@ export function open(pathname: string, flags: FLAG, mode?: S|number): number {
     const buf = Buffer.from(pathname + '\0');
     const args = [SYS.open, buf, flags];
     if(typeof mode === 'number') args.push(mode);
-    return process.syscall.apply(null, args);
+    return libsys.syscall.apply(null, args);
 }
 export function openAsync(pathname: string, flags: FLAG, mode: S|number, callback: TCallback) {
     const buf = Buffer.from(pathname + '\0');
-    process.asyscall(SYS.open, buf, flags, mode, callback);
+    libsys.asyscall(SYS.open, buf, flags, mode, callback);
 }
 
 
@@ -59,10 +59,10 @@ export function openAsync(pathname: string, flags: FLAG, mode: S|number, callbac
 // Close a file descriptor.
 //
 export function close(fd: number): number {
-    return process.syscall(SYS.close, fd);
+    return libsys.syscall(SYS.close, fd);
 }
 export function closeAsync(fd: number, callback: TCallback) {
-    process.asyscall(SYS.close, fd, callback);
+    libsys.asyscall(SYS.close, fd, callback);
 }
 
 
@@ -78,11 +78,11 @@ export function closeAsync(fd: number, callback: TCallback) {
 //
 export function access(pathname: string, mode: number): number {
     const buf = Buffer.from(pathname + '\0');
-    return process.syscall(SYS.access, buf, mode);
+    return libsys.syscall(SYS.access, buf, mode);
 }
 export function accessAsync(pathname: string, mode: number, callback: TCallback) {
     const buf = Buffer.from(pathname + '\0');
-    process.asyscall(SYS.access, buf, mode, callback);
+    libsys.asyscall(SYS.access, buf, mode, callback);
 }
 
 
@@ -100,16 +100,16 @@ export function accessAsync(pathname: string, mode: number, callback: TCallback)
 // and errno is set appropriately.
 //
 export function chmod(pathname: string, mode: number): number {
-    return process.syscall(SYS.chmod, pathname, mode);
+    return libsys.syscall(SYS.chmod, pathname, mode);
 }
 export function chmodAsync(pathname: string, mode: number, callback: TCallback) {
-    process.asyscall(SYS.chmod, pathname, mode, callback);
+    libsys.asyscall(SYS.chmod, pathname, mode, callback);
 }
 export function fchmod(fd: number, mode: number): number {
-    return process.syscall(SYS.chmod, fd, mode);
+    return libsys.syscall(SYS.chmod, fd, mode);
 }
 export function fchmodAsync(fd: number, mode: number, callback: TCallback) {
-    process.asyscall(SYS.chmod, fd, mode, callback);
+    libsys.asyscall(SYS.chmod, fd, mode, callback);
 }
 
 
@@ -134,22 +134,22 @@ export function fchmodAsync(fd: number, mode: number, callback: TCallback) {
 //  - `lchown()` is like chown(), but does not dereference symbolic links.
 //
 export function chown(pathname: string, owner: number, group: number): number {
-    return process.syscall(SYS.chown, pathname, owner, group);
+    return libsys.syscall(SYS.chown, pathname, owner, group);
 }
 export function chownAsync(pathname: string, owner: number, group: number, callback: TCallback) {
-    process.asyscall(SYS.chown, pathname, owner, group, callback);
+    libsys.asyscall(SYS.chown, pathname, owner, group, callback);
 }
 export function fchown(fd: number, owner: number, group: number): number {
-    return process.syscall(SYS.fchown, fd, owner, group);
+    return libsys.syscall(SYS.fchown, fd, owner, group);
 }
 export function fchownAsync(fd: number, owner: number, group: number, callback: TCallback) {
-    process.asyscall(SYS.fchown, fd, owner, group, callback);
+    libsys.asyscall(SYS.fchown, fd, owner, group, callback);
 }
 export function lchown(pathname: string, owner: number, group: number): number {
-    return process.syscall(SYS.lchown, pathname, owner, group);
+    return libsys.syscall(SYS.lchown, pathname, owner, group);
 }
 export function lchownAsync(pathname: string, owner: number, group: number, callback: TCallback) {
-    process.asyscall(SYS.lchown, pathname, owner, group, callback);
+    libsys.asyscall(SYS.lchown, pathname, owner, group, callback);
 }
 
 // ### truncate and ftruncate
@@ -165,16 +165,16 @@ export function lchownAsync(pathname: string, owner: number, group: number, call
 // Truncate a file to a specified length
 //
 export function truncate(path: string, length: number): number {
-    return process.syscall(SYS.truncate, path, length);
+    return libsys.syscall(SYS.truncate, path, length);
 }
 export function truncateAsync(path: string, length: number, callback: TCallback) {
-    process.asyscall(SYS.truncate, path, length, callback);
+    libsys.asyscall(SYS.truncate, path, length, callback);
 }
 export function ftruncate(fd: number, length: number): number {
-    return process.syscall(SYS.ftruncate, fd, length);
+    return libsys.syscall(SYS.ftruncate, fd, length);
 }
 export function ftruncateAsync(fd: number, length: number, callback: TCallback) {
-    process.asyscall(SYS.ftruncate, fd, length, callback);
+    libsys.asyscall(SYS.ftruncate, fd, length, callback);
 }
 
 // ### lseek
@@ -188,10 +188,10 @@ export function ftruncateAsync(fd: number, length: number, callback: TCallback) 
 // Reposition read/write file offset.
 //
 export function lseek(fd: number, offset: number, whence: SEEK): number {
-    return process.syscall(SYS.lseek, fd, offset, whence);
+    return libsys.syscall(SYS.lseek, fd, offset, whence);
 }
 export function lseekAsync(fd: number, offset: number, whence: SEEK, callback: TCallback) {
-    process.asyscall(SYS.lseek, fd, offset, whence, callback);
+    libsys.asyscall(SYS.lseek, fd, offset, whence, callback);
 }
 
 // ### rename
@@ -205,9 +205,9 @@ export function lseekAsync(fd: number, offset: number, whence: SEEK, callback: T
 // change the name or location of a file
 //
 export function rename(oldpath: string, newpath: string): number {
-    return process.syscall(SYS.rename, oldpath, newpath);
+    return libsys.syscall(SYS.rename, oldpath, newpath);
 }
 
 export function renameAsync(oldpath: string, newpath: string, callback: TCallback) {
-    process.asyscall(SYS.rename, oldpath, newpath, callback);
+    libsys.asyscall(SYS.rename, oldpath, newpath, callback);
 }

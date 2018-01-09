@@ -12,7 +12,7 @@ import {SYS, PROT, MAP, IPC, FLAG, SHM, NULL, shmid_ds, Ishmid_ds} from './platf
 //     void *mmap(void *addr, size_t length, int prot, int flags, int fd, off_t offset);
 //
 export function mmap(addr: number, length: number, prot: PROT, flags: MAP, fd: number, offset: number): number64 {
-    return process.syscall64(SYS.mmap, addr, length, prot, flags, fd, offset);
+    return libsys.syscall64(SYS.mmap, addr, length, prot, flags, fd, offset);
 }
 
 // ### munmap
@@ -22,7 +22,7 @@ export function mmap(addr: number, length: number, prot: PROT, flags: MAP, fd: n
 //     int munmap(void *addr, size_t length);
 //
 export function munmap(addr: Buffer, length: number): number {
-    return process.syscall(SYS.munmap, addr, length);
+    return libsys.syscall(SYS.munmap, addr, length);
 }
 
 // ### mprotect
@@ -32,7 +32,7 @@ export function munmap(addr: Buffer, length: number): number {
 //     int mprotect(void *addr, size_t len, int prot);
 //
 export function mprotect(addr: TAddress, len: number, prot: PROT): number {
-    return process.syscall(SYS.mprotect, addr, len, prot);
+    return libsys.syscall(SYS.mprotect, addr, len, prot);
 }
 
 // ### shmget
@@ -71,7 +71,7 @@ export function mprotect(addr: TAddress, len: number, prot: PROT): number {
  * @returns {number} `shmid` -- ID of the allocated memory, if positive.
  */
 export function shmget(key: number, size: number, shmflg: IPC|FLAG): number {
-    return process.syscall(SYS.shmget, key, size, shmflg);
+    return libsys.syscall(SYS.shmget, key, size, shmflg);
 }
 
 // ### shmat`
@@ -99,7 +99,7 @@ export function shmget(key: number, size: number, shmflg: IPC|FLAG): number {
  * @returns {number}
  */
 export function shmat(shmid: number, shmaddr: number = NULL, shmflg: SHM = 0): number64 {
-    return process.syscall64(SYS.shmat, shmid, shmaddr, shmflg);
+    return libsys.syscall64(SYS.shmat, shmid, shmaddr, shmflg);
 }
 
 // ### shmdt
@@ -120,7 +120,7 @@ export function shmat(shmid: number, shmaddr: number = NULL, shmflg: SHM = 0): n
  * @returns {number} On success shmdt() returns 0; on error -1 is returned, and errno is set to indicate the cause of the error.
  */
 export function shmdt(shmaddr: number): number {
-    return process.syscall(SYS.shmdt, shmaddr);
+    return libsys.syscall(SYS.shmdt, shmaddr);
 }
 
 /**
@@ -153,5 +153,5 @@ export function shmctl(shmid: number, cmd: IPC | SHM, buf: Buffer | Ishmid_ds | 
     } else {
         // Third argument is just `defs.NULL`.
     }
-    return process.syscall(SYS.shmctl, shmid, cmd, buf as Buffer|number);
+    return libsys.syscall(SYS.shmctl, shmid, cmd, buf as Buffer|number);
 }

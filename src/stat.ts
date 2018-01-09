@@ -51,7 +51,7 @@ function unpackStats(buf: Buffer, result: number, callback: TCallbackWithError <
 export function stat(filepath: string): Istat {
     const buf = new Buffer(statStruct.size + 200);
     const filepathBuffer = Buffer.from(filepath + '\0');
-    const result = process.syscall(SYS.stat, filepathBuffer, buf);
+    const result = libsys.syscall(SYS.stat, filepathBuffer, buf);
     console.log('buf', buf);
     if(result == 0) return statStruct.unpack(buf);
     throw result;
@@ -59,31 +59,31 @@ export function stat(filepath: string): Istat {
 
 export function statAsync(filepath: string, callback: TCallbackWithError <Error|number, Istat>) {
     const buf = new Buffer(statStruct.size + 100);
-    process.asyscall(SYS.stat, filepath, buf, (result) => unpackStats(buf, result as number, callback));
+    libsys.asyscall(SYS.stat, filepath, buf, (result) => unpackStats(buf, result as number, callback));
 }
 
 // Throws number
 export function lstat(linkpath: string): Istat {
     const buf = new Buffer(statStruct.size + 100);
-    const result = process.syscall(SYS.lstat, linkpath, buf);
+    const result = libsys.syscall(SYS.lstat, linkpath, buf);
     if(result == 0) return statStruct.unpack(buf);
     throw result;
 }
 
 export function lstatAsync(linkpath: string, callback: TCallbackWithError <Error|number, Istat>) {
     const buf = new Buffer(statStruct.size + 100);
-    process.asyscall(SYS.lstat, linkpath, buf, (result) => unpackStats(buf, result as number, callback));
+    libsys.asyscall(SYS.lstat, linkpath, buf, (result) => unpackStats(buf, result as number, callback));
 }
 
 // Throws number
 export function fstat(fd: number): Istat {
     const buf = new Buffer(statStruct.size + 100);
-    const result = process.syscall(SYS.fstat, fd, buf);
+    const result = libsys.syscall(SYS.fstat, fd, buf);
     if(result == 0) return statStruct.unpack(buf);
     throw result;
 }
 
 export function fstatAsync(fd: number, callback: TCallbackWithError <Error|number, Istat>) {
     const buf = new Buffer(statStruct.size + 100);
-    process.asyscall(SYS.fstat, fd, buf, (result) => unpackStats(buf, result as number, callback));
+    libsys.asyscall(SYS.fstat, fd, buf, (result) => unpackStats(buf, result as number, callback));
 }

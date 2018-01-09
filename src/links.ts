@@ -12,10 +12,10 @@ import {SYS, PATH_MAX} from './platform';
 // Make a new name for a file.
 //
 export function symlink(target: string, linkpath: string): number {
-    return process.syscall(SYS.symlink, target, linkpath);
+    return libsys.syscall(SYS.symlink, target, linkpath);
 }
 export function symlinkAsync(target: string, linkpath: string, callback: TCallback) {
-    process.asyscall(SYS.symlink, target, linkpath, callback);
+    libsys.asyscall(SYS.symlink, target, linkpath, callback);
 }
 
 
@@ -30,10 +30,10 @@ export function symlinkAsync(target: string, linkpath: string, callback: TCallba
 // Delete a name and possibly the file it refers to.
 //
 export function unlink(pathname: string): number {
-    return process.syscall(SYS.unlink, pathname);
+    return libsys.syscall(SYS.unlink, pathname);
 }
 export function unlinkAsync(pathname: string, callback: TCallback) {
-    process.asyscall(SYS.unlink, pathname, callback);
+    libsys.asyscall(SYS.unlink, pathname, callback);
 }
 
 
@@ -49,13 +49,13 @@ export function unlinkAsync(pathname: string, callback: TCallback) {
 //
 export function readlink(pathname: string): string {
     const sb = new StaticBuffer(PATH_MAX);
-    const bytes = process.syscall(SYS.readlink, pathname, sb, sb.length);
+    const bytes = libsys.syscall(SYS.readlink, pathname, sb, sb.length);
     if(bytes < 0) throw bytes;
     else return sb.slice(0, bytes).toString();
 }
 export function readlinkAsync(pathname: string, callback: TCallbackWithError <number, string>) {
     const sb = new StaticBuffer(PATH_MAX);
-    process.asyscall(SYS.readlink, pathname, sb, sb.length, bytes => {
+    libsys.asyscall(SYS.readlink, pathname, sb, sb.length, bytes => {
         if(bytes < 0) callback(bytes);
         else callback(bytes, sb.slice(0, bytes).toString());
     });
@@ -73,8 +73,8 @@ export function readlinkAsync(pathname: string, callback: TCallbackWithError <nu
 // Make a new name for a file.
 //
 export function link(oldpath: string, newpath: string): number {
-    return process.syscall(SYS.link, oldpath, newpath);
+    return libsys.syscall(SYS.link, oldpath, newpath);
 }
 export function linkAsync(oldpath: string, newpath: string, callback: TCallback) {
-    process.asyscall(SYS.link, oldpath, newpath, callback);
+    libsys.asyscall(SYS.link, oldpath, newpath, callback);
 }

@@ -13,19 +13,19 @@ import {SYS, utimbuf, Iutimbuf, timevalarr, Itimevalarr} from './platform';
 //
 export function utime(filename: string, times: Iutimbuf): number {
     const buf = utimbuf.pack(times);
-    return process.syscall(SYS.utime, filename, buf);
+    return libsys.syscall(SYS.utime, filename, buf);
 }
 export function utimeAsync(filename: string, times: Iutimbuf, callback: TCallback) {
     const buf = utimbuf.pack(times);
-    process.asyscall(SYS.utime, filename, buf, callback);
+    libsys.asyscall(SYS.utime, filename, buf, callback);
 }
 export function utimes(filename: string, times: Itimevalarr): number {
     const buf = timevalarr.pack(times);
-    return process.syscall(SYS.utimes, buf);
+    return libsys.syscall(SYS.utimes, buf);
 }
 export function utimesAsync(filename: string, times: Itimevalarr, callback: TCallback) {
     const buf = timevalarr.pack(times);
-    process.asyscall(SYS.utimes, buf, callback);
+    libsys.asyscall(SYS.utimes, buf, callback);
 }
 
 // TODO: implement these
