@@ -50,8 +50,8 @@ using namespace std;
 
 // syscallArgs         = [o.rax, o.rdi, o.rsi, o.rdx, o.r10, o.r8, o.r9];
 
-inline long syscall3(long num, long arg1, long arg2, long arg3) {
-    long result;
+inline long long int syscall3(long long int num, long long int arg1, long long int arg2, long long int arg3) {
+    long long int result;
 
     __asm__ __volatile__ (
         "syscall"
@@ -89,7 +89,7 @@ inline long sys3(long num, long arg1, long arg2, long arg3) {
         "movq %4, %%rdx;\n"
         "syscall;\n"
         "movq %%rax, %0;\n"
-        : "=a" (result)
+        : "=r" (result)
         : "g" (num), "g" (arg1), "g" (arg2), "g" (arg3)
         : "%rdi", "%rsi", "%rdx"
     );
@@ -120,15 +120,17 @@ inline long sys6(long num, long arg1, long arg2, long arg3, long arg4, long arg5
 
 int main() {
     // int* addr = (int*) mmap(0, 100, 1 | 2, 2 | 4096, -1, 0);
-    int* addr = (int*) syscall6(0x2000000 + SYS_mmap, 0, 100, 1 | 2, 2 | 4096, -1, 0);
+//    int* addr = (int*) syscall6(0x2000000 + SYS_mmap, 0, 100, 1 | 2, 2 | 4096, -1, 0);
 //    mmap(0, 100, 1 | 2, 2 | 4096, -1, 0);
 //    long result;
 //    asm volatile ("movq %%rax, %0;\n" : "=g" (result));
 
 
-    std::cout << addr << endl;
-    *addr = 25;
+//    std::cout << addr << endl;
 
+//    *addr = 25;
+
+    std::cout << sys3(0x2000004, 1000, 0, 0) << endl;
 
     // char* str = "Hello world!";
 //    std::cout << sys3(0x2000004, 1, (long) str, 11) << endl;

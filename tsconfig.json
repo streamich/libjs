@@ -14,7 +14,7 @@
     "src/**/*"
   ],
   "files": [
-    "typings.d.ts"
+    "typing.d.ts"
   ],
   "exclude": [
     "node_modules",
