@@ -13,7 +13,7 @@
     "tap": "^11.0.1",
     "typescript": "^2.6.2",
     "ts-node": "^4.0.2",
-    "libsys": "^2.2.0",
+    "libsys": "2.2.2",
     "static-buffer": "^1.0.1",
     "semantic-release": "^11.0.2"
   },

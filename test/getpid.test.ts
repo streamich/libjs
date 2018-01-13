@@ -12,5 +12,8 @@ pass('should return a number');
 equal(getpid(), getpid());
 pass('returns the same process id on multiple calls');
 
+console.log(getpid());
+console.log(process.pid);
+
 equal(getpid(), process.pid);
 pass('returns correct process id');

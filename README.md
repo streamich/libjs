@@ -4,6 +4,12 @@ POSIX/Linux system call API implemented in JavaScript (*Typescript*).
 
 This lib uses [`libsys`](http://www.npmjs.com/package/libsys) to execute system calls from JavaScript.
 
+In Node.js environment you can shim `libsys` as follows:
+
+```js
+require('libsys/shim');
+```
+
 This is part of [`jskernel`](http://www.npmjs.com/package/jskernel) project which long-term goal is to make Node.js dependency free.
 
 This library is in prototype stage, some things may not work, very little error
