@@ -15,3 +15,9 @@ gulp.task('build-ts', () => {
         )
         .pipe(gulp.dest('lib'));
 });
+
+gulp.task('copy-js', () => {
+    return gulp
+        .src(['src/**/*.js', '!/src/**/__tests__/**'])
+        .pipe(gulp.dest('lib'));
+});

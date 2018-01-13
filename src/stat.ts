@@ -52,7 +52,7 @@ export function stat(filepath: string): Istat {
     const buf = new Buffer(statStruct.size + 200);
     const filepathBuffer = Buffer.from(filepath + '\0');
     const result = libsys.syscall(SYS.stat, filepathBuffer, buf);
-    console.log('buf', buf);
+
     if(result == 0) return statStruct.unpack(buf);
     throw result;
 }

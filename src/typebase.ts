@@ -40,10 +40,12 @@ export class Type implements IType {
 
 export class Arr {
     static define(type: IType, len: number): Arr {
-        var new_arr = new Arr;
+        const new_arr = new Arr;
+
         new_arr.len = len;
         new_arr.type = type;
         new_arr.size = type.size * len;
+
         return new_arr;
     }
 

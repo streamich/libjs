@@ -1,35 +1,40 @@
 # libjs
 
-POSIX/Linux system call API implemented in JavaScript (*Typescript*).
+[libc](https://en.wikipedia.org/wiki/C_standard_library) in JavaScript - `libjs`.
 
-This lib uses [`libsys`](http://www.npmjs.com/package/libsys) to execute system calls from JavaScript.
+> This library is part of [`jskernel`](http://www.npmjs.com/package/jskernel) project which long-term goal is to make Node.js dependency free.
 
-In Node.js environment you can shim `libsys` as follows:
+
+## Usage
+
+```shell
+npm install libjs
+```
+
+This library uses [`libsys`](http://www.npmjs.com/package/libsys) to execute system calls from JavaScript.
+
+It expects your environment has `libsys` global object, in Node.js you can shim `libsys` as follows:
 
 ```js
 require('libsys/shim');
 ```
 
-This is part of [`jskernel`](http://www.npmjs.com/package/jskernel) project which long-term goal is to make Node.js dependency free.
-
-This library is in prototype stage, some things may not work, very little error
-checking, API will change.
 
 ## Examples
 
-See [`libaio`] for *asynchronous* implementation of sockets using `libjs`.
-Below are some basic *synchronous (blocking)* examples.
-
-Read from file:
+Read from a file
 
 ```ts
-import * as libjs from 'libjs';
+require('libsys/shim');
+const libjs = require('libjs');
 
-var filepath = '/share/libsys/examples/read.txt';
-var fd = libjs.open(filepath, libsys.FLAG.O_RDONLY);
+const O_RDONLY = 0;
+const fd = libjs.open(__filename, O_RDONLY);
+
 if(fd > -1) {
-    var buf = new Buffer(1024);
-    var bytes_read = libjs.read(fd, buf);
+    const buf = new Buffer(1024);
+    const bytes_read = libjs.read(fd, buf);
+
     console.log('Bytes read: ', bytes_read);
     console.log(buf.toString().substr(0, bytes_read));
 } else {
@@ -37,19 +42,16 @@ if(fd > -1) {
 }
 ```
 
-Run `stat()` on file:
+Run `stat()` on a file
 
 ```ts
-import * as libjs from 'libjs';
-import * as fs from 'fs';
+const stats = libjs.stat(__filename);
 
-var filepath = '/share/libsys/examples/read.txt';
-var stats = libjs.stat(filepath);
 console.log(stats);
-console.log(fs.statSync(filepath));
+console.log(require('fs').statSync(__filename));
 ```
 
-Execute simple HTTP `GET` request:
+Execute simple HTTP `GET` request
 
 ```ts
 import * as libjs from 'libjs';

@@ -1,7 +1,6 @@
 import {Arr} from './typebase';
 import {isLE as IS_LE, uint8, uint16} from './platform';
 
-
 export function flip(buf: Buffer, offset = 0, len = buf.length) {
     var mid = len >> 1, tmp, lside, rside;
     for(var i = 0; i < mid; i++) {
@@ -16,17 +15,15 @@ export function flip(buf: Buffer, offset = 0, len = buf.length) {
 
 // TODO: We cannot use 4-byte `htonl`, because JS allows bit shifting only up to 4-bytes
 // TODO: AND those 4-bytes are treated as SIGNED int, so the 32-nd bit will change the sign of the number.
-// export function htons32(num: number): number {
-//     if(IS_LE) return ((num & 0xFF00) >> 8) + ((num & 0xFF) << 8);
-//     else return num;
-// }
-
+export function htons32(num: number): number {
+    if(IS_LE) return ((num & 0xFF00) >> 8) + ((num & 0xFF) << 8);
+    else return num;
+}
 
 export function hton16(num: number): number {
     if(IS_LE) return ((num & 0xFF00) >> 8) + ((num & 0xFF) << 8);
     else return num;
 }
-
 
 export function htons(buf: Buffer, offset = 0, len = buf.length) {
     if(IS_LE) return flip(buf, offset, len);

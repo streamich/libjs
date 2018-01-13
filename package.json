@@ -5,8 +5,7 @@
     "test": "./test/run.sh",
     "semantic-release": "semantic-release",
     "clean": "rimraf lib",
-    "build": "npm run clean && npm run build:ts",
-    "build:ts": "gulp build-ts"
+    "build": "npm run clean && gulp build-ts && gulp copy-js"
   },
   "dependencies": {
     "fast-extend": "^0.0.2"

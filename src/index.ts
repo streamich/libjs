@@ -8,3 +8,5 @@ export * from './sockets';
 export * from './process';
 export * from './events';
 export * from './memory';
+
+export * from './socket';
