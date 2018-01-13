@@ -3,7 +3,10 @@
   "version": "0.0.0-development",
   "scripts": {
     "test": "./test/run.sh",
-    "semantic-release": "semantic-release"
+    "semantic-release": "semantic-release",
+    "clean": "rimraf lib",
+    "build": "npm run clean && npm run build:ts",
+    "build:ts": "gulp build-ts"
   },
   "dependencies": {
     "fast-extend": "^0.0.2"
@@ -15,7 +18,10 @@
     "ts-node": "^4.0.2",
     "libsys": "2.2.2",
     "static-buffer": "^1.0.1",
-    "semantic-release": "^11.0.2"
+    "semantic-release": "^11.0.2",
+    "rimraf": "2.6.2",
+    "gulp": "3.9.1",
+    "gulp-typescript": "3.2.1"
   },
   "repository": {
     "type": "git",
