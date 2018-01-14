@@ -2,9 +2,9 @@
 
 [![][npm-badge]][npm-url] [![][travis-badge]][travis-url]
 
-[libc](https://en.wikipedia.org/wiki/C_standard_library) in JavaScript - `libjs`.
+[libc](https://en.wikipedia.org/wiki/C_standard_library) in JavaScript - **libjs**.
 
-> This library is part of [`jskernel`](http://www.npmjs.com/package/jskernel) project which long-term goal is to make Node.js dependency free.
+> This library is part of [`jskernel`](https://github.com/streamich/jskernel) project which long-term goal is to make Node.js dependency free.
 
 
 ## Usage
@@ -24,6 +24,15 @@ To execute *asynchronous* system calls, it uses `libsys.asyscall` function, howe
 that, you can use [`asyscall`](https://github.com/streamich/asyscall) to shime asynchronous system call function.
 
 ## Examples
+
+Write to console
+
+```ts
+const STDOUT = 1;
+const buf = Buffer.from('Hello world!\n');
+
+libjs.write(STDOUT, buf);
+```
 
 Read from a file
 
@@ -100,7 +109,7 @@ telnet 127.0.0.1 8080
 
   - [`read`](./docs/reference/read.md)
   - [`readAsync`](./docs/reference/readAsync.md)
-  - `write`
+  - [`write`](./docs/reference/write.md)
   - `writeAsync`
   - `open`
   - `openAsync`
