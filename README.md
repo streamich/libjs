@@ -93,7 +93,7 @@ telnet 127.0.0.1 8080
 ```
 
 
-## Reference
+gi## Reference
 
 ```ts
 read(fd: number, buf: Buffer): number;
@@ -127,3 +127,9 @@ epoll_create1(flags: defs.EPOLL): number;
 epoll_wait(epfd: number, buf: Buffer, maxevents: number, timeout: number): number;
 epoll_ctl(epfd: number, op: defs.EPOLL_CTL, fd: number, epoll_event: defs.epoll_event): number;
 ```
+
+
+
+## License
+
+[Unlicense](./LICENSE) - public domain.
