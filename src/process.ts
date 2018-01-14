@@ -48,7 +48,7 @@ export const geteuidAsync = createAsyscall(SYS.geteuid);
 // Get group ID.
 //
 export const getgid = createSyscall(SYS.getgid);
-export const getgidAsycn = createAsyscall(SYS.getgid);
+export const getgidAsync = createAsyscall(SYS.getgid);
 
 // ### getgid
 //

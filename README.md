@@ -20,7 +20,8 @@ It expects your environment has `libsys` global object, in Node.js you can shim 
 ```js
 require('libsys/shim');
 ```
-
+To execute *asynchronous* system calls, it uses `libsys.asyscall` function, however, `libsys` library does not provide
+that, you can use [`asyscall`](https://github.com/streamich/asyscall) to shime asynchronous system call function.
 
 ## Examples
 
@@ -98,7 +99,7 @@ telnet 127.0.0.1 8080
 ## Reference
 
   - [`read`](./docs/reference/read.md)
-  - `readAsync`
+  - [`readAsync`](./docs/reference/readAsync.md)
   - `write`
   - `writeAsync`
   - `open`
