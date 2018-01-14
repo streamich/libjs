@@ -1,3 +1,5 @@
+set -e
+
 echo "getpid";
 ts-node test/getpid.test.ts
 
