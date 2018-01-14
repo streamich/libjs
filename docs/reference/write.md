@@ -7,9 +7,9 @@ write(fd: number, buf: Buffer): number;
   - `fd` - file descriptor
   - `buf` - Buffer with data to write
 
-Writes to data from buffer `buf` to file descriptor `fd`.
+Writes data from buffer `buf` to file descriptor `fd`.
 
-Returns number of bytes writte on success, or negative error number.
+Returns number of bytes writte on success, or a negative error number.
 
 ## Example
 
