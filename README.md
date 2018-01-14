@@ -1,5 +1,7 @@
 # libjs
 
+[![][npm-badge]][npm-url] [![][travis-badge]][travis-url]
+
 [libc](https://en.wikipedia.org/wiki/C_standard_library) in JavaScript - `libjs`.
 
 > This library is part of [`jskernel`](http://www.npmjs.com/package/jskernel) project which long-term goal is to make Node.js dependency free.
@@ -93,7 +95,7 @@ telnet 127.0.0.1 8080
 ```
 
 
-gi## Reference
+## Reference
 
 ```ts
 read(fd: number, buf: Buffer): number;
@@ -133,3 +135,11 @@ epoll_ctl(epfd: number, op: defs.EPOLL_CTL, fd: number, epoll_event: defs.epoll_
 ## License
 
 [Unlicense](./LICENSE) - public domain.
+
+
+
+[npm-url]: https://www.npmjs.com/package/libjs
+[npm-badge]: https://img.shields.io/npm/v/libjs.svg
+[travis-url]: https://travis-ci.org/streamich/libjs
+[travis-badge]: https://travis-ci.org/streamich/libjs.svg?branch=master
+
