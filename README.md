@@ -13,15 +13,15 @@
 npm install libjs
 ```
 
-This library uses [`libsys`](http://www.npmjs.com/package/libsys) to execute system calls from JavaScript.
+This library uses [`libsys`](https://github.com/streamich/libsys) to execute system calls from JavaScript.
 
 It expects your environment has `libsys` global object, in Node.js you can shim `libsys` as follows:
 
 ```js
 require('libsys/shim');
 ```
-To execute *asynchronous* system calls, it uses `libsys.asyscall` function, however, `libsys` library does not provide
-that, you can use [`asyscall`](https://github.com/streamich/asyscall) to shime asynchronous system call function.
+To execute *asynchronous* system calls, `libjs` uses `libsys.asyscall()` function, however, `libsys` library does not provide
+that, you can use [`asyscall`](https://github.com/streamich/asyscall) to shim *asynchronous* system call function.
 
 ## Examples
 
