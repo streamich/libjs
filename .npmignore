@@ -1,8 +1,8 @@
 /headers
 node_modules
 /docs
-/examples
-/c++
+/examples/
+/c++/
 .idea
 package-lock.json
 yarn.lock
