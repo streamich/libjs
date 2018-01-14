@@ -1,9 +1,9 @@
 // Fetches and returns statistics about a file.
 import {SYS} from './platform';
-import statStruct, {Istat} from './structs/stat';
+import statStruct, {IstatStruct} from './structs/stat';
 
 
-function unpackStats(buf: Buffer, result: number, callback: TCallbackWithError <Error|number, Istat>) {
+function unpackStats(buf: Buffer, result: number, callback: TCallbackWithError <Error|number, IstatStruct>) {
     if(result === 0) {
         try {
             callback(null, statStruct.unpack(buf));
@@ -48,7 +48,7 @@ function unpackStats(buf: Buffer, result: number, callback: TCallbackWithError <
 //
 
 // Throws number
-export function stat(filepath: string): Istat {
+export function stat(filepath: string): IstatStruct {
     const buf = new Buffer(statStruct.size + 200);
     const filepathBuffer = Buffer.from(filepath + '\0');
     const result = libsys.syscall(SYS.stat, filepathBuffer, buf);
@@ -57,33 +57,33 @@ export function stat(filepath: string): Istat {
     throw result;
 }
 
-export function statAsync(filepath: string, callback: TCallbackWithError <Error|number, Istat>) {
+export function statAsync(filepath: string, callback: TCallbackWithError <Error|number, IstatStruct>) {
     const buf = new Buffer(statStruct.size + 100);
     libsys.asyscall(SYS.stat, filepath, buf, (result) => unpackStats(buf, result as number, callback));
 }
 
 // Throws number
-export function lstat(linkpath: string): Istat {
+export function lstat(linkpath: string): IstatStruct {
     const buf = new Buffer(statStruct.size + 100);
     const result = libsys.syscall(SYS.lstat, linkpath, buf);
     if(result == 0) return statStruct.unpack(buf);
     throw result;
 }
 
-export function lstatAsync(linkpath: string, callback: TCallbackWithError <Error|number, Istat>) {
+export function lstatAsync(linkpath: string, callback: TCallbackWithError <Error|number, IstatStruct>) {
     const buf = new Buffer(statStruct.size + 100);
     libsys.asyscall(SYS.lstat, linkpath, buf, (result) => unpackStats(buf, result as number, callback));
 }
 
 // Throws number
-export function fstat(fd: number): Istat {
+export function fstat(fd: number): IstatStruct {
     const buf = new Buffer(statStruct.size + 100);
     const result = libsys.syscall(SYS.fstat, fd, buf);
     if(result == 0) return statStruct.unpack(buf);
     throw result;
 }
 
-export function fstatAsync(fd: number, callback: TCallbackWithError <Error|number, Istat>) {
+export function fstatAsync(fd: number, callback: TCallbackWithError <Error|number, IstatStruct>) {
     const buf = new Buffer(statStruct.size + 100);
     libsys.asyscall(SYS.fstat, fd, buf, (result) => unpackStats(buf, result as number, callback));
 }

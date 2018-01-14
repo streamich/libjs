@@ -51,65 +51,47 @@ console.log(stats);
 console.log(require('fs').statSync(__filename));
 ```
 
-Execute simple HTTP `GET` request
+A basic *echo* server
 
 ```ts
-import * as libjs from 'libjs';
+const IP = '0.0.0.0';
+const PORT = 8080;
 
-var fd = libjs.socket(libjs.AF.INET, libjs.SOCK.STREAM, 0);
+const AF_INET = 2;
+const SOCK_STREAM = 1;
 
-var addr_in: libjs.sockaddr_in = {
-    sin_family: libjs.AF.INET,
-    sin_port: libjs.htons32(80),
+const fd = libjs.socket(AF_INET, SOCK_STREAM, 0);
+
+const serv_addr = {
+    sin_family: AF_INET,
+    sin_port: libjs.hton16(PORT),
     sin_addr: {
-        s_addr: new libjs.Ipv4('192.168.1.150'),
+        s_addr: new libjs.Ipv4(IP),
     },
     sin_zero: [0, 0, 0, 0, 0, 0, 0, 0],
 };
 
-libjs.connect(fd, addr_in);
-libjs.write(fd, 'GET / \n\n');
-
-setTimeout(() => {
-    var buf = new Buffer(1000);
-    var bytes = libjs.read(fd, buf);
-    console.log(buf.toString().substr(0, bytes));
-    libjs.close(fd);
-}, 20);
-```
-
-A basic *echo* server:
-
-```ts
-import * as libjs from 'libjs';
-
-var fd = libjs.socket(libjs.AF.INET, libjs.SOCK.STREAM, 0);
-
-var serv_addr: libjs.sockaddr_in = {
-    sin_family: libjs.AF.INET,
-    sin_port: libjs.hton16(8080),
-    sin_addr: {
-        s_addr: new libjs.Ipv4('0.0.0.0'),
-    },
-    sin_zero: [0, 0, 0, 0, 0, 0, 0, 0],
-};
-libjs.bind(fd, serv_addr);
+libjs.bind(fd, serv_addr, libjs.sockaddr_in);
 libjs.listen(fd, 10);
 
-
-var client_addr_buf = new Buffer(libjs.sockaddr_in.size);
-var sock = libjs.accept(fd, client_addr_buf);
+const client_addr_buf = new Buffer(libjs.sockaddr_in.size);
+const sock = libjs.accept(fd, client_addr_buf);
 
 setInterval(() => {
-    var msg = new Buffer(255);
-    var bytes = libjs.read(sock, msg);
-    var str = msg.toString().substr(0, bytes);
+    const msg = new Buffer(255);
+    const bytes = libjs.read(sock, msg);
+    const str = msg.toString().substr(0, bytes) + ' to you!';
+
     libjs.write(sock, str);
 }, 20);
-
-// Now telnet to your server and talk to it:
-// telnet 127.0.0.1 8080
 ```
+
+Now telnet to your server and send it a message
+
+```shell
+telnet 127.0.0.1 8080
+```
+
 
 ## Reference
 

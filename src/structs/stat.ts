@@ -30,7 +30,7 @@ import {int32, uint32} from '../basetypes';
 //         __kernel_long_t		__unused[3];
 //     };
 //
-const stat = Struct.define(
+const statStruct = Struct.define(
     32 * 4, // TODO: Check the correct size for this struct, this may be wrong.
     [
         [0, uint32, 'dev'],
@@ -69,7 +69,7 @@ const stat = Struct.define(
     ]
 );
 
-export interface Istat {
+export interface IstatStruct {
     dev: number;
     ino: number;
     nlink: number;
@@ -88,4 +88,4 @@ export interface Istat {
     ctime_nsec: number;
 }
 
-export default stat;
+export default statStruct;

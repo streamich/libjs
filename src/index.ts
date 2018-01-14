@@ -1,3 +1,5 @@
+export * from './platform';
+
 export * from './files';
 export * from './sync';
 export * from './stat';

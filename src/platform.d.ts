@@ -29,7 +29,7 @@ import SO from './consts/SO';
 import SOCK from './consts/SOCK';
 import SOL from './consts/SOL';
 import ipv4 from './structs/ipv4';
-import stat, {Istat} from './structs/stat';
+import statStruct, {IstatStruct} from './structs/stat';
 import in_addr, {Iin_addr} from './structs/in_addr';
 import sockaddr_in, {Isockaddr_in} from './structs/sockaddr_in';
 import sockaddr, {Isockaddr} from './structs/sockaddr';
@@ -74,8 +74,8 @@ export {
     SOL,
 
     ipv4,
-    stat,
-    Istat,
+    statStruct,
+    IstatStruct,
     in_addr,
     Iin_addr,
     sockaddr_in,
