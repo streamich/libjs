@@ -97,39 +97,128 @@ telnet 127.0.0.1 8080
 
 ## Reference
 
-```ts
-read(fd: number, buf: Buffer): number;
-write(fd: number, buf: string|Buffer): number;
-open (pathname: string, flags: defs.FLAG, mode?: defs.MODE): number;
-close(fd: number): number;
-stat(filepath: string): defs.stat;
-lstat(linkpath: string): defs.stat;
-function fstat(fd: number): defs.stat;
-lseek(fd: number, offset: number, whence: number): number;
-mmap(addr: number, length: number, prot: number, flags: number, fd: number, offset: number): number;
-munmap(addr: Buffer, length: number): number;
-socket(domain: defs.AF, type: defs.SOCK, protocol: number): number;
-connect(fd: number, sockaddr: defs.sockaddr_in): number;
-bind(fd: number, sockaddr: defs.sockaddr_in): number;
-listen(fd: number, backlog: number): number;
-accept(fd: number, buf: Buffer): number;
-accept4(fd: number, buf: Buffer, flags: defs.SOCK): number;
-shutdown(fd: number, how: defs.SHUT): number;
-sendto(fd: number, buf: Buffer, flags: defs.MSG = 0, addr?: defs.sockaddr): number;
-send(fd: number, buf: Buffer, flags: defs.MSG = 0): number;
-getpid();
-getppid();
-getuid();
-geteuid();
-getgid();
-getegid();
-fcntl(fd: number, cmd: defs.FCNTL, arg?: number): number;
-epoll_create(size: number): number;
-epoll_create1(flags: defs.EPOLL): number;
-epoll_wait(epfd: number, buf: Buffer, maxevents: number, timeout: number): number;
-epoll_ctl(epfd: number, op: defs.EPOLL_CTL, fd: number, epoll_event: defs.epoll_event): number;
-```
-
+  - [`read`](./docs/reference/read.md)
+  - `readAsync`
+  - `write`
+  - `writeAsync`
+  - `open`
+  - `openAsync`
+  - `close`
+  - `closeAsync`
+  - `access`
+  - `accessAsync`
+  - `chmod`
+  - `chmodAsync`
+  - `fchmod`
+  - `fchmodAsync`
+  - `chown`
+  - `chownAsync`
+  - `fchown`
+  - `fchownAsync`
+  - `lchown`
+  - `lchownAsync`
+  - `truncate`
+  - `truncateAsync`
+  - `ftruncate`
+  - `ftruncateAsync`
+  - `lseek`
+  - `lseekAsync`
+  - `rename`
+  - `renameAsync`
+  - `fsync`
+  - `fsyncAsync`
+  - `fdatasync`
+  - `fdatasyncAsync`
+  - `stat`
+  - `statAsync`
+  - `lstat`
+  - `lstatAsync`
+  - `fstat`
+  - `fstatAsync`
+  - `mkdir`
+  - `mkdirAsync`
+  - `mkdirat`
+  - `mkdiratAsync`
+  - `rmdir`
+  - `rmdirAsync`
+  - `getcwd`
+  - `getcwdAsync`
+  - `getdents64`
+  - `getdents64Async`
+  - `readdir`
+  - `readdirList`
+  - `readdirListAsync`
+  - `symlink`
+  - `symlinkAsync`
+  - `unlink`
+  - `unlinkAsync`
+  - `readlink`
+  - `readlinkAsync`
+  - `link`
+  - `linkAsync`
+  - `utime`
+  - `utimeAsync`
+  - `utimes`
+  - `utimesAsync`
+  - `socket`
+  - `socketAsync`
+  - `connect`
+  - `connectAsync`
+  - `bind`
+  - `bindAsync`
+  - `listen`
+  - `listenAsync`
+  - `accept`
+  - `acceptAsync`
+  - `accept4`
+  - `accept4Async`
+  - `shutdown`
+  - `shutdownAsync`
+  - `send`
+  - `sendAsync`
+  - `sendto`
+  - `sendtoAsync`
+  - `recv`
+  - `recvfrom`
+  - `setsockopt`
+  - `getpid`
+  - `getpidAsync`
+  - `getppid`
+  - `getppidAsync`
+  - `getuid`
+  - `getuidAsync`
+  - `geteuid`
+  - `geteuidAsync`
+  - `getgid`
+  - `getgidAsync`
+  - `getegid`
+  - `getegidAsync`
+  - `sched_yield`
+  - `nanosleep`
+  - `fcntl`
+  - `epoll_create`
+  - `epoll_create1`
+  - `epoll_wait`
+  - `epoll_ctl`
+  - `inotify_init`
+  - `inotify_init1`
+  - `inotify_add_watch`
+  - `inotify_rm_watch`
+  - `mmap`
+  - `munmap`
+  - `mprotect`
+  - `shmget`
+  - `shmat`
+  - `shmdt`
+  - `shmctl`
+  - Sockets
+    - `flip`
+    - `htons32`
+    - `hton16`
+    - `htons`
+    - `Ip`
+    - `Ipv4`
+    - `Ipv6`
 
 
 ## License
