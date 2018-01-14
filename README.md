@@ -2,9 +2,9 @@
 
 [![][npm-badge]][npm-url] [![][travis-badge]][travis-url]
 
-[libc](https://en.wikipedia.org/wiki/C_standard_library) in JavaScript - `libjs`.
+[libc](https://en.wikipedia.org/wiki/C_standard_library) in JavaScript - **libjs**.
 
-> This library is part of [`jskernel`](http://www.npmjs.com/package/jskernel) project which long-term goal is to make Node.js dependency free.
+> This library is part of [`jskernel`](https://github.com/streamich/jskernel) project which long-term goal is to make Node.js dependency free.
 
 
 ## Usage
@@ -24,6 +24,15 @@ To execute *asynchronous* system calls, it uses `libsys.asyscall` function, howe
 that, you can use [`asyscall`](https://github.com/streamich/asyscall) to shime asynchronous system call function.
 
 ## Examples
+
+Write to console
+
+```ts
+const STDOUT = 1;
+const buf = Buffer.from('Hello world!\n');
+
+libjs.write(STDOUT, buf);
+```
 
 Read from a file
 
@@ -100,7 +109,7 @@ telnet 127.0.0.1 8080
 
   - [`read`](./docs/reference/read.md)
   - [`readAsync`](./docs/reference/readAsync.md)
-  - `write`
+  - [`write`](./docs/reference/write.md)
   - `writeAsync`
   - `open`
   - `openAsync`
@@ -212,6 +221,22 @@ telnet 127.0.0.1 8080
   - `shmat`
   - `shmdt`
   - `shmctl`
+  - Structs
+    - `epoll_event`
+    - `in_addr`
+    - `inotify_event`
+    - `ipc_perm`
+    - `ipv4`
+    - `linux_dirent64`
+    - `shmid_ds`
+    - `sigaction`
+    - `sockaddr`
+    - `sockaddr_in`
+    - `statStruct`
+    - `timespec`
+    - `timeval`
+    - `timevalarr`
+    - `utimbuf`
   - Sockets
     - `flip`
     - `htons32`
@@ -220,6 +245,46 @@ telnet 127.0.0.1 8080
     - `Ip`
     - `Ipv4`
     - `Ipv6`
+  - Constants
+    - [`AF`](./src/consts/AF.ts)
+    - [`AMODE`](./src/consts/AMODE.ts)
+    - [`BUS`](./src/consts/BUS.ts)
+    - [`CLD`](./src/consts/CLD.ts)
+    - [`DT`](./src/consts/DT.ts)
+    - [`EPOLL`](./src/consts/EPOLL.ts)
+    - [`EPOLL_CTL`](./src/consts/EPOLL_CTL.ts)
+    - [`EPOLL_EVENTS`](./src/consts/EPOLL_EVENTS.ts)
+    - [`ERROR`](./src/consts/ERROR.ts)
+    - [`FCNTL`](./src/consts/FCNTL.ts)
+    - [`FD`](./src/consts/FD.ts)
+    - [`FLAG`](./src/consts/FLAG.ts)
+    - [`FPE`](./src/consts/FPE.ts)
+    - [`ILL`](./src/consts/ILL.ts)
+    - [`IN`](./src/consts/IN.ts)
+    - [`IP`](./src/consts/IP.ts)
+    - [`IPC`](./src/consts/IPC.ts)
+    - [`IPPROT`](./src/consts/IPPROT.ts)
+    - [`IPPROTO`](./src/consts/IPPROTO.ts)
+    - [`IPV6`](./src/consts/IPV6.ts)
+    - [`MAP`](./src/consts/MAP.ts)
+    - [`MCAST`](./src/consts/MCAST.ts)
+    - [`MSG`](./src/consts/MSG.ts)
+    - [`PF`](./src/consts/PF.ts)
+    - [`POLL`](./src/consts/POLL.ts)
+    - [`PROT`](./src/consts/PROT.ts)
+    - [`S`](./src/consts/S.ts)
+    - [`SA`](./src/consts/SA.ts)
+    - [`SEEK`](./src/consts/SEEK.ts)
+    - [`SEGV`](./src/consts/SEGV.ts)
+    - [`SHM`](./src/consts/SHM.ts)
+    - [`SHUT`](./src/consts/SHUT.ts)
+    - [`SI`](./src/consts/SI.ts)
+    - [`SIG`](./src/consts/SIG.ts)
+    - [`SIGEV`](./src/consts/SIGEV.ts)
+    - [`SO`](./src/consts/SO.ts)
+    - [`SOCK`](./src/consts/SOCK.ts)
+    - [`SOL`](./src/consts/SOL.ts)
+    - [`TRAP`](./src/consts/TRAP.ts)
 
 
 ## License

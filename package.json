@@ -16,7 +16,6 @@
     "typescript": "^2.6.2",
     "ts-node": "^4.0.2",
     "libsys": "2.2.2",
-    "static-buffer": "^1.0.1",
     "semantic-release": "^12.2.2",
     "rimraf": "2.6.2",
     "gulp": "3.9.1",
