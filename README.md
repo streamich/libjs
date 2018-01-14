@@ -28,6 +28,9 @@ that, you can use [`asyscall`](https://github.com/streamich/asyscall) to shim *a
 Write to console
 
 ```ts
+require('libsys/shim');
+const libjs = require('libjs');
+
 const STDOUT = 1;
 const buf = Buffer.from('Hello world!\n');
 
@@ -37,9 +40,6 @@ libjs.write(STDOUT, buf);
 Read from a file
 
 ```ts
-require('libsys/shim');
-const libjs = require('libjs');
-
 const O_RDONLY = 0;
 const fd = libjs.open(__filename, O_RDONLY);
 
@@ -110,7 +110,7 @@ telnet 127.0.0.1 8080
   - [`read`](./docs/reference/read.md)
   - [`readAsync`](./docs/reference/readAsync.md)
   - [`write`](./docs/reference/write.md)
-  - `writeAsync`
+  - [`writeAsync`](./docs/reference/writeAsync.md)
   - `open`
   - `openAsync`
   - `close`
