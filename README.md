@@ -2,9 +2,7 @@
 
 [![][npm-badge]][npm-url] [![][travis-badge]][travis-url]
 
-[libc](https://en.wikipedia.org/wiki/C_standard_library) in JavaScript - **libjs**.
-
-> This library is part of [`jskernel`](https://github.com/streamich/jskernel) project which long-term goal is to make Node.js dependency free.
+[libc](https://en.wikipedia.org/wiki/C_standard_library) in JavaScript &mdash; **libjs**.
 
 
 ## Usage
@@ -14,95 +12,22 @@ npm install libjs
 ```
 
 This library uses [`libsys`](https://github.com/streamich/libsys) to execute system calls from JavaScript.
-
 It expects your environment has `libsys` global object, in Node.js you can shim `libsys` as follows:
 
 ```js
 require('libsys/shim');
 ```
+
 To execute *asynchronous* system calls, `libjs` uses `libsys.asyscall()` function, however, `libsys` library does not provide
 that, you can use [`asyscall`](https://github.com/streamich/asyscall) to shim *asynchronous* system call function.
 
+
 ## Examples
 
-Write to console
-
-```ts
-require('libsys/shim');
-const libjs = require('libjs');
-
-const STDOUT = 1;
-const buf = Buffer.from('Hello world!\n');
-
-libjs.write(STDOUT, buf);
-```
-
-Read from a file
-
-```ts
-const O_RDONLY = 0;
-const fd = libjs.open(__filename, O_RDONLY);
-
-if(fd > -1) {
-    const buf = new Buffer(1024);
-    const bytes_read = libjs.read(fd, buf);
-
-    console.log('Bytes read: ', bytes_read);
-    console.log(buf.toString().substr(0, bytes_read));
-} else {
-    console.log('Error: ', fd);
-}
-```
-
-Run `stat()` on a file
-
-```ts
-const stats = libjs.stat(__filename);
-
-console.log(stats);
-console.log(require('fs').statSync(__filename));
-```
-
-A basic *echo* server
-
-```ts
-const IP = '0.0.0.0';
-const PORT = 8080;
-
-const AF_INET = 2;
-const SOCK_STREAM = 1;
-
-const fd = libjs.socket(AF_INET, SOCK_STREAM, 0);
-
-const serv_addr = {
-    sin_family: AF_INET,
-    sin_port: libjs.hton16(PORT),
-    sin_addr: {
-        s_addr: new libjs.Ipv4(IP),
-    },
-    sin_zero: [0, 0, 0, 0, 0, 0, 0, 0],
-};
-
-libjs.bind(fd, serv_addr, libjs.sockaddr_in);
-libjs.listen(fd, 10);
-
-const client_addr_buf = new Buffer(libjs.sockaddr_in.size);
-const sock = libjs.accept(fd, client_addr_buf);
-
-setInterval(() => {
-    const msg = new Buffer(255);
-    const bytes = libjs.read(sock, msg);
-    const str = msg.toString().substr(0, bytes) + ' to you!';
-
-    libjs.write(sock, str);
-}, 20);
-```
-
-Now telnet to your server and send it a message
-
-```shell
-telnet 127.0.0.1 8080
-```
+- [Write to console](./docs/examples/write-to-console.md)
+- [Read from a file](./docs/examples/read-file.md)
+- [Run `stat()` on  a file](./docs/examples/stat.md)
+- [Create a basic server`](./docs/examples/server.md)
 
 
 ## Reference
@@ -111,116 +36,116 @@ telnet 127.0.0.1 8080
   - [`readAsync`](./docs/reference/readAsync.md)
   - [`write`](./docs/reference/write.md)
   - [`writeAsync`](./docs/reference/writeAsync.md)
-  - `open`
-  - `openAsync`
-  - `close`
-  - `closeAsync`
-  - `access`
-  - `accessAsync`
-  - `chmod`
-  - `chmodAsync`
-  - `fchmod`
-  - `fchmodAsync`
-  - `chown`
-  - `chownAsync`
-  - `fchown`
-  - `fchownAsync`
-  - `lchown`
-  - `lchownAsync`
-  - `truncate`
-  - `truncateAsync`
-  - `ftruncate`
-  - `ftruncateAsync`
-  - `lseek`
-  - `lseekAsync`
-  - `rename`
-  - `renameAsync`
-  - `fsync`
-  - `fsyncAsync`
-  - `fdatasync`
-  - `fdatasyncAsync`
-  - `stat`
-  - `statAsync`
-  - `lstat`
-  - `lstatAsync`
-  - `fstat`
-  - `fstatAsync`
-  - `mkdir`
-  - `mkdirAsync`
-  - `mkdirat`
-  - `mkdiratAsync`
-  - `rmdir`
-  - `rmdirAsync`
-  - `getcwd`
-  - `getcwdAsync`
-  - `getdents64`
-  - `getdents64Async`
-  - `readdir`
-  - `readdirList`
-  - `readdirListAsync`
-  - `symlink`
-  - `symlinkAsync`
-  - `unlink`
-  - `unlinkAsync`
-  - `readlink`
-  - `readlinkAsync`
-  - `link`
-  - `linkAsync`
-  - `utime`
-  - `utimeAsync`
-  - `utimes`
-  - `utimesAsync`
-  - `socket`
-  - `socketAsync`
-  - `connect`
-  - `connectAsync`
-  - `bind`
-  - `bindAsync`
-  - `listen`
-  - `listenAsync`
-  - `accept`
-  - `acceptAsync`
-  - `accept4`
-  - `accept4Async`
-  - `shutdown`
-  - `shutdownAsync`
-  - `send`
-  - `sendAsync`
-  - `sendto`
-  - `sendtoAsync`
-  - `recv`
-  - `recvfrom`
-  - `setsockopt`
-  - `getpid`
-  - `getpidAsync`
-  - `getppid`
-  - `getppidAsync`
-  - `getuid`
-  - `getuidAsync`
-  - `geteuid`
-  - `geteuidAsync`
-  - `getgid`
-  - `getgidAsync`
-  - `getegid`
-  - `getegidAsync`
-  - `sched_yield`
-  - `nanosleep`
-  - `fcntl`
-  - `epoll_create`
-  - `epoll_create1`
-  - `epoll_wait`
-  - `epoll_ctl`
-  - `inotify_init`
-  - `inotify_init1`
-  - `inotify_add_watch`
-  - `inotify_rm_watch`
-  - `mmap`
-  - `munmap`
-  - `mprotect`
-  - `shmget`
-  - `shmat`
-  - `shmdt`
-  - `shmctl`
+  - [`open`](./docs/reference/open.md)
+  - [`openAsync`](./docs/reference/openAsync.md)
+  - [`close`](./docs/reference/close.md)
+  - [`closeAsync`](./docs/reference/closeAsync.md)
+  - [`access`](./docs/reference/ADD.md)
+  - [`accessAsync`](./docs/reference/ADD.md)
+  - [`chmod`](./docs/reference/ADD.md)
+  - [`chmodAsync`](./docs/reference/ADD.md)
+  - [`fchmod`](./docs/reference/ADD.md)
+  - [`fchmodAsync`](./docs/reference/ADD.md)
+  - [`chown`](./docs/reference/ADD.md)
+  - [`chownAsync`](./docs/reference/ADD.md)
+  - [`fchown`](./docs/reference/ADD.md)
+  - [`fchownAsync`](./docs/reference/ADD.md)
+  - [`lchown`](./docs/reference/ADD.md)
+  - [`lchownAsync`](./docs/reference/ADD.md)
+  - [`truncate`](./docs/reference/ADD.md)
+  - [`truncateAsync`](./docs/reference/ADD.md)
+  - [`ftruncate`](./docs/reference/ADD.md)
+  - [`ftruncateAsync`](./docs/reference/ADD.md)
+  - [`lseek`](./docs/reference/ADD.md)
+  - [`lseekAsync`](./docs/reference/ADD.md)
+  - [`rename`](./docs/reference/ADD.md)
+  - [`renameAsync`](./docs/reference/ADD.md)
+  - [`fsync`](./docs/reference/ADD.md)
+  - [`fsyncAsync`](./docs/reference/ADD.md)
+  - [`fdatasync`](./docs/reference/ADD.md)
+  - [`fdatasyncAsync`](./docs/reference/ADD.md)
+  - [`stat`](./docs/reference/ADD.md)
+  - [`statAsync`](./docs/reference/ADD.md)
+  - [`lstat`](./docs/reference/ADD.md)
+  - [`lstatAsync`](./docs/reference/ADD.md)
+  - [`fstat`](./docs/reference/ADD.md)
+  - [`fstatAsync`](./docs/reference/ADD.md)
+  - [`mkdir`](./docs/reference/ADD.md)
+  - [`mkdirAsync`](./docs/reference/ADD.md)
+  - [`mkdirat`](./docs/reference/ADD.md)
+  - [`mkdiratAsync`](./docs/reference/ADD.md)
+  - [`rmdir`](./docs/reference/ADD.md)
+  - [`rmdirAsync`](./docs/reference/ADD.md)
+  - [`getcwd`](./docs/reference/ADD.md)
+  - [`getcwdAsync`](./docs/reference/ADD.md)
+  - [`getdents64`](./docs/reference/ADD.md)
+  - [`getdents64Async`](./docs/reference/ADD.md)
+  - [`readdir`](./docs/reference/ADD.md)
+  - [`readdirList`](./docs/reference/ADD.md)
+  - [`readdirListAsync`](./docs/reference/ADD.md)
+  - [`symlink`](./docs/reference/ADD.md)
+  - [`symlinkAsync`](./docs/reference/ADD.md)
+  - [`unlink`](./docs/reference/ADD.md)
+  - [`unlinkAsync`](./docs/reference/ADD.md)
+  - [`readlink`](./docs/reference/ADD.md)
+  - [`readlinkAsync`](./docs/reference/ADD.md)
+  - [`link`](./docs/reference/ADD.md)
+  - [`linkAsync`](./docs/reference/ADD.md)
+  - [`utime`](./docs/reference/ADD.md)
+  - [`utimeAsync`](./docs/reference/ADD.md)
+  - [`utimes`](./docs/reference/ADD.md)
+  - [`utimesAsync`](./docs/reference/ADD.md)
+  - [`socket`](./docs/reference/ADD.md)
+  - [`socketAsync`](./docs/reference/ADD.md)
+  - [`connect`](./docs/reference/ADD.md)
+  - [`connectAsync`](./docs/reference/ADD.md)
+  - [`bind`](./docs/reference/ADD.md)
+  - [`bindAsync`](./docs/reference/ADD.md)
+  - [`listen`](./docs/reference/ADD.md)
+  - [`listenAsync`](./docs/reference/ADD.md)
+  - [`accept`](./docs/reference/ADD.md)
+  - [`acceptAsync`](./docs/reference/ADD.md)
+  - [`accept4`](./docs/reference/ADD.md)
+  - [`accept4Async`](./docs/reference/ADD.md)
+  - [`shutdown`](./docs/reference/ADD.md)
+  - [`shutdownAsync`](./docs/reference/ADD.md)
+  - [`send`](./docs/reference/ADD.md)
+  - [`sendAsync`](./docs/reference/ADD.md)
+  - [`sendto`](./docs/reference/ADD.md)
+  - [`sendtoAsync`](./docs/reference/ADD.md)
+  - [`recv`](./docs/reference/ADD.md)
+  - [`recvfrom`](./docs/reference/ADD.md)
+  - [`setsockopt`](./docs/reference/ADD.md)
+  - [`getpid`](./docs/reference/ADD.md)
+  - [`getpidAsync`](./docs/reference/ADD.md)
+  - [`getppid`](./docs/reference/ADD.md)
+  - [`getppidAsync`](./docs/reference/ADD.md)
+  - [`getuid`](./docs/reference/ADD.md)
+  - [`getuidAsync`](./docs/reference/ADD.md)
+  - [`geteuid`](./docs/reference/ADD.md)
+  - [`geteuidAsync`](./docs/reference/ADD.md)
+  - [`getgid`](./docs/reference/ADD.md)
+  - [`getgidAsync`](./docs/reference/ADD.md)
+  - [`getegid`](./docs/reference/ADD.md)
+  - [`getegidAsync`](./docs/reference/ADD.md)
+  - [`sched_yield`](./docs/reference/ADD.md)
+  - [`nanosleep`](./docs/reference/ADD.md)
+  - [`fcntl`](./docs/reference/ADD.md)
+  - [`epoll_create`](./docs/reference/ADD.md)
+  - [`epoll_create1`](./docs/reference/ADD.md)
+  - [`epoll_wait`](./docs/reference/ADD.md)
+  - [`epoll_ctl`](./docs/reference/ADD.md)
+  - [`inotify_init`](./docs/reference/ADD.md)
+  - [`inotify_init1`](./docs/reference/ADD.md)
+  - [`inotify_add_watch`](./docs/reference/ADD.md)
+  - [`inotify_rm_watch`](./docs/reference/ADD.md)
+  - [`mmap`](./docs/reference/ADD.md)
+  - [`munmap`](./docs/reference/ADD.md)
+  - [`mprotect`](./docs/reference/ADD.md)
+  - [`shmget`](./docs/reference/ADD.md)
+  - [`shmat`](./docs/reference/ADD.md)
+  - [`shmdt`](./docs/reference/ADD.md)
+  - [`shmctl`](./docs/reference/ADD.md)
   - Structs
     - `epoll_event`
     - `in_addr`
