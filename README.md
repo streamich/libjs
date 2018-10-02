@@ -2,9 +2,7 @@
 
 [![][npm-badge]][npm-url] [![][travis-badge]][travis-url]
 
-[libc](https://en.wikipedia.org/wiki/C_standard_library) in JavaScript - **libjs**.
-
-> This library is part of [`jskernel`](https://github.com/streamich/jskernel) project which long-term goal is to make Node.js dependency free.
+[libc](https://en.wikipedia.org/wiki/C_standard_library) in JavaScript &mdash; **libjs**.
 
 
 ## Usage
@@ -14,95 +12,22 @@ npm install libjs
 ```
 
 This library uses [`libsys`](https://github.com/streamich/libsys) to execute system calls from JavaScript.
-
 It expects your environment has `libsys` global object, in Node.js you can shim `libsys` as follows:
 
 ```js
 require('libsys/shim');
 ```
+
 To execute *asynchronous* system calls, `libjs` uses `libsys.asyscall()` function, however, `libsys` library does not provide
 that, you can use [`asyscall`](https://github.com/streamich/asyscall) to shim *asynchronous* system call function.
 
+
 ## Examples
 
-Write to console
-
-```ts
-require('libsys/shim');
-const libjs = require('libjs');
-
-const STDOUT = 1;
-const buf = Buffer.from('Hello world!\n');
-
-libjs.write(STDOUT, buf);
-```
-
-Read from a file
-
-```ts
-const O_RDONLY = 0;
-const fd = libjs.open(__filename, O_RDONLY);
-
-if(fd > -1) {
-    const buf = new Buffer(1024);
-    const bytes_read = libjs.read(fd, buf);
-
-    console.log('Bytes read: ', bytes_read);
-    console.log(buf.toString().substr(0, bytes_read));
-} else {
-    console.log('Error: ', fd);
-}
-```
-
-Run `stat()` on a file
-
-```ts
-const stats = libjs.stat(__filename);
-
-console.log(stats);
-console.log(require('fs').statSync(__filename));
-```
-
-A basic *echo* server
-
-```ts
-const IP = '0.0.0.0';
-const PORT = 8080;
-
-const AF_INET = 2;
-const SOCK_STREAM = 1;
-
-const fd = libjs.socket(AF_INET, SOCK_STREAM, 0);
-
-const serv_addr = {
-    sin_family: AF_INET,
-    sin_port: libjs.hton16(PORT),
-    sin_addr: {
-        s_addr: new libjs.Ipv4(IP),
-    },
-    sin_zero: [0, 0, 0, 0, 0, 0, 0, 0],
-};
-
-libjs.bind(fd, serv_addr, libjs.sockaddr_in);
-libjs.listen(fd, 10);
-
-const client_addr_buf = new Buffer(libjs.sockaddr_in.size);
-const sock = libjs.accept(fd, client_addr_buf);
-
-setInterval(() => {
-    const msg = new Buffer(255);
-    const bytes = libjs.read(sock, msg);
-    const str = msg.toString().substr(0, bytes) + ' to you!';
-
-    libjs.write(sock, str);
-}, 20);
-```
-
-Now telnet to your server and send it a message
-
-```shell
-telnet 127.0.0.1 8080
-```
+- [Write to console](./docs/examples/write-to-console.md)
+- [Read from a file](./docs/examples/read-file.md)
+- [Run `stat()` on  a file](./docs/examples/stat.md)
+- [Create a basic server`](./docs/examples/server.md)
 
 
 ## Reference
