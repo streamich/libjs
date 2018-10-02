@@ -1,6 +1,9 @@
 Read from a file
 
 ```ts
+require('libsys/shim');
+const libjs = require('libjs');
+
 const O_RDONLY = 0;
 const fd = libjs.open(__filename, O_RDONLY);
 

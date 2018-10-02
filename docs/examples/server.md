@@ -1,6 +1,9 @@
 A basic *echo* server
 
 ```ts
+require('libsys/shim');
+const libjs = require('libjs');
+
 const IP = '0.0.0.0';
 const PORT = 8080;
 
