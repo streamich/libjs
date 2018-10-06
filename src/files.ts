@@ -1,6 +1,9 @@
 // Standard file operations, which operate on most of the Linux/Unix file descriptors.
 import {SYS, FLAG, S, SEEK} from './platform';
+import {TNumber, TBuffer, TCallback, StaticBuffer} from './types';
+import {ILibSys} from './libsys';
 
+export const libsys: ILibSys = (global as any).libsys;
 
 // ## read
 //
