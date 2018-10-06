@@ -18,9 +18,6 @@ It expects your environment has `libsys` global object, in Node.js you can shim 
 require('libsys/shim');
 ```
 
-To execute *asynchronous* system calls, `libjs` uses `libsys.asyscall()` function, however, `libsys` library does not provide
-that, you can use [`asyscall`](https://github.com/streamich/asyscall) to shim *asynchronous* system call function.
-
 
 ## Examples
 
@@ -33,7 +30,7 @@ that, you can use [`asyscall`](https://github.com/streamich/asyscall) to shim *a
 ## Reference
 
 - Synchronous system calls
-   - [`read`](./docs/reference/read.md),
+   - Files: [`read`](./docs/reference/read.md),
      [`write`](./docs/reference/write.md),
      [`open`](./docs/reference/open.md),
      [`close`](./docs/reference/close.md),
@@ -49,22 +46,22 @@ that, you can use [`asyscall`](https://github.com/streamich/asyscall) to shim *a
      [`rename`](./docs/reference/ADD.md),
      [`fsync`](./docs/reference/ADD.md),
      [`fdatasync`](./docs/reference/ADD.md)
-   - [`stat`](./docs/reference/ADD.md),
+   - Stats: [`stat`](./docs/reference/ADD.md),
      [`lstat`](./docs/reference/ADD.md),
      and [`fstat`](./docs/reference/ADD.md)
-   - [`mkdir`](./docs/reference/ADD.md),
+   - Directories: [`mkdir`](./docs/reference/ADD.md),
      [`mkdirat`](./docs/reference/ADD.md),
      [`rmdir`](./docs/reference/ADD.md),
      [`getcwd`](./docs/reference/ADD.md),
      [`getdents64`](./docs/reference/ADD.md),
      [`readdir`](./docs/reference/ADD.md),
      and [`readdirList`](./docs/reference/ADD.md)
-   - [`symlink`](./docs/reference/ADD.md),
+   - Links: [`symlink`](./docs/reference/ADD.md),
      [`unlink`](./docs/reference/ADD.md),
      [`readlink`](./docs/reference/ADD.md),
      and [`link`](./docs/reference/ADD.md)
-   - [`utime`](./docs/reference/ADD.md) and [`utimes`](./docs/reference/ADD.md)
-   - [`socket`](./docs/reference/ADD.md),
+   - Time: [`utime`](./docs/reference/ADD.md) and [`utimes`](./docs/reference/ADD.md)
+   - Networking: [`socket`](./docs/reference/ADD.md),
      [`connect`](./docs/reference/ADD.md),
      [`bind`](./docs/reference/ADD.md),
      [`listen`](./docs/reference/ADD.md),
@@ -76,7 +73,7 @@ that, you can use [`asyscall`](https://github.com/streamich/asyscall) to shim *a
      [`recv`](./docs/reference/ADD.md),
      [`recvfrom`](./docs/reference/ADD.md),
      and [`setsockopt`](./docs/reference/ADD.md)
-   - [`getpid`](./docs/reference/ADD.md),
+   - Process: [`getpid`](./docs/reference/ADD.md),
      [`getppid`](./docs/reference/ADD.md),
      [`getuid`](./docs/reference/ADD.md),
      [`geteuid`](./docs/reference/ADD.md),
@@ -84,7 +81,7 @@ that, you can use [`asyscall`](https://github.com/streamich/asyscall) to shim *a
      [`getegid`](./docs/reference/ADD.md),
      [`sched_yield`](./docs/reference/ADD.md),
      and [`nanosleep`](./docs/reference/ADD.md)
-   - [`fcntl`](./docs/reference/ADD.md),
+   - Events: [`fcntl`](./docs/reference/ADD.md),
      [`epoll_create`](./docs/reference/ADD.md),
      [`epoll_create1`](./docs/reference/ADD.md),
      [`epoll_wait`](./docs/reference/ADD.md),
@@ -93,7 +90,7 @@ that, you can use [`asyscall`](https://github.com/streamich/asyscall) to shim *a
      [`inotify_init1`](./docs/reference/ADD.md),
      [`inotify_add_watch`](./docs/reference/ADD.md),
      and [`inotify_rm_watch`](./docs/reference/ADD.md)
-   - [`mmap`](./docs/reference/ADD.md),
+   - Memory: [`mmap`](./docs/reference/ADD.md),
      [`munmap`](./docs/reference/ADD.md),
      [`mprotect`](./docs/reference/ADD.md),
      [`shmget`](./docs/reference/ADD.md),
@@ -101,7 +98,7 @@ that, you can use [`asyscall`](https://github.com/streamich/asyscall) to shim *a
      [`shmdt`](./docs/reference/ADD.md),
      and [`shmctl`](./docs/reference/ADD.md)
 - Asynchronous system calls
-   - [`readAsync`](./docs/reference/readAsync.md),
+   - Files: [`readAsync`](./docs/reference/readAsync.md),
      [`writeAsync`](./docs/reference/writeAsync.md),
      [`openAsync`](./docs/reference/openAsync.md),
      [`closeAsync`](./docs/reference/closeAsync.md),
@@ -117,21 +114,21 @@ that, you can use [`asyscall`](https://github.com/streamich/asyscall) to shim *a
      [`renameAsync`](./docs/reference/ADD.md),
      [`fsyncAsync`](./docs/reference/ADD.md),
      [`fdatasyncAsync`](./docs/reference/ADD.md)
-   - [`statAsync`](./docs/reference/ADD.md),
+   - Stats: [`statAsync`](./docs/reference/ADD.md),
      [`lstatAsync`](./docs/reference/ADD.md),
      and [`fstatAsync`](./docs/reference/ADD.md)
-   - [`mkdirAsync`](./docs/reference/ADD.md),
+   - Directories: [`mkdirAsync`](./docs/reference/ADD.md),
      [`mkdiratAsync`](./docs/reference/ADD.md),
      [`rmdirAsync`](./docs/reference/ADD.md),
      [`getcwdAsync`](./docs/reference/ADD.md),
      [`getdents64Async`](./docs/reference/ADD.md),
      and [`readdirListAsync`](./docs/reference/ADD.md)
-   - [`symlinkAsync`](./docs/reference/ADD.md),
+   - Links: [`symlinkAsync`](./docs/reference/ADD.md),
      [`unlinkAsync`](./docs/reference/ADD.md),
      [`readlinkAsync`](./docs/reference/ADD.md),
      and [`linkAsync`](./docs/reference/ADD.md)
-   - [`utimeAsync`](./docs/reference/ADD.md) and [`utimesAsync`](./docs/reference/ADD.md)
-   - [`socketAsync`](./docs/reference/ADD.md),
+   - Time: [`utimeAsync`](./docs/reference/ADD.md) and [`utimesAsync`](./docs/reference/ADD.md)
+   - Networking: [`socketAsync`](./docs/reference/ADD.md),
      [`connectAsync`](./docs/reference/ADD.md),
      [`bindAsync`](./docs/reference/ADD.md),
      [`listenAsync`](./docs/reference/ADD.md),
@@ -140,7 +137,7 @@ that, you can use [`asyscall`](https://github.com/streamich/asyscall) to shim *a
      [`shutdownAsync`](./docs/reference/ADD.md),
      [`sendAsync`](./docs/reference/ADD.md)
      and [`sendtoAsync`](./docs/reference/ADD.md),
-   - [`getpidAsync`](./docs/reference/ADD.md),
+   - Process: [`getpidAsync`](./docs/reference/ADD.md),
      [`getppidAsync`](./docs/reference/ADD.md),
      [`getuidAsync`](./docs/reference/ADD.md),
      [`geteuidAsync`](./docs/reference/ADD.md),
