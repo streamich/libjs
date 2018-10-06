@@ -30,73 +30,82 @@ require('libsys/shim');
 ## Reference
 
 - Synchronous system calls
-   - __Files__: [`read`](./docs/reference/read.md),
-     [`write`](./docs/reference/write.md),
-     [`open`](./docs/reference/open.md),
-     [`close`](./docs/reference/close.md),
-     [`access`](./docs/reference/ADD.md),
-     [`chmod`](./docs/reference/ADD.md),
-     [`fchmod`](./docs/reference/ADD.md),
-     [`chown`](./docs/reference/ADD.md),
-     [`fchown`](./docs/reference/ADD.md),
-     [`lchown`](./docs/reference/ADD.md),
-     [`truncate`](./docs/reference/ADD.md),
-     [`ftruncate`](./docs/reference/ADD.md),
-     [`lseek`](./docs/reference/ADD.md),
-     [`rename`](./docs/reference/ADD.md),
-     [`fsync`](./docs/reference/ADD.md),
-     [`fdatasync`](./docs/reference/ADD.md)
-   - __Stats__: [`stat`](./docs/reference/ADD.md),
-     [`lstat`](./docs/reference/ADD.md),
-     and [`fstat`](./docs/reference/ADD.md)
-   - __Directories__: [`mkdir`](./docs/reference/ADD.md),
-     [`mkdirat`](./docs/reference/ADD.md),
-     [`rmdir`](./docs/reference/ADD.md),
-     [`getcwd`](./docs/reference/ADD.md),
-     [`getdents64`](./docs/reference/ADD.md),
-     [`readdir`](./docs/reference/ADD.md),
-     and [`readdirList`](./docs/reference/ADD.md)
-   - __Links__: [`symlink`](./docs/reference/ADD.md),
-     [`unlink`](./docs/reference/ADD.md),
-     [`readlink`](./docs/reference/ADD.md),
-     and [`link`](./docs/reference/ADD.md)
-   - __Time__: [`utime`](./docs/reference/ADD.md) and [`utimes`](./docs/reference/ADD.md)
-   - __Networking__: [`socket`](./docs/reference/ADD.md),
-     [`connect`](./docs/reference/ADD.md),
-     [`bind`](./docs/reference/ADD.md),
-     [`listen`](./docs/reference/ADD.md),
-     [`accept`](./docs/reference/ADD.md),
-     [`accept4`](./docs/reference/ADD.md),
-     [`shutdown`](./docs/reference/ADD.md),
-     [`send`](./docs/reference/ADD.md),
-     [`sendto`](./docs/reference/ADD.md),
-     [`recv`](./docs/reference/ADD.md),
-     [`recvfrom`](./docs/reference/ADD.md),
-     and [`setsockopt`](./docs/reference/ADD.md)
-   - __Process__: [`getpid`](./docs/reference/ADD.md),
-     [`getppid`](./docs/reference/ADD.md),
-     [`getuid`](./docs/reference/ADD.md),
-     [`geteuid`](./docs/reference/ADD.md),
-     [`getgid`](./docs/reference/ADD.md),
-     [`getegid`](./docs/reference/ADD.md),
-     [`sched_yield`](./docs/reference/ADD.md),
-     and [`nanosleep`](./docs/reference/ADD.md)
-   - __Events__: [`fcntl`](./docs/reference/ADD.md),
-     [`epoll_create`](./docs/reference/ADD.md),
-     [`epoll_create1`](./docs/reference/ADD.md),
-     [`epoll_wait`](./docs/reference/ADD.md),
-     [`epoll_ctl`](./docs/reference/ADD.md),
-     [`inotify_init`](./docs/reference/ADD.md),
-     [`inotify_init1`](./docs/reference/ADD.md),
-     [`inotify_add_watch`](./docs/reference/ADD.md),
-     and [`inotify_rm_watch`](./docs/reference/ADD.md)
-   - __Memory__: [`mmap`](./docs/reference/ADD.md),
-     [`munmap`](./docs/reference/ADD.md),
-     [`mprotect`](./docs/reference/ADD.md),
-     [`shmget`](./docs/reference/ADD.md),
-     [`shmat`](./docs/reference/ADD.md),
-     [`shmdt`](./docs/reference/ADD.md),
-     and [`shmctl`](./docs/reference/ADD.md)
+   - __Files__
+      - [`read`](./docs/reference/read.md),
+        [`write`](./docs/reference/write.md),
+        [`open`](./docs/reference/open.md),
+        [`close`](./docs/reference/close.md),
+        [`access`](./docs/reference/ADD.md),
+        [`chmod`](./docs/reference/ADD.md),
+        [`fchmod`](./docs/reference/ADD.md),
+        [`chown`](./docs/reference/ADD.md),
+        [`fchown`](./docs/reference/ADD.md),
+        [`lchown`](./docs/reference/ADD.md),
+        [`truncate`](./docs/reference/ADD.md),
+        [`ftruncate`](./docs/reference/ADD.md),
+        [`lseek`](./docs/reference/ADD.md),
+        [`rename`](./docs/reference/ADD.md),
+        [`fsync`](./docs/reference/ADD.md),
+        [`fdatasync`](./docs/reference/ADD.md)
+   - __Stats__
+      - [`stat`](./docs/reference/ADD.md),
+        [`lstat`](./docs/reference/ADD.md),
+        and [`fstat`](./docs/reference/ADD.md)
+   - __Directories__
+      - [`mkdir`](./docs/reference/ADD.md),
+        [`mkdirat`](./docs/reference/ADD.md),
+        [`rmdir`](./docs/reference/ADD.md),
+        [`getcwd`](./docs/reference/ADD.md),
+        [`getdents64`](./docs/reference/ADD.md),
+        [`readdir`](./docs/reference/ADD.md),
+        and [`readdirList`](./docs/reference/ADD.md)
+   - __Links__
+      - [`symlink`](./docs/reference/ADD.md),
+        [`unlink`](./docs/reference/ADD.md),
+        [`readlink`](./docs/reference/ADD.md),
+        and [`link`](./docs/reference/ADD.md)
+   - __Time__
+      - [`utime`](./docs/reference/ADD.md) and [`utimes`](./docs/reference/ADD.md)
+   - __Networking__
+      - [`socket`](./docs/reference/ADD.md),
+        [`connect`](./docs/reference/ADD.md),
+        [`bind`](./docs/reference/ADD.md),
+        [`listen`](./docs/reference/ADD.md),
+        [`accept`](./docs/reference/ADD.md),
+        [`accept4`](./docs/reference/ADD.md),
+        [`shutdown`](./docs/reference/ADD.md),
+        [`send`](./docs/reference/ADD.md),
+        [`sendto`](./docs/reference/ADD.md),
+        [`recv`](./docs/reference/ADD.md),
+        [`recvfrom`](./docs/reference/ADD.md),
+        and [`setsockopt`](./docs/reference/ADD.md)
+   - __Process__
+      - [`getpid`](./docs/reference/ADD.md),
+        [`getppid`](./docs/reference/ADD.md),
+        [`getuid`](./docs/reference/ADD.md),
+        [`geteuid`](./docs/reference/ADD.md),
+        [`getgid`](./docs/reference/ADD.md),
+        [`getegid`](./docs/reference/ADD.md),
+        [`sched_yield`](./docs/reference/ADD.md),
+        and [`nanosleep`](./docs/reference/ADD.md)
+   - __Events__
+      - [`fcntl`](./docs/reference/ADD.md),
+        [`epoll_create`](./docs/reference/ADD.md),
+        [`epoll_create1`](./docs/reference/ADD.md),
+        [`epoll_wait`](./docs/reference/ADD.md),
+        [`epoll_ctl`](./docs/reference/ADD.md),
+        [`inotify_init`](./docs/reference/ADD.md),
+        [`inotify_init1`](./docs/reference/ADD.md),
+        [`inotify_add_watch`](./docs/reference/ADD.md),
+        and [`inotify_rm_watch`](./docs/reference/ADD.md)
+   - __Memory__
+      - [`mmap`](./docs/reference/ADD.md),
+        [`munmap`](./docs/reference/ADD.md),
+        [`mprotect`](./docs/reference/ADD.md),
+        [`shmget`](./docs/reference/ADD.md),
+        [`shmat`](./docs/reference/ADD.md),
+        [`shmdt`](./docs/reference/ADD.md),
+        and [`shmctl`](./docs/reference/ADD.md)
 - Asynchronous system calls
    - __Files__: [`readAsync`](./docs/reference/readAsync.md),
      [`writeAsync`](./docs/reference/writeAsync.md),
