@@ -1,5 +1,7 @@
 // Memory
 import {SYS, PROT, MAP, IPC, FLAG, SHM, NULL, shmid_ds, Ishmid_ds} from './platform';
+import {number64, TAddress} from './types';
+import {libsys} from './libsys';
 
 // ### mmap
 //

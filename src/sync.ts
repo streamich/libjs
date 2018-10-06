@@ -1,4 +1,6 @@
 import {SYS} from './platform';
+import {TCallback} from './types';
+import {libsys} from './libsys';
 
 // ## fsync and fdatasync
 //

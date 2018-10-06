@@ -2,7 +2,7 @@ require('libsys/shim');
 import * as libjs from '../src/index';
 
 const IP = '0.0.0.0';
-const PORT = 8080;
+const PORT = 8099;
 
 const AF_INET = 2;
 const SOCK_STREAM = 1;
@@ -33,4 +33,4 @@ setInterval(() => {
 }, 20);
 
 // Now telnet to your server and talk to it:
-// telnet 127.0.0.1 8080
+// telnet 127.0.0.1 8099

@@ -2,7 +2,7 @@ require('libsys/shim');
 import * as libjs from '../src/index';
 
 const IP = '0.0.0.0';
-const PORT = 80;
+const PORT = 8099;
 
 const AF_INET = 2;
 const SOCK_STREAM = 1;

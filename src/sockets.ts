@@ -1,6 +1,8 @@
 // Sockets
 import {SYS, AF, MSG, SOCK, SHUT, IP, IPV6, SO, sockaddr_in, Isockaddr_in, int32} from './platform';
 import {Struct} from './typebase';
+import {libsys} from './libsys';
+import {TCallback, TAddress} from './types';
 
 
 // ## socket

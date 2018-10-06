@@ -2,7 +2,9 @@
 import {SYS, ERROR, FLAG, linux_dirent64, PATH_MAX} from './platform';
 import {open, close, openAsync, closeAsync} from './files';
 import {noop} from './util';
-
+import {libsys} from './libsys';
+import {TCallback, TCallbackWithError} from './types';
+import {StaticBuffer} from './StaticBuffer';
 
 // ### mkdir, mkdirat and rmdir
 //
@@ -67,7 +69,7 @@ export function getcwd(): string {
     // -1 to remove `\0` terminating the string.
     return buf.slice(0, res - 1).toString();
 }
-export function getcwdAsync(callback: TCallbackWithError <number, string>) {
+export function getcwdAsync(callback: TCallbackWithError<number, string>) {
     let buf = new Buffer(264);
     libsys.asyscall(SYS.getcwd, buf, buf.length, (res) => {
         if(res < 0) {

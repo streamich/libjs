@@ -1,5 +1,7 @@
 // Process
 import {SYS, timespec, NULL} from './platform';
+import {libsys} from './libsys';
+import {TCallback} from './types';
 
 
 const createSyscall = (num) => () => libsys.syscall(num);
