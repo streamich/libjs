@@ -29,7 +29,7 @@ require('libsys/shim');
 
 ## Reference
 
-- Synchronous system calls
+- [Synchronous system calls](./docs/synchronous-system-calls.md)
    - __Files__:
      [`read`](./docs/syscalls/read.md),
      [`write`](./docs/syscalls/write.md),
