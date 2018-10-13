@@ -5,3 +5,9 @@ gulp.task('copy-js', () => {
         .src(['src/**/*.js', '!/src/**/__tests__/**'])
         .pipe(gulp.dest('lib'));
 });
+
+gulp.task('copy-dts', () => {
+    return gulp
+        .src(['src/**/*.d.ts'])
+        .pipe(gulp.dest('lib'));
+});

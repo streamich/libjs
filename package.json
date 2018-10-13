@@ -1,11 +1,17 @@
 {
   "name": "libjs",
   "version": "1.0.0",
+  "files": [
+    "lib/"
+  ],
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "typings": "lib/index.d.ts",
   "scripts": {
     "test": "./test/run.sh",
     "semantic-release": "semantic-release",
     "clean": "rimraf lib",
-    "build": "yarn clean && tsc && gulp copy-js",
+    "build": "yarn clean && tsc && gulp copy-js && gulp copy-dts",
     "dev:build": "docker build -t libjs .",
     "dev:start": "docker run -it --rm -v $(pwd):/app -p 8099:8099 libjs"
   },
