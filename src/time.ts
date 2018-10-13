@@ -1,5 +1,7 @@
 // Time
 import {SYS, utimbuf, Iutimbuf, timevalarr, Itimevalarr} from './platform';
+import {libsys} from './libsys';
+import {TCallback} from './types';
 
 
 // ## utime, utimes, utimensat and futimens

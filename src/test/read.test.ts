@@ -1,6 +1,6 @@
 require('./setup');
 import {pass} from 'tap';
-import {read} from '../src/index';
+import {read} from '..';
 import {equal, ok} from 'assert';
 import * as path from 'path';
 import * as fs from 'fs';

@@ -1,5 +1,5 @@
 require('libsys/shim');
-import * as libjs from '../src/index';
+import * as libjs from '../src';
 
 const stats = libjs.stat(__filename);
 

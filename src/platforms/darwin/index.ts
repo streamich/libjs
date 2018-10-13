@@ -31,7 +31,7 @@ import IN from '../../consts/IN';
 import {NULL, int8, uint8, int16, uint16, int32, uint32, int64, uint64,
         size_t, optval_t, pid_t, pointer_t, time_t} from './basetypes';
 import ipv4 from '../../structs/ipv4';
-import stat, {Istat} from '../../structs/stat';
+import statStruct, {IstatStruct} from '../../structs/stat';
 import in_addr, {Iin_addr} from '../../structs/in_addr';
 import sockaddr_in, {Isockaddr_in} from '../../structs/sockaddr_in';
 import sockaddr, {Isockaddr} from '../../structs/sockaddr';
@@ -93,8 +93,8 @@ export {
     size_t, optval_t, pid_t, pointer_t, time_t,
 
     ipv4,
-    stat,
-    Istat,
+    statStruct,
+    IstatStruct,
     in_addr,
     Iin_addr,
     sockaddr_in,

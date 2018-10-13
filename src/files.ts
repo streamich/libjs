@@ -1,6 +1,7 @@
 // Standard file operations, which operate on most of the Linux/Unix file descriptors.
 import {SYS, FLAG, S, SEEK} from './platform';
-
+import {TNumber, TBuffer, TCallback, StaticBuffer, ILibSys} from './types';
+import {libsys} from './libsys';
 
 // ## read
 //
@@ -210,4 +211,21 @@ export function rename(oldpath: string, newpath: string): number {
 
 export function renameAsync(oldpath: string, newpath: string, callback: TCallback) {
     libsys.asyscall(SYS.rename, oldpath, newpath, callback);
+}
+
+// ## fsync and fdatasync
+//
+// Synchronize a file's in-core state with storage.
+//
+export function fsync(fd: number): number {
+    return libsys.syscall(SYS.fsync, fd);
+}
+export function fsyncAsync(fd: number, callback: TCallback) {
+    libsys.asyscall(SYS.fsync, fd, callback);
+}
+export function fdatasync(fd: number): number {
+    return libsys.syscall(SYS.fdatasync, fd);
+}
+export function fdatasyncAsync(fd: number, callback: TCallback) {
+    libsys.asyscall(SYS.fdatasync, fd, callback);
 }

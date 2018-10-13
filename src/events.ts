@@ -1,5 +1,6 @@
 // Events
 import {SYS, EPOLL, EPOLL_CTL, FCNTL, IN, epoll_event, Iepoll_event} from './platform';
+import {libsys} from './libsys';
 
 
 // ### fcntl

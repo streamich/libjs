@@ -1,25 +1,23 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "target": "es2018",
     "module": "commonjs",
-    "removeComments": false,
-    "sourceMap": true,
-    "listFiles": false,
-    "skipDefaultLibCheck": true,
-    "noImplicitAny": false,
-    "experimentalDecorators": true,
-    "allowJs": true,
-    "allowSyntheticDefaultImports": true
+    "moduleResolution": "node",
+    "jsx": "react",
+    "declaration": true,
+    "pretty": true,
+    "rootDir": "src",
+    "sourceMap": false,
+    "strict": false,
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "outDir": "lib",
+    "lib": ["es2018", "dom"]
   },
-  "include": [
-    "src/**/*"
-  ],
-  "files": [
-    "typing.d.ts"
-  ],
   "exclude": [
-    "node_modules",
-    "dist",
-    "lib"
+    "src/demo/**/*",
+    "src/test/**/*"
   ]
 }

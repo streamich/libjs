@@ -1,5 +1,8 @@
 // Links
 import {SYS, PATH_MAX} from './platform';
+import {libsys} from './libsys';
+import {TCallback, TCallbackWithError} from './types';
+import {StaticBuffer} from './StaticBuffer';
 
 // ### symlink
 //
@@ -53,7 +56,7 @@ export function readlink(pathname: string): string {
     if(bytes < 0) throw bytes;
     else return sb.slice(0, bytes).toString();
 }
-export function readlinkAsync(pathname: string, callback: TCallbackWithError <number, string>) {
+export function readlinkAsync(pathname: string, callback: TCallbackWithError<number, string>) {
     const sb = new StaticBuffer(PATH_MAX);
     libsys.asyscall(SYS.readlink, pathname, sb, sb.length, bytes => {
         if(bytes < 0) callback(bytes);

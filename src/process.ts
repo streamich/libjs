@@ -1,9 +1,11 @@
 // Process
 import {SYS, timespec, NULL} from './platform';
+import {libsys} from './libsys';
+import {TCallback} from './types';
 
 
-const createSyscall = (num) => () => libsys.syscall(num);
-const createAsyscall = (num) => (callback: TCallback) => libsys.asyscall(num, callback);
+const createSyscall = (num: number) => () => libsys.syscall(num);
+const createAsyscall = (num: number) => (callback: TCallback) => libsys.asyscall(num, callback);
 
 // ### getpid
 //

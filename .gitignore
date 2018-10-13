@@ -5,3 +5,5 @@ package-lock.json
 yarn.lock
 /build/
 /lib/
+yarn-error.log
+/tmp/*

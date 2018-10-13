@@ -1,5 +1,5 @@
 import './setup';
-import {getpid} from '../src/index';
+import {getpid} from '..';
 import {pass} from 'tap';
 import {equal} from 'assert';
 

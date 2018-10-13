@@ -1,9 +1,11 @@
 // Fetches and returns statistics about a file.
 import {SYS} from './platform';
 import statStruct, {IstatStruct} from './structs/stat';
+import {TCallbackWithError} from './types';
+import {libsys} from './libsys';
 
 
-function unpackStats(buf: Buffer, result: number, callback: TCallbackWithError <Error|number, IstatStruct>) {
+function unpackStats(buf: Buffer, result: number, callback: TCallbackWithError<Error|number, IstatStruct>) {
     if(result === 0) {
         try {
             callback(null, statStruct.unpack(buf));
@@ -57,7 +59,7 @@ export function stat(filepath: string): IstatStruct {
     throw result;
 }
 
-export function statAsync(filepath: string, callback: TCallbackWithError <Error|number, IstatStruct>) {
+export function statAsync(filepath: string, callback: TCallbackWithError<Error|number, IstatStruct>) {
     const buf = new Buffer(statStruct.size + 100);
     libsys.asyscall(SYS.stat, filepath, buf, (result) => unpackStats(buf, result as number, callback));
 }
@@ -70,7 +72,7 @@ export function lstat(linkpath: string): IstatStruct {
     throw result;
 }
 
-export function lstatAsync(linkpath: string, callback: TCallbackWithError <Error|number, IstatStruct>) {
+export function lstatAsync(linkpath: string, callback: TCallbackWithError<Error|number, IstatStruct>) {
     const buf = new Buffer(statStruct.size + 100);
     libsys.asyscall(SYS.lstat, linkpath, buf, (result) => unpackStats(buf, result as number, callback));
 }
@@ -83,7 +85,7 @@ export function fstat(fd: number): IstatStruct {
     throw result;
 }
 
-export function fstatAsync(fd: number, callback: TCallbackWithError <Error|number, IstatStruct>) {
+export function fstatAsync(fd: number, callback: TCallbackWithError<Error|number, IstatStruct>) {
     const buf = new Buffer(statStruct.size + 100);
     libsys.asyscall(SYS.fstat, fd, buf, (result) => unpackStats(buf, result as number, callback));
 }

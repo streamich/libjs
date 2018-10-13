@@ -1,4 +1,5 @@
 {
+    "editor.tabSize": 4,
     "files.associations": {
         "__config": "cpp",
         "__nullptr": "cpp",
@@ -6,6 +7,7 @@
         "initializer_list": "cpp",
         "new": "cpp",
         "stdexcept": "cpp",
-        "typeinfo": "cpp"
+        "typeinfo": "cpp",
+        "inet.h": "c"
     }
 }
