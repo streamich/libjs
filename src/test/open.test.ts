@@ -1,5 +1,5 @@
 require('./setup');
-import {open} from '../src/index';
+import {open} from '..';
 import {pass} from 'tap';
 import {equal, ok} from 'assert';
 

@@ -1,6 +1,6 @@
 require('./setup');
 import {pass} from 'tap';
-import {access} from '../src/index';
+import {access} from '..';
 import {equal, ok} from 'assert';
 
 const res2 = access(__filename, 0);

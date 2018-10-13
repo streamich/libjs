@@ -1,11 +1,11 @@
 require('libsys/shim');
 import {socket, AF, SOCK, hton16, Ipv4, setsockopt, SOL,
-    SO, bind, sockaddr_in, sockaddr, listen, accept, recv, send, Isockaddr_in} from '../src';
+    SO, bind, sockaddr_in, sockaddr, listen, accept, recv, send, Isockaddr_in} from '..';
 
 let err;
 const BUFFER_SIZE = 1024;
 const printf = console.log;
-const on_error = (...args) => {
+const on_error = (...args: any[]) => {
     printf(...args);
     process.exit(1);
 };
