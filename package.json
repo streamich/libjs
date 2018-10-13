@@ -5,7 +5,9 @@
     "test": "./test/run.sh",
     "semantic-release": "semantic-release",
     "clean": "rimraf lib",
-    "build": "npm run clean && gulp build-ts && gulp copy-js"
+    "build": "npm run clean && gulp build-ts && gulp copy-js",
+    "dev:build": "docker build -t libjs .",
+    "dev:start": "docker run -it --rm -v $(pwd):/app -p 8099:8099 libjs"
   },
   "dependencies": {
     "fast-extend": "^0.0.2"

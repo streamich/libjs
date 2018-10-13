@@ -1,5 +1,3 @@
-import PF from './PF';
-
 // Address families.
 const enum AF {
     UNSPEC = 0,	/* Unspecified.  */
