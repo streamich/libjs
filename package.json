@@ -8,7 +8,7 @@
   "types": "lib/index.d.ts",
   "typings": "lib/index.d.ts",
   "scripts": {
-    "test": "./test/run.sh",
+    "test": "./src/test/run.sh",
     "semantic-release": "semantic-release",
     "clean": "rimraf lib",
     "build": "yarn clean && tsc && gulp copy-js && gulp copy-dts",

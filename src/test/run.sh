@@ -1,19 +1,19 @@
 set -e
 
 echo "getpid";
-ts-node test/getpid.test.ts
+ts-node src/test/getpid.test.ts
 
 echo "open";
-ts-node test/open.test.ts
+ts-node src/test/open.test.ts
 
 echo "close";
-ts-node test/close.test.ts
+ts-node src/test/close.test.ts
 
 echo "write";
-ts-node test/write.test.ts
+ts-node src/test/write.test.ts
 
 echo "access";
-ts-node test/access.test.ts
+ts-node src/test/access.test.ts
 
 echo "stat":
-ts-node test/access.test.ts
+ts-node src/test/access.test.ts
