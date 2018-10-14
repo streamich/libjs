@@ -30,6 +30,8 @@ import DT from '../../consts/DT';
 import IN from '../../consts/IN';
 import {EVFILT} from '../../consts/EVFILT';
 import {EV} from '../../consts/EV';
+import {KEVENT} from '../../consts/KEVENT';
+import {NOTE} from '../../consts/NOTE';
 import {NULL, int8, uint8, int16, uint16, int32, uint32, int64, uint64,
         size_t, optval_t, pid_t, pointer_t, time_t} from './basetypes';
 import ipv4 from '../../structs/ipv4';
@@ -89,6 +91,8 @@ export {
     IN,
     EV,
     EVFILT,
+    KEVENT,
+    NOTE,
 
     NULL, int8, uint8, int16, uint16, int32, uint32, int64, uint64,
     size_t, optval_t, pid_t, pointer_t, time_t,

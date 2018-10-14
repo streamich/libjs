@@ -30,6 +30,8 @@ import SOCK from './consts/SOCK';
 import SOL from './consts/SOL';
 import {EVFILT} from './consts/EVFILT';
 import {EV} from './consts/EV';
+import {KEVENT} from './consts/KEVENT';
+import {NOTE} from './consts/NOTE';
 import ipv4 from './structs/ipv4';
 import statStruct, {IstatStruct} from './structs/stat';
 import in_addr, {Iin_addr} from './structs/in_addr';
@@ -76,6 +78,8 @@ export {
     SOL,
     EVFILT,
     EV,
+    KEVENT,
+    NOTE,
 
     ipv4,
     statStruct,
