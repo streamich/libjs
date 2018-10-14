@@ -1,5 +1,5 @@
 // Events
-import {SYS, EPOLL, EPOLL_CTL, FCNTL, IN, epoll_event, Iepoll_event} from './platform';
+import {SYS, EPOLL, EPOLL_CTL, FCNTL, IN, epoll_event, Iepoll_event, IkeventStruct} from './platform';
 import {libsys} from './libsys';
 
 
@@ -85,4 +85,27 @@ export function inotify_add_watch(fd: number, pathname: string, mask: IN): numbe
 }
 export function inotify_rm_watch(fd: number, wd: number): number {
     return libsys.syscall(SYS.inotify_rm_watch, fd, wd);
+}
+
+
+// kqueue
+/*
+int     kqueue(void);
+int     kevent(int kq, 
+	       const struct kevent *changelist, int nchanges,
+	       struct kevent *eventlist, int nevents,
+	       const struct timespec *timeout);
+int     kevent64(int kq, 
+		 const struct kevent64_s *changelist, int nchanges,
+		 struct kevent64_s *eventlist, int nevents,
+		 unsigned int flags, 
+		 const struct timespec *timeout);
+*/
+export function kqueue(): number {
+    return libsys.syscall((SYS as any).kqueue);
+}
+
+export function kevent(kq: number, changelist: IkeventStruct, nchanges: number,
+        eventlist: IkeventStruct, nevents: number, timeout: number): number {
+    // return libsys.syscall((SYS as any).kevent);
 }

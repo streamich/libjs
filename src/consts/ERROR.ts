@@ -1,4 +1,4 @@
-const enum ERROR {
+enum ERROR {
     EACCES = 13, // The address is protected, and the user is not the superuser.
     EADDRINUSE = 98, // The given address is already in use.
     EBADF = 9, // sockfd is not a valid descriptor.
