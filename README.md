@@ -166,7 +166,9 @@ require('libsys/shim');
      `timespec`,
      `timeval`,
      `timevalarr`,
-     `utimbuf`
+     `utimbuf`,
+   - [`kevent`](./src/structs/kevent.ts) and [`Ikevent`](./src/structs/kevent.ts)
+   - [`kevent64_s`](./src/structs/kevent64_s.ts) and [`Ikevent64_s`](./src/structs/kevent64_s.ts)
 - Sockets
    - `flip`,
      `htons32`,
