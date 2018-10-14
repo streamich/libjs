@@ -46,6 +46,8 @@ import timevalarr, {Itimevalarr} from './structs/timevalarr';
 import timespec from './structs/timespec';
 import linux_dirent64, {Ilinux_dirent64} from './structs/linux_dirent64';
 import inotify_event, {Iinotify_event} from './structs/inotify_event';
+import {kevent, Ikevent} from './structs/kevent';
+import {kevent64_s, Ikevent64_s} from './structs/kevent64_s';
 
 export {
     SYS,
@@ -107,6 +109,10 @@ export {
     Ilinux_dirent64,
     inotify_event,
     Iinotify_event,
+    kevent,
+    Ikevent,
+    kevent64_s,
+    Ikevent64_s,
 };
 
 export const isLE: boolean;
