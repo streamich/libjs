@@ -185,6 +185,7 @@ require('libsys/shim');
      [`EPOLL_CTL`](./src/consts/EPOLL_CTL.ts),
      [`EPOLL_EVENTS`](./src/consts/EPOLL_EVENTS.ts),
      [`ERROR`](./src/consts/ERROR.ts),
+     [`EV`](./src/consts/EV.ts),
      [`EVFILT`](./src/consts/EVFILT.ts),
      [`FCNTL`](./src/consts/FCNTL.ts),
      [`FD`](./src/consts/FD.ts),

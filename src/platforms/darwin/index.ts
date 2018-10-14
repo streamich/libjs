@@ -29,6 +29,7 @@ import FD from '../../consts/FD';
 import DT from '../../consts/DT';
 import IN from '../../consts/IN';
 import {EVFILT} from '../../consts/EVFILT';
+import {EV} from '../../consts/EV';
 import {NULL, int8, uint8, int16, uint16, int32, uint32, int64, uint64,
         size_t, optval_t, pid_t, pointer_t, time_t} from './basetypes';
 import ipv4 from '../../structs/ipv4';
@@ -56,11 +57,9 @@ const timespecarr = timevalarr;
 interface Itimespec extends Itimeval {}
 type Itimespecarr = [Itimespec, Itimespec];
 
-
 export {
     SYS,
     MAP,
-    EVFILT,
     FLAG,
     PROT,
     S,
@@ -88,6 +87,8 @@ export {
     FD,
     DT,
     IN,
+    EV,
+    EVFILT,
 
     NULL, int8, uint8, int16, uint16, int32, uint32, int64, uint64,
     size_t, optval_t, pid_t, pointer_t, time_t,

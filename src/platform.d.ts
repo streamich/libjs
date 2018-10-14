@@ -29,6 +29,7 @@ import SO from './consts/SO';
 import SOCK from './consts/SOCK';
 import SOL from './consts/SOL';
 import {EVFILT} from './consts/EVFILT';
+import {EV} from './consts/EV';
 import ipv4 from './structs/ipv4';
 import statStruct, {IstatStruct} from './structs/stat';
 import in_addr, {Iin_addr} from './structs/in_addr';
@@ -74,6 +75,7 @@ export {
     SOCK,
     SOL,
     EVFILT,
+    EV,
 
     ipv4,
     statStruct,
