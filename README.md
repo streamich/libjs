@@ -185,6 +185,7 @@ require('libsys/shim');
      [`EPOLL_CTL`](./src/consts/EPOLL_CTL.ts),
      [`EPOLL_EVENTS`](./src/consts/EPOLL_EVENTS.ts),
      [`ERROR`](./src/consts/ERROR.ts),
+     [`EVFILT`](./src/consts/EVFILT.ts),
      [`FCNTL`](./src/consts/FCNTL.ts),
      [`FD`](./src/consts/FD.ts),
      [`FLAG`](./src/consts/FLAG.ts),
@@ -227,4 +228,3 @@ require('libsys/shim');
 [npm-badge]: https://img.shields.io/npm/v/libjs.svg
 [travis-url]: https://travis-ci.org/streamich/libjs
 [travis-badge]: https://travis-ci.org/streamich/libjs.svg?branch=master
-
