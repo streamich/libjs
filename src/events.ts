@@ -105,7 +105,7 @@ export function kqueue(): number {
     return libsys.syscall((SYS as any).kqueue);
 }
 
-export function kevent(kq: number, changelist: IkeventStruct, nchanges: number,
-        eventlist: IkeventStruct, nevents: number, timeout: number): number {
+// export function kevent(kq: number, changelist: IkeventStruct, nchanges: number,
+        // eventlist: IkeventStruct, nevents: number, timeout: number): number {
     // return libsys.syscall((SYS as any).kevent);
-}
+// }

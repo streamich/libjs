@@ -15,5 +15,9 @@ ts-node src/test/write.test.ts
 echo "access";
 ts-node src/test/access.test.ts
 
-echo "stat":
+echo "stat";
 ts-node src/test/access.test.ts
+
+echo "BSD:";
+echo "kqueue";
+ts-node src/test/bsd/kqueue.test.ts
