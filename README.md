@@ -30,11 +30,11 @@ require('libsys/shim');
 ## Reference
 
 - [Synchronous system calls](./docs/synchronous-system-calls.md)
-   - FILES
-      - [`read`](./docs/syscalls/read.md) &mdash; read from file descriptor.
-      - [`write`](./docs/syscalls/write.md) &mdash; write to file descriptor.
+   - __Files__
+      - [`read`](./docs/syscalls/read.md) &mdash; read from a file descriptor.
+      - [`write`](./docs/syscalls/write.md) &mdash; write to a file descriptor.
       - [`open`](./docs/syscalls/open.md)  &mdash; open a file.
-      - [`close`](./docs/syscalls/close.md) &mdash; close file descriptor.
+      - [`close`](./docs/syscalls/close.md) &mdash; close a file descriptor.
       - [`access`](./docs/syscalls/ADD.md) &mdash; check user can access a file.
       - [`chmod`](./docs/syscalls/ADD.md) &mdash; change file attributes.
       - [`fchmod`](./docs/syscalls/ADD.md) &mdash; change file attributes.
@@ -47,14 +47,14 @@ require('libsys/shim');
       - [`rename`](./docs/syscalls/ADD.md) &mdash; rename a file.
       - [`fsync`](./docs/syscalls/ADD.md) &mdash; flush file to disk.
       - [`fdatasync`](./docs/syscalls/ADD.md) &mdash; flush file to disk.
-     &nbsp;
-     &nbsp;
+        &nbsp;
+        &nbsp;
    - __Stats__:
-     [`stat`](./docs/syscalls/ADD.md),
-     [`lstat`](./docs/syscalls/ADD.md),
-     and [`fstat`](./docs/syscalls/ADD.md)
-     &nbsp;
-     &nbsp;
+      - [`stat`](./docs/syscalls/ADD.md) &mdash; fetch statistics about a file.
+      - [`lstat`](./docs/syscalls/ADD.md) &mdash; fetch statistics about a file.
+      - [`fstat`](./docs/syscalls/ADD.md) &mdash; fetch statistics about a file.
+        &nbsp;
+        &nbsp;
    - __Directories__:
      [`mkdir`](./docs/syscalls/ADD.md),
      [`mkdirat`](./docs/syscalls/ADD.md),
