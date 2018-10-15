@@ -30,28 +30,30 @@ require('libsys/shim');
 ## Reference
 
 - [Synchronous system calls](./docs/synchronous-system-calls.md)
-   - __Files__:
-     [`read`](./docs/syscalls/read.md),
-     [`write`](./docs/syscalls/write.md),
-     [`open`](./docs/syscalls/open.md),
-     [`close`](./docs/syscalls/close.md),
-     [`access`](./docs/syscalls/ADD.md),
-     [`chmod`](./docs/syscalls/ADD.md),
-     [`fchmod`](./docs/syscalls/ADD.md),
-     [`chown`](./docs/syscalls/ADD.md),
-     [`fchown`](./docs/syscalls/ADD.md),
-     [`lchown`](./docs/syscalls/ADD.md),
-     [`truncate`](./docs/syscalls/ADD.md),
-     [`ftruncate`](./docs/syscalls/ADD.md),
-     [`lseek`](./docs/syscalls/ADD.md),
-     [`rename`](./docs/syscalls/ADD.md),
-     [`fsync`](./docs/syscalls/ADD.md),
-     [`fdatasync`](./docs/syscalls/ADD.md)
+   - <sup>__Files__<sup>:
+      - [`read`](./docs/syscalls/read.md) &mdash; read from file descriptor.
+      - [`write`](./docs/syscalls/write.md) &mdash; write to file descriptor.
+      - [`open`](./docs/syscalls/open.md)  &mdash; open a file.
+      - [`close`](./docs/syscalls/close.md) &mdash; close file descriptor.
+      - [`access`](./docs/syscalls/ADD.md) &mdash; check user can access a file.
+      - [`chmod`](./docs/syscalls/ADD.md) &mdash; change file attributes.
+      - [`fchmod`](./docs/syscalls/ADD.md) &mdash; change file attributes.
+      - [`chown`](./docs/syscalls/ADD.md) &mdash; change file owner.
+      - [`fchown`](./docs/syscalls/ADD.md) &mdash; change file owner.
+      - [`lchown`](./docs/syscalls/ADD.md) &mdash; change file owner.
+      - [`truncate`](./docs/syscalls/ADD.md) &mdash; erase file contents.
+      - [`ftruncate`](./docs/syscalls/ADD.md) &mdash; erase file contents.
+      - [`lseek`](./docs/syscalls/ADD.md) &mdash; change cursor position.
+      - [`rename`](./docs/syscalls/ADD.md) &mdash; rename a file.
+      - [`fsync`](./docs/syscalls/ADD.md) &mdash; flush file to disk.
+      - [`fdatasync`](./docs/syscalls/ADD.md) &mdash; flush file to disk.
+     &nbsp;
      &nbsp;
    - __Stats__:
      [`stat`](./docs/syscalls/ADD.md),
      [`lstat`](./docs/syscalls/ADD.md),
      and [`fstat`](./docs/syscalls/ADD.md)
+     &nbsp;
      &nbsp;
    - __Directories__:
      [`mkdir`](./docs/syscalls/ADD.md),
