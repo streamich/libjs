@@ -47,8 +47,7 @@ require('libsys/shim');
       - [`rename`](./docs/syscalls/ADD.md) &mdash; rename a file.
       - [`fsync`](./docs/syscalls/ADD.md) &mdash; flush file to disk.
       - [`fdatasync`](./docs/syscalls/ADD.md) &mdash; flush file to disk.
-        &nbsp;
-        &nbsp;
+        <br/>
    - __Stats__:
       - [`stat`](./docs/syscalls/ADD.md) &mdash; fetch statistics about a file.
       - [`lstat`](./docs/syscalls/ADD.md) &mdash; fetch statistics about a file.
