@@ -2,7 +2,7 @@
 
 [![][npm-badge]][npm-url] [![][travis-badge]][travis-url]
 
-[libc](https://en.wikipedia.org/wiki/C_standard_library) in JavaScript &mdash; **libjs**.
+Systems programming library; **libjs** &mdash; [libc](https://en.wikipedia.org/wiki/C_standard_library) in JavaScript.
 
 
 ## Usage
@@ -24,7 +24,7 @@ require('libsys/shim');
 - [Write to console](./docs/examples/write-to-console.md)
 - [Read from a file](./docs/examples/read-file.md)
 - [Run `stat()` on  a file](./docs/examples/stat.md)
-- [Create a basic server](./docs/examples/server.md)
+- [TCP *echo* server](./docs/examples/server.md)
 
 
 ## Reference
