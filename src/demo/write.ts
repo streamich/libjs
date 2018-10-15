@@ -1,5 +1,5 @@
 require('libsys/shim');
-import * as libjs from '../src';
+import * as libjs from '..';
 // const libjs = require('../lib');
 
 const STDOUT = 1;
