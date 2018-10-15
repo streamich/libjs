@@ -47,10 +47,12 @@ require('libsys/shim');
      [`rename`](./docs/syscalls/ADD.md),
      [`fsync`](./docs/syscalls/ADD.md),
      [`fdatasync`](./docs/syscalls/ADD.md)
+     &nbsp;
    - __Stats__:
      [`stat`](./docs/syscalls/ADD.md),
      [`lstat`](./docs/syscalls/ADD.md),
      and [`fstat`](./docs/syscalls/ADD.md)
+     &nbsp;
    - __Directories__:
      [`mkdir`](./docs/syscalls/ADD.md),
      [`mkdirat`](./docs/syscalls/ADD.md),
@@ -59,12 +61,15 @@ require('libsys/shim');
      [`getdents64`](./docs/syscalls/ADD.md),
      [`readdir`](./docs/syscalls/ADD.md),
      and [`readdirList`](./docs/syscalls/ADD.md)
+     &nbsp;
    - __Links__:
      [`symlink`](./docs/syscalls/ADD.md),
      [`unlink`](./docs/syscalls/ADD.md),
      [`readlink`](./docs/syscalls/ADD.md),
      and [`link`](./docs/syscalls/ADD.md)
+     &nbsp;
    - __Time__: [`utime`](./docs/syscalls/ADD.md) and [`utimes`](./docs/syscalls/ADD.md)
+     &nbsp;
    - __Networking__:
      [`socket`](./docs/syscalls/ADD.md),
      [`connect`](./docs/syscalls/ADD.md),
@@ -78,6 +83,7 @@ require('libsys/shim');
      [`recv`](./docs/syscalls/ADD.md),
      [`recvfrom`](./docs/syscalls/ADD.md),
      [`setsockopt`](./docs/syscalls/ADD.md)
+     &nbsp;
    - __Process__:
      [`getpid`](./docs/syscalls/ADD.md),
      [`getppid`](./docs/syscalls/ADD.md),
@@ -87,6 +93,7 @@ require('libsys/shim');
      [`getegid`](./docs/syscalls/ADD.md),
      [`sched_yield`](./docs/syscalls/ADD.md),
      [`nanosleep`](./docs/syscalls/ADD.md)
+     &nbsp;
    - __Events__:
      [`fcntl`](./docs/syscalls/ADD.md),
      [`epoll_create`](./docs/syscalls/ADD.md),
@@ -97,6 +104,7 @@ require('libsys/shim');
      [`inotify_init1`](./docs/syscalls/ADD.md),
      [`inotify_add_watch`](./docs/syscalls/ADD.md),
      [`inotify_rm_watch`](./docs/syscalls/ADD.md)
+     &nbsp;
    - __Memory__:
      [`mmap`](./docs/syscalls/ADD.md),
      [`munmap`](./docs/syscalls/ADD.md),
@@ -105,6 +113,7 @@ require('libsys/shim');
      [`shmat`](./docs/syscalls/ADD.md),
      [`shmdt`](./docs/syscalls/ADD.md),
      and [`shmctl`](./docs/syscalls/ADD.md)
+     &nbsp;
 - Asynchronous system calls
    - __Files__: [`readAsync`](./docs/syscalls/readAsync.md),
      [`writeAsync`](./docs/syscalls/writeAsync.md),
@@ -122,20 +131,25 @@ require('libsys/shim');
      [`renameAsync`](./docs/syscalls/ADD.md),
      [`fsyncAsync`](./docs/syscalls/ADD.md),
      [`fdatasyncAsync`](./docs/syscalls/ADD.md)
+     &nbsp;
    - __Stats__: [`statAsync`](./docs/syscalls/ADD.md),
      [`lstatAsync`](./docs/syscalls/ADD.md),
      and [`fstatAsync`](./docs/syscalls/ADD.md)
+     &nbsp;
    - __Directories__: [`mkdirAsync`](./docs/syscalls/ADD.md),
      [`mkdiratAsync`](./docs/syscalls/ADD.md),
      [`rmdirAsync`](./docs/syscalls/ADD.md),
      [`getcwdAsync`](./docs/syscalls/ADD.md),
      [`getdents64Async`](./docs/syscalls/ADD.md),
      and [`readdirListAsync`](./docs/syscalls/ADD.md)
+     &nbsp;
    - __Links__: [`symlinkAsync`](./docs/syscalls/ADD.md),
      [`unlinkAsync`](./docs/syscalls/ADD.md),
      [`readlinkAsync`](./docs/syscalls/ADD.md),
      and [`linkAsync`](./docs/syscalls/ADD.md)
+     &nbsp;
    - __Time__: [`utimeAsync`](./docs/syscalls/ADD.md) and [`utimesAsync`](./docs/syscalls/ADD.md)
+     &nbsp;
    - __Networking__: [`socketAsync`](./docs/syscalls/ADD.md),
      [`connectAsync`](./docs/syscalls/ADD.md),
      [`bindAsync`](./docs/syscalls/ADD.md),
@@ -145,28 +159,30 @@ require('libsys/shim');
      [`shutdownAsync`](./docs/syscalls/ADD.md),
      [`sendAsync`](./docs/syscalls/ADD.md)
      and [`sendtoAsync`](./docs/syscalls/ADD.md),
+     &nbsp;
    - __Process__: [`getpidAsync`](./docs/syscalls/ADD.md),
      [`getppidAsync`](./docs/syscalls/ADD.md),
      [`getuidAsync`](./docs/syscalls/ADD.md),
      [`geteuidAsync`](./docs/syscalls/ADD.md),
      [`getgidAsync`](./docs/syscalls/ADD.md),
      and [`getegidAsync`](./docs/syscalls/ADD.md),
+     &nbsp;
 - Structs
-   - `epoll_event`,
-     `in_addr`,
-     `inotify_event`,
-     `ipc_perm`,
-     `ipv4`,
-     `linux_dirent64`,
-     `shmid_ds`,
-     `sigaction`,
-     `sockaddr`,
-     `sockaddr_in`,
-     `statStruct`,
-     `timespec`,
-     `timeval`,
-     `timevalarr`,
-     `utimbuf`,
+   - `epoll_event` and `Iepoll_event`
+   - `in_addr` and `Iin_addr`
+   - `inotify_event` and `Iinotify_event`
+   - `ipc_perm` and `Iipc_perm`
+   - `ipv4` and `Iipv4`
+   - `linux_dirent64` and `Ilinux_dirent64`
+   - `shmid_ds` and `Ishmid_ds`
+   - `sigaction` and `Isigaction`
+   - `sockaddr` and `Isockaddr`
+   - `sockaddr_in` and `Isockaddr_in`
+   - `statStruct` and `IstatStruct`
+   - `timespec` and `Itimespec`
+   - `timeval` and `Itimeval`
+   - `timevalarr` and `Itimevalarr`
+   - `utimbuf` and `Iutimbuf`
    - [`keventStruct`](./src/structs/kevent.ts) and [`IkeventStruct`](./src/structs/kevent.ts)
    - [`kevent64_sStruct`](./src/structs/kevent64_s.ts) and [`Ikevent64_sStruct`](./src/structs/kevent64_s.ts)
 - Sockets
