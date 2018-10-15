@@ -49,73 +49,82 @@ require('libsys/shim');
       - [`fdatasync`](./docs/syscalls/ADD.md) &mdash; flush file to disk.
         <br/>
         <br/>
-   - __Stats__:
+   - __Stats__
       - [`stat`](./docs/syscalls/ADD.md) &mdash; fetch statistics about a file.
       - [`lstat`](./docs/syscalls/ADD.md) &mdash; fetch statistics about a file.
       - [`fstat`](./docs/syscalls/ADD.md) &mdash; fetch statistics about a file.
-        &nbsp;
-        &nbsp;
-   - __Directories__:
-     [`mkdir`](./docs/syscalls/ADD.md),
-     [`mkdirat`](./docs/syscalls/ADD.md),
-     [`rmdir`](./docs/syscalls/ADD.md),
-     [`getcwd`](./docs/syscalls/ADD.md),
-     [`getdents64`](./docs/syscalls/ADD.md),
-     [`readdir`](./docs/syscalls/ADD.md),
-     and [`readdirList`](./docs/syscalls/ADD.md)
-     &nbsp;
+        <br/>
+        <br/>
+   - __Directories__
+      - [`mkdir`](./docs/syscalls/ADD.md) &mdash; creat a directory.
+      - [`mkdirat`](./docs/syscalls/ADD.md) &mdash; create a directory relative to another directory.
+      - [`rmdir`](./docs/syscalls/ADD.md) &mdash; remove a directory.
+      - [`getcwd`](./docs/syscalls/ADD.md) &mdash; fetch current working directory.
+      - [`getdents64`](./docs/syscalls/ADD.md) &mdash; scan through directory entries.
+      - [`readdir`](./docs/syscalls/ADD.md) &mdash; fetch all folder entries.
+      - [`readdirList`](./docs/syscalls/ADD.md) &mdash; fetch all folder entries.
+        <br/>
+        <br/>
    - __Links__:
-     [`symlink`](./docs/syscalls/ADD.md),
-     [`unlink`](./docs/syscalls/ADD.md),
-     [`readlink`](./docs/syscalls/ADD.md),
-     and [`link`](./docs/syscalls/ADD.md)
-     &nbsp;
-   - __Time__: [`utime`](./docs/syscalls/ADD.md) and [`utimes`](./docs/syscalls/ADD.md)
-     &nbsp;
-   - __Networking__:
-     [`socket`](./docs/syscalls/ADD.md),
-     [`connect`](./docs/syscalls/ADD.md),
-     [`bind`](./docs/syscalls/ADD.md),
-     [`listen`](./docs/syscalls/ADD.md),
-     [`accept`](./docs/syscalls/ADD.md),
-     [`accept4`](./docs/syscalls/ADD.md),
-     [`shutdown`](./docs/syscalls/ADD.md),
-     [`send`](./docs/syscalls/ADD.md),
-     [`sendto`](./docs/syscalls/ADD.md),
-     [`recv`](./docs/syscalls/ADD.md),
-     [`recvfrom`](./docs/syscalls/ADD.md),
-     [`setsockopt`](./docs/syscalls/ADD.md)
-     &nbsp;
-   - __Process__:
-     [`getpid`](./docs/syscalls/ADD.md),
-     [`getppid`](./docs/syscalls/ADD.md),
-     [`getuid`](./docs/syscalls/ADD.md),
-     [`geteuid`](./docs/syscalls/ADD.md),
-     [`getgid`](./docs/syscalls/ADD.md),
-     [`getegid`](./docs/syscalls/ADD.md),
-     [`sched_yield`](./docs/syscalls/ADD.md),
-     [`nanosleep`](./docs/syscalls/ADD.md)
-     &nbsp;
-   - __Events__:
-     [`fcntl`](./docs/syscalls/ADD.md),
-     [`epoll_create`](./docs/syscalls/ADD.md),
-     [`epoll_create1`](./docs/syscalls/ADD.md),
-     [`epoll_wait`](./docs/syscalls/ADD.md),
-     [`epoll_ctl`](./docs/syscalls/ADD.md),
-     [`inotify_init`](./docs/syscalls/ADD.md),
-     [`inotify_init1`](./docs/syscalls/ADD.md),
-     [`inotify_add_watch`](./docs/syscalls/ADD.md),
-     [`inotify_rm_watch`](./docs/syscalls/ADD.md)
-     &nbsp;
-   - __Memory__:
-     [`mmap`](./docs/syscalls/ADD.md),
-     [`munmap`](./docs/syscalls/ADD.md),
-     [`mprotect`](./docs/syscalls/ADD.md),
-     [`shmget`](./docs/syscalls/ADD.md),
-     [`shmat`](./docs/syscalls/ADD.md),
-     [`shmdt`](./docs/syscalls/ADD.md),
-     and [`shmctl`](./docs/syscalls/ADD.md)
-     &nbsp;
+      - [`symlink`](./docs/syscalls/ADD.md) &mdash; create a symbolic link.
+      - [`unlink`](./docs/syscalls/ADD.md) &mdash; remove a link.
+      - [`readlink`](./docs/syscalls/ADD.md) &mdash; read value of a symbolic link.
+      - [`link`](./docs/syscalls/ADD.md) &mdash; create a link.
+        <br/>
+        <br/>
+   - __Time__
+      - [`utime`](./docs/syscalls/ADD.md) &mdash; change file last access and modification times.
+      - [`utimes`](./docs/syscalls/ADD.md) &mdash; change file last access and modification times.
+        <br/>
+        <br/>
+   - __Networking__
+      - [`socket`](./docs/syscalls/ADD.md) &mdash; create a socket file descriptor.
+      - [`connect`](./docs/syscalls/ADD.md) &mdash; initiate a connection on a socket.
+      - [`bind`](./docs/syscalls/ADD.md) &mdash; assign an address to a socket.
+      - [`listen`](./docs/syscalls/ADD.md) &mdash; listen for new connections on a socket.
+      - [`accept`](./docs/syscalls/ADD.md) &mdash; accept a connection on a socket.
+      - [`accept4`](./docs/syscalls/ADD.md) &mdash; accept a connection on a socket.
+      - [`shutdown`](./docs/syscalls/ADD.md) &mdash; shut down all or part of a full-duplex connection.
+      - [`send`](./docs/syscalls/ADD.md) &mdash; write data to a socket file descriptor.
+      - [`sendto`](./docs/syscalls/ADD.md) &mdash; write data to a socket file descriptor.
+      - [`recv`](./docs/syscalls/ADD.md) &mdash; read data from socket file descriptor.
+      - [`recvfrom`](./docs/syscalls/ADD.md) &mdash; read data from socket file descriptor.
+      - [`setsockopt`](./docs/syscalls/ADD.md) &mdash; get and set options on a socket.
+        <br/>
+        <br/>
+   - __Process__
+      - [`getpid`](./docs/syscalls/ADD.md) &mdash; fetch process *id*.
+      - [`getppid`](./docs/syscalls/ADD.md) &mdash; fetch process *id*.
+      - [`getuid`](./docs/syscalls/ADD.md) &mdash; fetch user *id*.
+      - [`geteuid`](./docs/syscalls/ADD.md) &mdash; fetch user *id*.
+      - [`getgid`](./docs/syscalls/ADD.md) &mdash; fetch group *id*.
+      - [`getegid`](./docs/syscalls/ADD.md) &mdash; fetch group *id*.
+      - [`sched_yield`](./docs/syscalls/ADD.md) &mdash; yield execution to another thread.
+      - [`nanosleep`](./docs/syscalls/ADD.md) &mdash; put thread to sleep.
+        <br/>
+        <br/>
+   - __Events__
+      - [`fcntl`](./docs/syscalls/ADD.md) &mdash; manipulate file descriptor.
+      - [`epoll_create`](./docs/syscalls/ADD.md) &mdash; create an *epoll* file descriptor.
+      - [`epoll_create1`](./docs/syscalls/ADD.md) &mdash; create an *epoll* file descriptor.
+      - [`epoll_wait`](./docs/syscalls/ADD.md) &mdash; fetch *epoll* events.
+      - [`epoll_ctl`](./docs/syscalls/ADD.md) &mdash; control interface for an epoll file descriptor. 
+      - [`inotify_init`](./docs/syscalls/ADD.md)
+      - [`inotify_init1`](./docs/syscalls/ADD.md)
+      - [`inotify_add_watch`](./docs/syscalls/ADD.md)
+      - [`inotify_rm_watch`](./docs/syscalls/ADD.md)
+        <br/>
+        <br/>
+   - __Memory__
+      - [`mmap`](./docs/syscalls/ADD.md)
+      - [`munmap`](./docs/syscalls/ADD.md)
+      - [`mprotect`](./docs/syscalls/ADD.md)
+      - [`shmget`](./docs/syscalls/ADD.md)
+      - [`shmat`](./docs/syscalls/ADD.md)
+      - [`shmdt`](./docs/syscalls/ADD.md)
+      - [`shmctl`](./docs/syscalls/ADD.md)
+        <br/>
+        <br/>
 - Asynchronous system calls
    - __Files__: [`readAsync`](./docs/syscalls/readAsync.md),
      [`writeAsync`](./docs/syscalls/writeAsync.md),
