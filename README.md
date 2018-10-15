@@ -67,7 +67,7 @@ require('libsys/shim');
       - [`readdirList`](./docs/syscalls/ADD.md) &mdash; fetch all folder entries.
         <br/>
         <br/>
-   - __Links__:
+   - __Links__
       - [`symlink`](./docs/syscalls/ADD.md) &mdash; create a symbolic link.
       - [`unlink`](./docs/syscalls/ADD.md) &mdash; remove a link.
       - [`readlink`](./docs/syscalls/ADD.md) &mdash; read value of a symbolic link.
@@ -115,6 +115,9 @@ require('libsys/shim');
       - [`inotify_init1`](./docs/syscalls/ADD.md)
       - [`inotify_add_watch`](./docs/syscalls/ADD.md)
       - [`inotify_rm_watch`](./docs/syscalls/ADD.md)
+      - [`kqueue`](./docs/syscalls/ADD.md)
+      - [`kevent`](./docs/syscalls/ADD.md)
+      - [`EV_SET`](./docs/syscalls/ADD.md)
         <br/>
         <br/>
    - __Memory__
