@@ -1,6 +1,7 @@
 require('libsys/shim');
 import {AF, hton16, Ipv4, Isockaddr_in, socket, SOCK, setsockopt, SOL, SO, bind,
-    sockaddr_in, listen, kqueue, __kevent, EV_SET, EVFILT, EV, kevent, keventStruct} from '..';
+    sockaddr_in, listen, kqueue, __kevent, EV_SET, EVFILT, EV, kevent, keventStruct, timespec} from '..';
+import { IkeventStruct } from '../structs/kevent';
 
 const addr: Isockaddr_in = {
     sin_family: AF.INET,
@@ -28,7 +29,12 @@ const keventRes = __kevent(kq, buf, 1, null, 0, 0);
 console.log('keventRes', keventRes);
 
 const evList = new Buffer(keventStruct.size);
-console.log('evList', evList);
-const nev = __kevent(kq, null, 0, evList, 1, 0);
-console.log('nev', nev);
-console.log('evList', evList);
+while (1) {
+    const nev = __kevent(kq, null, 0, evList, 1, 0);
+    const event: IkeventStruct = keventStruct.unpack(evList);
+
+    
+    if (event.filter & EVFILT.WRITE) {
+        console.log('WRITE')
+    }
+}

@@ -2,7 +2,7 @@
 
 [![][npm-badge]][npm-url] [![][travis-badge]][travis-url]
 
-Systems programming library; **libjs** &mdash; [libc](https://en.wikipedia.org/wiki/C_standard_library) in JavaScript.
+System programming library; **libjs** &mdash; [libc](https://en.wikipedia.org/wiki/C_standard_library) in JavaScript.
 
 
 ## Usage
