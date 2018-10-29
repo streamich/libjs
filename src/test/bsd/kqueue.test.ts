@@ -1,3 +1,4 @@
+/*
 require('../setup');
 import {pass} from 'tap';
 import {kqueue} from '../..';
@@ -7,3 +8,4 @@ const res = kqueue();
 equal(typeof res, 'number');
 equal(res > 0, true);
 pass('kqueue() - returns a file descriptor');
+*/
