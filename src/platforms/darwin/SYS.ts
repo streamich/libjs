@@ -3,7 +3,7 @@
 // https://github.com/streamich/osx-syscalls-list
 // https://opensource.apple.com/source/xnu/xnu-792.13.8/osfmk/mach/i386/syscall_sw.h
 
-export const enum SYSCALL_CLASS {
+export enum SYSCALL_CLASS {
     NONE = 0, /* Invalid */
     MACH = 1, /* Mach */
     UNIX = 2, /* Unix/BSD */
@@ -11,7 +11,7 @@ export const enum SYSCALL_CLASS {
     DIAG = 4, /* Diagnostics */
 }
 
-const SYS = {
+export const SYS = {
     exit: (0x2000000) + 1,
     fork: (0x2000000) + 2,
     read: (0x2000000) + 3,
@@ -425,5 +425,3 @@ const SYS = {
     ntp_gettime: (0x2000000) + 528,
     os_fault_with_payload: (0x2000000) + 529
 };
-
-export default SYS;
