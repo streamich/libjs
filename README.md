@@ -32,7 +32,7 @@ require('libsys/shim');
 - [Synchronous system calls](./docs/synchronous-system-calls.md)
   <br/>
   <br/>
-   - __Files__
+   - __Files__ &mdash; Standard file operations, which operate on most of the Linux/Unix file descriptors.
       - [`read`](./docs/syscalls/read.md) &mdash; read from a file descriptor.
       - [`write`](./docs/syscalls/write.md) &mdash; write to a file descriptor.
       - [`open`](./docs/syscalls/open.md)  &mdash; open a file.
