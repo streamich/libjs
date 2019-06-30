@@ -1,5 +1,5 @@
 // Used in shmget, can be bitwise orred with file flags.
-const enum IPC {
+export enum IPC {
     RMID = 0,
     SET = 1,
     STAT = 2,
@@ -7,5 +7,3 @@ const enum IPC {
     CREAT = 512,
     EXCL = 1024,
 }
-
-export default IPC;

@@ -1,4 +1,4 @@
-const enum IPV6 {
+export enum IPV6 {
     ADDRFORM = 1,
     IPV6_2292PKTINFO = 2,
     IPV6_2292HOPOPTS = 3,
@@ -47,5 +47,3 @@ const enum IPV6 {
     RTHDR_STRICT = 1, /* Hop must be a neighbour.  */
     RTHDR_TYPE_0 = 0, /* IPv6 Routing header type 0.  */
 }
-
-export default IPV6;

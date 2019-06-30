@@ -1,4 +1,4 @@
-export const enum IPPROTO {
+export enum IPPROTO {
     IP = 0,	       /* Dummy protocol for TCP.  */
     ICMP = 1,	   /* Internet Control Message Protocol.  */
     IGMP = 2,	   /* Internet Group Management Protocol. */
@@ -32,5 +32,3 @@ export const enum IPPROTO {
     DSTOPTS = 60,  /* IPv6 destination options.  */
     MH = 135,      /* IPv6 mobility header.  */
 }
-
-export default IPPROTO;

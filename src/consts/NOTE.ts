@@ -1,4 +1,4 @@
-export const enum NOTE {
+export enum NOTE {
     /**
      * On input, NOTE_TRIGGER causes the event to be triggered for output.
      */

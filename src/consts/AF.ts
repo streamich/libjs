@@ -1,5 +1,5 @@
 // Address families.
-const enum AF {
+export enum AF {
     UNSPEC = 0,	/* Unspecified.  */
     LOCAL = 1,	/* Local to host (pipes and file-domain).  */
     UNIX = AF.LOCAL, /* POSIX name for PF_LOCAL.  */
@@ -44,5 +44,3 @@ const enum AF {
     VSOCK = 40,	/* vSockets.  */
     MAX = 41,	/* For now..  */
 }
-
-export default AF;

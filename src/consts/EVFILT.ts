@@ -1,4 +1,4 @@
-export const enum EVFILT {
+export enum EVFILT {
     READ = -1,
     WRITE = -2,
     AIO = -3, // attached to aio requests

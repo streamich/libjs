@@ -1,4 +1,4 @@
-export const enum EV {
+export enum EV {
     /* actions */
     ADD = 0x0001,               /* add event to kq (implies enable) */
     DELETE = 0x0002,            /* delete event from kq */

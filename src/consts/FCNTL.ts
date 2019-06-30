@@ -1,6 +1,4 @@
-const enum FCNTL {
+export enum FCNTL {
     GETFL = 3,
     SETFL = 4,
 }
-
-export default FCNTL;

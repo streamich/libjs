@@ -1,4 +1,4 @@
-const enum SO {
+export enum SO {
     DEBUG = 0x0001,		    /* Record debugging information.  */
     ACCEPTCONN = 0x0002,	/* Accept connections on socket.  */
     REUSEADDR = 0x0004,	    /* Allow reuse of local addresses.  */
@@ -19,5 +19,3 @@ const enum SO {
     STYLE = 0x1008,		    /* Get socket connection style.  */
     TYPE = SO.STYLE		    /* Compatible name for STYLE.  */
 }
-
-export default SO;

@@ -1,4 +1,4 @@
-const enum SOL {
+export enum SOL {
     /* To select the IP level.  */
     IP = 0,
     /* Socket level values for IPv6.  */
@@ -6,5 +6,3 @@ const enum SOL {
     ICMPV6 = 58,
     SOCKET = 0xFFFF,
 }
-
-export default SOL;
