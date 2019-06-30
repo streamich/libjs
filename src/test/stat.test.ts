@@ -9,8 +9,8 @@ pass('is a function');
 
 const res = libjs.stat(__filename);
 const stats = fs.statSync(__filename);
-console.log('libjs:', res);
-console.log('Node.js:', stats);
+// console.log('libjs:', res);
+// console.log('Node.js:', stats);
 
 equal(typeof res, 'object');
 pass('returns an object');
