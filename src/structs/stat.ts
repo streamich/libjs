@@ -69,6 +69,23 @@ export const statStruct = Struct.define(
     ]
 );
 
+/*
+	dev_t		st_dev;
+	mode_t		st_mode;
+	nlink_t		st_nlink;
+	__darwin_ino64_t st_ino;
+	uid_t		st_uid;
+	gid_t		st_gid;
+	dev_t		st_rdev;
+	__DARWIN_STRUCT_STAT64_TIMES
+	off_t		st_size;
+	blkcnt_t	st_blocks;
+	blksize_t	st_blksize;
+	__uint32_t	st_flags;
+	__uint32_t	st_gen;
+	__int32_t	st_lspare;
+	__int64_t	st_qspare[2];
+*/
 export interface IstatStruct {
     dev: number;
     ino: number;

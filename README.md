@@ -51,7 +51,7 @@ require('libsys/shim');
       - [`fdatasync`](./docs/syscalls/ADD.md) &mdash; flush file to disk.
         <br/>
         <br/>
-   - __Stats__
+   - __Stats__ &mdash; Fetches and returns statistics about a file.
       - [`stat`](./docs/syscalls/ADD.md) &mdash; fetch statistics about a file.
       - [`lstat`](./docs/syscalls/ADD.md) &mdash; fetch statistics about a file.
       - [`fstat`](./docs/syscalls/ADD.md) &mdash; fetch statistics about a file.
