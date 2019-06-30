@@ -16,7 +16,7 @@ import IPC from './consts/IPC';
 import IPPORT from './consts/IPPORT';
 import IPPROTO from './consts/IPPROTO';
 import IPV6 from './consts/IPV6';
-import MAP from './consts/MAP';
+export * from './consts/MAP';
 import MCAST from './consts/MCAST';
 import MSG from './consts/MSG';
 import PF from './consts/PF';
@@ -66,7 +66,6 @@ export {
     IPPORT,
     IPPROTO,
     IPV6,
-    MAP,
     MCAST,
     MSG,
     PF,

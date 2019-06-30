@@ -1,5 +1,5 @@
 import {Struct} from '../typebase';
-import ipc_perm, {Iipc_perm} from './ipc_perm';
+import {ipc_perm, Iipc_perm} from './ipc_perm';
 import {size_t, time_t, pid_t, uint64} from '../basetypes';
 
 // In `libc`, <bits/shm.h> line 49:
@@ -40,7 +40,7 @@ import {size_t, time_t, pid_t, uint64} from '../basetypes';
 //         // ...
 //     };
 //
-const shmid_ds = Struct.define(112, [
+export const shmid_ds = Struct.define(112, [
     [0, ipc_perm, 'shm_perm'],  // 48
     [48, size_t, 'shm_segsz'],  // 8
     [56, time_t, 'shm_atime'],  // 8
@@ -63,5 +63,3 @@ export interface Ishmid_ds {
     shm_lpid: number;
     shm_nattch: [number, number];
 }
-
-export default shmid_ds;

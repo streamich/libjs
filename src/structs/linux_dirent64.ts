@@ -9,7 +9,7 @@ import {uint8, uint16, uint64} from '../basetypes';
 //         char           d_name[]; /* Filename (null-terminated) */
 //     };
 //
-const linux_dirent64 = Struct.define(19, [ // 20+ bytes, 19 + null-terminated string.
+export const linux_dirent64 = Struct.define(19, [ // 20+ bytes, 19 + null-terminated string.
     [0, uint64, 'ino64_t'],
     [8, uint64, 'off64_t'],
     [16, uint16, 'd_reclen'],
@@ -22,5 +22,3 @@ export interface Ilinux_dirent64 {
     d_reclen: number,
     d_type: number,
 }
-
-export default linux_dirent64;

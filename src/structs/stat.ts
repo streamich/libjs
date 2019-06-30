@@ -30,7 +30,7 @@ import {int32, uint32} from '../basetypes';
 //         __kernel_long_t		__unused[3];
 //     };
 //
-const statStruct = Struct.define(
+export const statStruct = Struct.define(
     32 * 4, // TODO: Check the correct size for this struct, this may be wrong.
     [
         [0, uint32, 'dev'],

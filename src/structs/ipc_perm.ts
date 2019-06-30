@@ -1,5 +1,5 @@
 import {Struct} from '../typebase';
-import {uint16, int32, uint32, uint64} from '../basetypes';
+import {uint16, int32, uint32} from '../basetypes';
 
 // In `libc`, <bits/ipc.h> line 42:
 //
@@ -19,7 +19,7 @@ import {uint16, int32, uint32, uint64} from '../basetypes';
 //
 // __syscall_ulong_t` is `unsigned long long int`
 //
-const ipc_perm = Struct.define(48, [ // It is 48 for some reason, auto-padding by GCC?
+export const ipc_perm = Struct.define(48, [ // It is 48 for some reason, auto-padding by GCC?
     [0, int32, '__key'],
     [4, uint32, 'uid'],
     [8, uint32, 'gid'],
@@ -42,5 +42,3 @@ export interface Iipc_perm {
     mode: number;
     __seq: number;
 }
-
-export default ipc_perm;

@@ -7,8 +7,8 @@
 // from C structs, we still produce the correctly sized `Buffers`.
 
 export type JSON = any;
-export type PackFunction = (this: Buffer, data: JSON, offest: number) => void;
-export type UnpackFunction = (this: Buffer, offest: number) => JSON;
+export type PackFunction = (this: Buffer, data: JSON, offset: number) => void;
+export type UnpackFunction = (this: Buffer, offset: number) => JSON;
 
 export interface IType {
     size: number;

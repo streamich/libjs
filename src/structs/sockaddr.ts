@@ -1,4 +1,4 @@
-import AF from '../consts/AF';
+import {AF} from '../consts/AF';
 import {Arr, Struct} from '../typebase';
 import {uint16, int8} from '../basetypes';
 
@@ -19,14 +19,12 @@ import {uint16, int8} from '../basetypes';
 //         char        sa_data[14];
 //     }
 //
-const sockaddr = Struct.define(1, [
-    [0, 'sa_family', uint16],
-    [2, 'sa_data', Arr.define(int8, 14)],
+export const sockaddr = Struct.define(1, [
+    [0, uint16, 'sa_family'],
+    [2, Arr.define(int8, 14), 'sa_data'],
 ]);
 
 export interface Isockaddr {
     sa_family: AF;      // address family, AF_xxx
     sa_data: number[];  // 14 bytes of protocol address
 }
-
-export default sockaddr;
