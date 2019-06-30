@@ -18,7 +18,7 @@ export function getpidAsync (callback: TCallback) { asyscall(SYS.getpid, callbac
 /**
  * Get parent process ID.
  */
-export function getppid () { return libsys.syscall(SYS.getppid); };
+export function getppid () { return syscall(SYS.getppid); };
 
 /**
  * Get parent process ID.
@@ -76,5 +76,5 @@ export function getegidAsync (callback: TCallback) { asyscall(SYS.getegid, callb
         // tv_sec: [seconds, 0],
         // tv_nsec: [nanoseconds, 0],
     // });
-    // return libsys.syscall(SYS.nanosleep, buf, NULL);
+    // return syscall(SYS.nanosleep, buf, NULL);
 // }
