@@ -1,6 +1,7 @@
 export * from './MAP';
 
 export * from '../../../consts/FLAG';
+export * from '../../../consts/F';
 export * from '../../../consts/PROT';
 export * from '../../../consts/S';
 export * from '../../../consts/AMODE';
