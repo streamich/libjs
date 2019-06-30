@@ -13,7 +13,7 @@ export type UnpackFunction = (this: Buffer, offset: number) => JSON;
 export interface IType {
     size: number;
     unpack(buf:Buffer, offset?:number): any;
-    pack(data: any, buf?: Buffer, offset?: number): void;
+    pack(data: any, buf?: Buffer, offset?: number): Buffer;
 }
 
 export class Type implements IType {
@@ -36,7 +36,7 @@ export class Type implements IType {
         return this.unpackF.call(buf, offset);
     }
 
-    pack(data: JSON, buf?: Buffer, offset: number = 0) {
+    pack(data: JSON, buf?: Buffer, offset: number = 0): Buffer {
         if(!buf) buf = new Buffer(this.size);
         if(data instanceof Buffer) data.copy(buf, offset);
         else if(typeof data == 'object') data.toBuffer().copy(buf, offset);

@@ -1,14 +1,14 @@
 require('./setup');
 import {pass} from 'tap';
-import {stat} from '..';
+import {libjs} from './helpers/platform';
 import {equal, ok} from 'assert';
 import * as fs from 'fs';
 import * as path from 'path';
 
-equal(typeof stat, 'function');
+equal(typeof libjs.stat, 'function');
 pass('is a function');
 
-const res = stat(__filename);
+const res = libjs.stat(__filename);
 
 equal(typeof res, 'object');
 pass('returns an object');

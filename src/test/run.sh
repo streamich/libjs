@@ -16,7 +16,7 @@ echo "access";
 ts-node src/test/access.test.ts
 
 echo "stat";
-ts-node src/test/access.test.ts
+ts-node src/test/stat.test.ts
 
 echo "BSD:";
 echo "kqueue";

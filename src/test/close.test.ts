@@ -1,9 +1,9 @@
 require('./setup');
 import {pass} from 'tap';
-import {close} from '../platforms/darwin';
 import {equal, ok} from 'assert';
 import * as path from 'path';
 import * as fs from 'fs';
+import {libjs} from './helpers/platform';
 
 const filePath = path.join(__dirname, 'fixtures', 'foo');
 const fd = fs.openSync(filePath, 0);
@@ -15,7 +15,7 @@ try {
 
 }
 
-const res = close(fd);
+const res = libjs.close(fd);
 equal(res, 0);
 try {
     const buf = Buffer.alloc(100);

@@ -1,6 +1,6 @@
 require('./setup');
 import {pass} from 'tap';
-import {open, write} from '../platforms/darwin';
+import {libjs} from './helpers/platform';
 import {equal, ok} from 'assert';
 import * as path from 'path';
 import * as fs from 'fs';
@@ -8,12 +8,12 @@ import * as fs from 'fs';
 const str = 'Hello world!';
 const filePath = path.join(__dirname, '/fixtures/write.txt');
 
-let res = write(1, str);
+let res = libjs.write(1, str);
 equal(res, str.length);
 pass('writes to console');
 
-const fd = open(filePath, 2 | 64 | 512 /* FLAG.O_RDWR | FLAG.O_CREAT | FLAG.O_TRUNC */, 448 /* S.IRWXU */);
-res = write(fd, str);
+const fd = libjs.open(filePath, 2 | 64 | 512 /* FLAG.O_RDWR | FLAG.O_CREAT | FLAG.O_TRUNC */, 448 /* S.IRWXU */);
+res = libjs.write(fd, str);
 ok(fd > 0);
 equal(res, str.length);
 ok(fs.existsSync(filePath));

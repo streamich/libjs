@@ -1,12 +1,12 @@
 require('./setup');
-import {open} from '../platforms/darwin';
+import {libjs} from './helpers/platform';
 import {pass} from 'tap';
 import {equal, ok} from 'assert';
 
-equal(typeof open, 'function');
+equal(typeof libjs.open, 'function');
 pass('is a function');
 
-const fd1 = open(__filename, 0);
+const fd1 = libjs.open(__filename, 0);
 
 equal(typeof fd1, 'number');
 pass('return a number as file descriptor');
@@ -14,7 +14,7 @@ pass('return a number as file descriptor');
 ok(fd1 > 0);
 pass('return a positive file descriptor');
 
-const fd2 = open(__filename, 0);
+const fd2 = libjs.open(__filename, 0);
 
 equal(typeof fd2, 'number');
 ok(fd2 > 0);

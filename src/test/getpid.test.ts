@@ -1,16 +1,16 @@
 import './setup';
-import {getpid} from '../platforms/darwin';
+import {libjs} from './helpers/platform';
 import {pass} from 'tap';
 import {equal} from 'assert';
 
-equal(typeof getpid, 'function');
+equal(typeof libjs.getpid, 'function');
 pass('is a function');
 
-equal(typeof getpid(), 'number');
+equal(typeof libjs.getpid(), 'number');
 pass('should return a number');
 
-equal(getpid(), getpid());
+equal(libjs.getpid(), libjs.getpid());
 pass('returns the same process id on multiple calls');
 
-equal(getpid(), process.pid);
+equal(libjs.getpid(), process.pid);
 pass('returns correct process id');

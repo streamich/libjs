@@ -90,10 +90,11 @@ export function acceptAsync(fd: number, buf: Buffer, callback: TCallback) {
     const buflen = int32.pack(buf.length);
     libsys.asyscall(SYS.accept, fd, buf, buflen, callback);
 }
-export function accept4(fd: number, buf: Buffer, flags: SOCK): number {
-    const buflen = int32.pack(buf.length);
-    return libsys.syscall(SYS.accept4, fd, buf, buflen, flags);
-}
+// TODO: Fix parameters.
+// export function accept4(fd: number, buf: Buffer, flags: SOCK): number {
+    // const buflen = int32.pack(buf.length);
+    // return libsys.syscall(SYS.accept4, fd, .... , flags);
+// }
 export function accept4Async(fd: number, buf: Buffer, flags: SOCK, callback: TCallback) {
     const buflen = int32.pack(buf.length);
     libsys.asyscall(SYS.accept4, fd, buf, buflen, flags, callback);
