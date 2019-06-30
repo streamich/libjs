@@ -1,6 +1,6 @@
 require('./setup');
 import {pass} from 'tap';
-import {open, write, S, FLAG} from '..';
+import {open, write} from '../platforms/darwin';
 import {equal, ok} from 'assert';
 import * as path from 'path';
 import * as fs from 'fs';

@@ -1,6 +1,5 @@
 export * from './platform';
 
-export * from './files';
 export * from './stat';
 export * from './dir';
 export * from './links';

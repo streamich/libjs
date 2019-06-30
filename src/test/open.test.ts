@@ -1,5 +1,5 @@
 require('./setup');
-import {open} from '..';
+import {open} from '../platforms/darwin';
 import {pass} from 'tap';
 import {equal, ok} from 'assert';
 
