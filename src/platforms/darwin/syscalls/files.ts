@@ -1,6 +1,6 @@
-import {TNumber, TBuffer, TCallback, StaticBuffer} from '../../types';
-import {SYS, FLAG, S, SEEK} from './specification';
-import {libsys} from '../../libsys';
+import {SYS, FLAG, S, SEEK} from '../specification';
+import {TNumber, TBuffer, TCallback, StaticBuffer} from '../../../types';
+import {libsys} from '../../../libsys';
 
 export function read(fd: TNumber, buf: TBuffer): number {
     return libsys.syscall(SYS.read, fd, buf, buf.length);

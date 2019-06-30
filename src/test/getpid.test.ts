@@ -1,5 +1,5 @@
 import './setup';
-import {getpid} from '..';
+import {getpid} from '../platforms/darwin';
 import {pass} from 'tap';
 import {equal} from 'assert';
 
