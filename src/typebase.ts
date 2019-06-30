@@ -119,3 +119,18 @@ export class Struct implements IType {
         return buf;
     }
 }
+
+export type Field = [string, IType];
+export const createStruct = (definitions: Field[]): Struct => {
+    let size: number = 0;
+    const defs: StructDefinition = [];
+    for (const [name, type] of definitions) {
+        if (!name) {
+            size += type.size;
+            continue;
+        }
+        defs.push([size, type, name]);
+        size += type.size;
+    }
+    return Struct.define(size, defs);
+};
