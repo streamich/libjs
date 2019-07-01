@@ -1,5 +1,5 @@
 import {Arr} from '../../../typebase';
-import {syscall, asyscall} from '../../../libsys';
+import {syscall, dlsym, call64} from '../../../libsys';
 import { SYS, F, FCNTL, IkeventStruct, NULL, keventStruct } from '../specification';
 import { TCallback } from '../../../types';
 
@@ -77,19 +77,19 @@ ___fcntl:
 0000000000002b3c        retq
 */
 
+const fcntlAddress = dlsym('fcntl');
+
 /**
  * 
  * @param fd 
  * @param cmd 
  * @param arg 
  */
-export function fcntl (fd: number, cmd: FCNTL | F, arg?: number): number {
-    /*
-    const params = typeof arg !== 'undefined'
-        ? [SYS.fcntl, fd, cmd]
-        : [SYS.fcntl, fd, cmd, arg];
-    return syscall.apply(null, params);
-    */
+export function fcntl (fd: number, cmd: FCNTL | F, arg?: number): [number, number] {
+    const params = arg === undefined
+        ? [fd, cmd]
+        : [fd, cmd, arg];
+    return call64(fcntlAddress, 0, params);
 }
 
 export function fcntlAsync (fd: number, cmd: FCNTL, callback: TCallback);

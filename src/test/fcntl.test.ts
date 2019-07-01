@@ -8,6 +8,7 @@ import {libjs} from './helpers/platform';
 equal(typeof libjs.fcntl, 'function');
 pass('fcntl is a function');
 
+libjs.fcntl(1, 1);
 
 // libjs.fcntl(1, 1);
 // const fd = fs.openSync(__filename, 'r');
