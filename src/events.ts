@@ -1,6 +1,5 @@
 // Events
-import {SYS, EPOLL, EPOLL_CTL, FCNTL, IN, epoll_event, Iepoll_event, keventStruct, IkeventStruct, NULL} from './platform';
-import {Arr} from './typebase';
+import {SYS, EPOLL, EPOLL_CTL, FCNTL, IN, epoll_event, Iepoll_event} from './platform';
 import {libsys} from './libsys';
 
 
@@ -87,78 +86,3 @@ export function inotify_add_watch(fd: number, pathname: string, mask: IN): numbe
 export function inotify_rm_watch(fd: number, wd: number): number {
     return libsys.syscall(SYS.inotify_rm_watch, fd, wd);
 }
-
-
-// kqueue
-/*
-int     kqueue(void);
-int     kevent(int kq, 
-	       const struct kevent *changelist, int nchanges,
-	       struct kevent *eventlist, int nevents,
-	       const struct timespec *timeout);
-int     kevent64(int kq, 
-		 const struct kevent64_s *changelist, int nchanges,
-		 struct kevent64_s *eventlist, int nevents,
-		 unsigned int flags, 
-		 const struct timespec *timeout);
-*/
-export function kqueue(): number {
-    return libsys.syscall((SYS as any).kqueue);
-}
-
-export function __kevent(kq: number, changelist: Buffer, nchanges: number,        
-        eventlist: Buffer, nevents: number, timeout: number): number {
-    const SYS_kevent = (SYS as any).kevent;
-    return libsys.syscall(SYS_kevent, kq, changelist || NULL, nchanges, eventlist || NULL, nevents, timeout);
-}
-
-export function kevent(kq: number, changelist: IkeventStruct[], nevents: number, timeout: number): IkeventStruct[] | number {
-    let changelistBuf: Buffer | null = null;
-    let eventlistBuf: Buffer | null = null;
-    let nchanges: number = 0;
-
-    if (changelist && changelist.length) {
-        nchanges = changelist.length;
-        changelistBuf = new Buffer(keventStruct.size * nchanges);
-    }
-
-    if (nevents > 0) {
-        eventlistBuf = new Buffer(nevents * keventStruct.size);
-    }
-
-    const res = __kevent(kq, changelistBuf, nchanges, eventlistBuf, nevents, timeout);
-
-    if (res <= 0) return res;
-    else  {
-        const keventStructArr = Arr.define(keventStruct, res);
-        const out: IkeventStruct[] = keventStructArr.unpack(eventlistBuf);
-        return out;
-    }
-};
-
-/**
- * EV_SET(&evSet, localFd, EVFILT_READ, EV_ADD, 0, 0, NULL);
- * 
- * #define EV_SET(kevp, a, b, c, d, e, f) do {	\
- *	struct kevent *__kevp__ = (kevp);	\
- *	__kevp__->ident = (a);			\
- *	__kevp__->filter = (b);			\
- *	__kevp__->flags = (c);			\
- *	__kevp__->fflags = (d);			\
- *	__kevp__->data = (e);			\
- *	__kevp__->udata = (f);			\
-} while(0)
- */
-export const EV_SET = (fd: number, filter: number, flags: number, fflags: number, data: [number, number], udata: [number, number]): Buffer => {
-    const kevp: IkeventStruct = {
-        ident: [fd, 0],
-        filter,
-        flags,
-        fflags,
-        data,
-        udata,
-    };
-    const buf = keventStruct.pack(kevp);
-
-    return buf;
-};
