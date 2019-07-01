@@ -33,6 +33,7 @@ export interface ILibSys {
   asyscall64(num: number, arg1: TArg, arg2: TArg, arg3: TArg, arg4: TArg, arg5: TArg, callback: (res :number64) => void);
   asyscall64(num: number, arg1: TArg, arg2: TArg, arg3: TArg, arg4: TArg, arg5: TArg, arg6: TArg, callback: (res :number64) => void);
 
-  dlsym: (symbol: string) => [number, number];
+  call: (addr: [number, number], offset: number, args: number[]) => number;
   call64: (addr: [number, number], offset: number, args: number[]) => [number, number];
+  dlsym: (symbol: string) => [number, number];
 }

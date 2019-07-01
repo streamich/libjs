@@ -1,9 +1,10 @@
 import {Arr} from '../../../typebase';
-import {syscall, dlsym, call64} from '../../../libsys';
-import { SYS, F, FCNTL, IkeventStruct, NULL, keventStruct } from '../specification';
-import { TCallback } from '../../../types';
+import {syscall, dlsym, call} from '../../../libsys';
+import {SYS, F, FCNTL, IkeventStruct, NULL, keventStruct} from '../specification';
 
 /*
+MacBook Pro, 2.9 GHz Intel Core i9, macOS Mojave v10.14.5:
+
 _fcntl:
 0000000000002a41        pushq   %rbp                            ; save base pointer
 0000000000002a42        movq    %rsp, %rbp                      ; put stack pointer into base pointer
@@ -85,22 +86,11 @@ const fcntlAddress = dlsym('fcntl');
  * @param cmd 
  * @param arg 
  */
-export function fcntl (fd: number, cmd: FCNTL | F, arg?: number): [number, number] {
+export function fcntl (fd: number, cmd: FCNTL | F, arg?: number): number {
     const params = arg === undefined
         ? [fd, cmd]
         : [fd, cmd, arg];
-    return call64(fcntlAddress, 0, params);
-}
-
-export function fcntlAsync (fd: number, cmd: FCNTL, callback: TCallback);
-export function fcntlAsync (fd: number, cmd: FCNTL, arg: number, callback: TCallback);
-export function fcntlAsync (fd: number, cmd: FCNTL, a, b?) {
-    /*
-    const params = typeof a === 'function'
-        ? [SYS.fcntl, fd, cmd, a]
-        : [SYS.fcntl, fd, cmd, a, b];
-    asyscall.apply(null, params);
-    */
+    return call(fcntlAddress, 0, params);
 }
 
 /**
