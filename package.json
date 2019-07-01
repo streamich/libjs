@@ -8,11 +8,10 @@
   "types": "lib/index.d.ts",
   "typings": "lib/index.d.ts",
   "scripts": {
-    "test": "./src/test/run.sh",
     "semantic-release": "semantic-release",
     "clean": "rimraf lib",
     "build": "yarn clean && tsc && gulp copy-js && gulp copy-dts",
-    "mocha": "mocha --require ts-node/register src/test/**/*.spec.ts"
+    "test": "mocha --require ts-node/register src/test/**/*.spec.ts"
   },
   "dependencies": {
     "fast-extend": "^0.0.2"
@@ -27,7 +26,6 @@
     "mocha": "^6.1.4",
     "rimraf": "2.6.2",
     "semantic-release": "^12.2.2",
-    "tap": "^11.0.1",
     "ts-node": "^4.0.2",
     "typescript": "^3.1.3"
   },
