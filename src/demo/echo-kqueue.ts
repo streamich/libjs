@@ -1,7 +1,7 @@
 require('libsys/shim');
 import {socket, AF, SOCK, hton16, Ipv4, setsockopt, SOL, fcntl, FCNTL, FLAG,
     SO, bind, sockaddr_in, sockaddr, listen, accept, recv, send, Isockaddr_in,
-    kqueue, ERROR, EVFILT, EV, keventStruct, IkeventStruct} from '..';
+    kqueue, ERROR, EVFILT, EV, keventStruct, IkeventStruct} from '../platforms/darwin';
 
 let err;
 const BUFFER_SIZE = 1024;
