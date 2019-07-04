@@ -8,7 +8,7 @@ describe('Darwin > fcntl', () => {
     });
 
     it('can execute basic fcntl() operation', () => {
-        const res = libjs.fcntl(1, 1);
+        const res = libjs.fcntl(1, 1, 0);
         expect(res).eql(1);
     });
 });

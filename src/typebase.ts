@@ -111,7 +111,7 @@ export class Struct implements IType {
     }
 
     pack(data: JSON, buf?: Buffer, offset: number = 0) {
-        if(!buf) buf = new Buffer(this.size);
+        if(!buf) buf = Buffer.allocUnsafe(this.size);
         for (var field of this.defs) {
             var [off, type, name] = field;
             type.pack(data[name], buf, offset + off);

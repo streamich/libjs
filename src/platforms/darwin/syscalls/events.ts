@@ -1,9 +1,11 @@
 import {Arr} from '../../../typebase';
-import {syscall, dlsym, call} from '../../../libsys';
+import {syscall, asyscall, dlsym, call} from '../../../libsys';
 import {SYS, F, FCNTL, IkeventStruct, NULL, keventStruct} from '../specification';
+import {TCallback} from '../../../types';
 
 /*
-MacBook Pro, 2.9 GHz Intel Core i9, macOS Mojave v10.14.5:
+MacBook Pro, 2.9 GHz Intel Core i9, macOS Mojave v10.14.5
+Source: https://github.com/apple/darwin-xnu/blob/0a798f6738bc1db01281fc08ae024145e84df927/libsyscall/wrappers/cancelable/fcntl-base.c
 
 _fcntl:
 0000000000002a41        pushq   %rbp                            ; save base pointer
@@ -78,19 +80,21 @@ ___fcntl:
 0000000000002b3c        retq
 */
 
-const fcntlAddress = dlsym('fcntl');
+// const fcntlAddress = dlsym('fcntl');
 
 /**
  * 
  * @param fd 
  * @param cmd 
- * @param arg 
+ * @param arg Use `0` if there is no `arg` argument.
  */
-export function fcntl (fd: number, cmd: FCNTL | F, arg?: number): number {
-    const params = arg === undefined
-        ? [fd, cmd]
-        : [fd, cmd, arg];
-    return call(fcntlAddress, 0, params);
+export function fcntl (fd: number, cmd: FCNTL | F, arg: number): number {
+    // return call(fcntlAddress, 0, [fd, cmd, arg]);
+    return syscall(SYS.fcntl, fd, cmd, arg);
+}
+
+export function fcntlAsync (fd: number, cmd: FCNTL | F, arg: number, callback: TCallback) {
+    asyscall(SYS.fcntl, fd, cmd, arg, callback);
 }
 
 /**
@@ -106,8 +110,7 @@ export function kqueue(): number {
 
 export function __kevent(kq: number, changelist: Buffer, nchanges: number,        
         eventlist: Buffer, nevents: number, timeout: number): number {
-    const SYS_kevent = SYS.kevent;
-    return syscall(SYS_kevent, kq, changelist || NULL, nchanges, eventlist || NULL, nevents, timeout);
+    return syscall(SYS.kevent, kq, changelist || NULL, nchanges, eventlist || NULL, nevents, timeout);
 }
 
 /**
