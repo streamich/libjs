@@ -1,4 +1,3 @@
-export const extend = require('fast-extend');
 export const noop = () => {};
 
 
