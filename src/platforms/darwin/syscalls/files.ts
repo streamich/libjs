@@ -12,7 +12,7 @@ export function readAsync(fd: TNumber, buf: TBuffer, callback: TCallback) {
     asyscall(SYS.read, fd, buf, buf.length, callback);
 }
 
-export function write(fd: number, buf: string|StaticBuffer): number {
+export function write(fd: number, buf: string | StaticBuffer): number {
     return syscall(SYS.write, fd, buf, buf.length);
 }
 
@@ -31,14 +31,14 @@ export function writeAsync(fd: number, buf: string|StaticBuffer, callback: TCall
  * @param flags 
  * @param mode 
  */
-export function open(pathname: string, flags: FLAG, mode?: S|number): number {
+export function open(pathname: string, flags: FLAG, mode?: S | number): number {
     const buf = Buffer.from(pathname + '\0');
     const args = [SYS.open, buf, flags];
     if(typeof mode === 'number') args.push(mode);
     return syscall.apply(null, args);
 }
 
-export function openAsync(pathname: string, flags: FLAG, mode: S|number, callback: TCallback) {
+export function openAsync(pathname: string, flags: FLAG, mode: S | number, callback: TCallback) {
     const buf = Buffer.from(pathname + '\0');
     asyscall(SYS.open, buf, flags, mode, callback);
 }

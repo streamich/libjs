@@ -4,7 +4,7 @@ import {libsys} from '../../../libsys';
 
 const {syscall, asyscall} = libsys;
 
-function unpackStats(buf: Buffer, result: number, callback: TCallbackWithError<Error|number, Istat64Struct>) {
+function unpackStats(buf: Buffer, result: number, callback: TCallbackWithError<Error | number, Istat64Struct>) {
     if(result === 0) {
         try {
             callback(null, stat64Struct.unpack(buf));
@@ -29,7 +29,7 @@ export function stat(filepath: string): Istat64Struct {
     throw result;
 }
 
-export function statAsync(filepath: string, callback: TCallbackWithError<Error|number, Istat64Struct>) {
+export function statAsync(filepath: string, callback: TCallbackWithError<Error | number, Istat64Struct>) {
     const buf = new Buffer(stat64Struct.size + 100);
     asyscall(SYS.stat, filepath, buf, (result) => unpackStats(buf, result as number, callback));
 }
@@ -46,7 +46,7 @@ export function lstat(linkpath: string): Istat64Struct {
     throw result;
 }
 
-export function lstatAsync(linkpath: string, callback: TCallbackWithError<Error|number, Istat64Struct>) {
+export function lstatAsync(linkpath: string, callback: TCallbackWithError<Error | number, Istat64Struct>) {
     const buf = new Buffer(stat64Struct.size + 100);
     asyscall(SYS.lstat, linkpath, buf, (result) => unpackStats(buf, result as number, callback));
 }
@@ -63,7 +63,7 @@ export function fstat(fd: number): Istat64Struct {
     throw result;
 }
 
-export function fstatAsync(fd: number, callback: TCallbackWithError<Error|number, Istat64Struct>) {
+export function fstatAsync(fd: number, callback: TCallbackWithError<Error | number, Istat64Struct>) {
     const buf = new Buffer(stat64Struct.size + 100);
     asyscall(SYS.fstat, fd, buf, (result) => unpackStats(buf, result as number, callback));
 }

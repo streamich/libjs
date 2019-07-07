@@ -1,7 +1,7 @@
 require('libsys/shim');
 import {socket, AF, SOCK, hton16, Ipv4, setsockopt, SOL, fcntl, FCNTL, FLAG,
     SO, bind, sockaddr_in, sockaddr, listen, accept, recv, send, Isockaddr_in,
-    kqueue, ERROR, EVFILT, EV, keventStruct, IkeventStruct} from '../platforms/darwin';
+    kqueue, ERROR, EVFILT, EV, keventStruct, IkeventStruct, kevent} from '../platforms/darwin';
 
 let err;
 const BUFFER_SIZE = 1024;
@@ -84,7 +84,7 @@ function event_loop () {
     // int new_events;
 
     while (1) {
-        new_events = kevent(queue, events, events_used, events, events_alloc, NULL);
+        // new_events = kevent(queue, events, events_used, events, events_alloc, NULL);
         // if (new_events < 0) on_error("Event loop failed: %s\n", strerror(errno));
         // events_used = 0;
 
@@ -118,9 +118,9 @@ const e: IkeventStruct = {
     udata: [0, 0],
 };
 const event = keventStruct.pack(e);
-event_loop();
+// event_loop();
 
-console.log('queue', queue);
+// console.log('queue', queue);
 
 /*
 static struct kevent *events;
