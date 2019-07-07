@@ -1,7 +1,8 @@
 import {Arr} from '../../../typebase';
-import {syscall, asyscall, dlsym, call} from '../../../libsys';
+import {syscall, syscall64, asyscall, dlsym, call, libsys} from '../../../libsys';
 import {SYS, F, FCNTL, IkeventStruct, NULL, keventStruct} from '../specification';
 import {TCallback} from '../../../types';
+import { uint32 } from '../../linux';
 
 /*
 MacBook Pro, 2.9 GHz Intel Core i9, macOS Mojave v10.14.5
@@ -95,6 +96,15 @@ export function fcntl (fd: number, cmd: FCNTL | F, arg: number): number {
 
 export function fcntlAsync (fd: number, cmd: FCNTL | F, arg: number, callback: TCallback) {
     asyscall(SYS.fcntl, fd, cmd, arg, callback);
+}
+
+const pipeAddr = dlsym('pipe');
+export function pipe () {
+    const buf = Buffer.allocUnsafe(8);
+    const res = call(pipeAddr, 0, [buf as any]);
+    return res === 0
+        ? [buf.readInt32LE(0), buf.readInt32LE(4)]
+        : res;
 }
 
 /**
