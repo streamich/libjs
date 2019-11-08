@@ -1,8 +1,6 @@
 import {Arr} from '../../../typebase';
-import {syscall, syscall64, asyscall, dlsym, call, libsys} from '../../../libsys';
+import {syscall, dlsym, call} from '../../../libsys';
 import {SYS, F, FCNTL, IkeventStruct, NULL, keventStruct} from '../specification';
-import {TCallback} from '../../../types';
-import { uint32 } from '../../linux';
 
 /*
 MacBook Pro, 2.9 GHz Intel Core i9, macOS Mojave v10.14.5
@@ -94,9 +92,9 @@ export function fcntl (fd: number, cmd: FCNTL | F, arg: number): number {
     return syscall(SYS.fcntl, fd, cmd, arg);
 }
 
-export function fcntlAsync (fd: number, cmd: FCNTL | F, arg: number, callback: TCallback) {
-    asyscall(SYS.fcntl, fd, cmd, arg, callback);
-}
+// export function fcntlAsync (fd: number, cmd: FCNTL | F, arg: number, callback: TCallback) {
+    // asyscall(SYS.fcntl, fd, cmd, arg, callback);
+// }
 
 const pipeAddr = dlsym('pipe');
 export function pipe () {
@@ -118,7 +116,7 @@ export function kqueue(): number {
     return syscall(SYS.kqueue);
 }
 
-export function __kevent(kq: number, changelist: Buffer, nchanges: number,        
+export function __kevent(kq: number, changelist: Buffer | null, nchanges: number,        
         eventlist: Buffer, nevents: number, timeout: number): number {
     return syscall(SYS.kevent, kq, changelist || NULL, nchanges, eventlist || NULL, nevents, timeout);
 }

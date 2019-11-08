@@ -2,7 +2,6 @@
 import {SYS, EPOLL, EPOLL_CTL, FCNTL, IN, epoll_event, Iepoll_event} from './platform';
 import {libsys} from './libsys';
 
-
 // ### fcntl
 export function fcntl(fd: number, cmd: FCNTL, arg?: number): number {
     const params = [SYS.fcntl, fd, cmd];
@@ -21,24 +20,19 @@ export function fcntl(fd: number, cmd: FCNTL, arg?: number): number {
 export function epoll_create(size: number): number {
     return libsys.syscall(SYS.epoll_create, size);
 }
-// int epoll_create1(int flags);
+
 export function epoll_create1(flags: EPOLL): number {
     return libsys.syscall(SYS.epoll_create1, flags);
 }
 
-// typedef union epoll_data {
-//     void    *ptr;
-//     int      fd;
-//     uint32_t u32;
-//     uint64_t u64;
-// } epoll_data_t;
-//
-// struct epoll_event {
-//     uint32_t     events;    /* Epoll events */
-//     epoll_data_t data;      /* User data variable */
-// };
-// http://man7.org/linux/man-pages/man2/epoll_wait.2.html
-// int epoll_wait(int epfd, struct epoll_event *events, int maxevents, int timeout);
+/**
+ * See: http://man7.org/linux/man-pages/man2/epoll_wait.2.html
+ * 
+ * @param epfd 
+ * @param buf 
+ * @param maxevents 
+ * @param timeout 
+ */
 export function epoll_wait(epfd: number, buf: Buffer, maxevents: number, timeout: number): number {
     return libsys.syscall(SYS.epoll_wait, epfd, buf, maxevents, timeout);
 }
@@ -77,12 +71,15 @@ export function epoll_ctl(epfd: number, op: EPOLL_CTL, fd: number, event: Iepoll
 export function inotify_init(): number {
     return libsys.syscall(SYS.inotify_init);
 }
+
 export function inotify_init1(flags: IN): number {
     return libsys.syscall(SYS.inotify_init1,  flags);
 }
+
 export function inotify_add_watch(fd: number, pathname: string, mask: IN): number {
     return libsys.syscall(SYS.inotify_add_watch, fd, pathname, mask);
 }
+
 export function inotify_rm_watch(fd: number, wd: number): number {
     return libsys.syscall(SYS.inotify_rm_watch, fd, wd);
 }
