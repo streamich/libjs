@@ -1,4 +1,4 @@
-const enum MAP {
+export enum MAP {
     'FILE' = 0,
     SHARED = 1,
     PRIVATE = 2,
@@ -17,5 +17,3 @@ const enum MAP {
     POPULATE = 32768,
     STACK = 131072,
 }
-
-export default MAP;

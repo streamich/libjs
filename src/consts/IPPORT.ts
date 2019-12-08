@@ -1,4 +1,4 @@
-const enum IPPORT {
+export enum IPPORT {
     ECHO = 7,		    /* Echo service.  */
     DISCARD = 9,	    /* Discard transmissions service.  */
     SYSTAT = 11,	    /* System status service.  */
@@ -29,5 +29,3 @@ const enum IPPORT {
     /* Ports greater this value are reserved for (non-privileged) servers.  */
     USERRESERVED = 5000
 }
-
-export default IPPORT;

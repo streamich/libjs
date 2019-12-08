@@ -16,7 +16,7 @@ import IPC from './consts/IPC';
 import IPPORT from './consts/IPPORT';
 import IPPROTO from './consts/IPPROTO';
 import IPV6 from './consts/IPV6';
-import MAP from './consts/MAP';
+export * from './consts/MAP';
 import MCAST from './consts/MCAST';
 import MSG from './consts/MSG';
 import PF from './consts/PF';
@@ -28,6 +28,10 @@ import SHUT from './consts/SHUT';
 import SO from './consts/SO';
 import SOCK from './consts/SOCK';
 import SOL from './consts/SOL';
+import {EVFILT} from './consts/EVFILT';
+import {EV} from './consts/EV';
+import {KEVENT} from './consts/KEVENT';
+import {NOTE} from './consts/NOTE';
 import ipv4 from './structs/ipv4';
 import statStruct, {IstatStruct} from './structs/stat';
 import in_addr, {Iin_addr} from './structs/in_addr';
@@ -42,6 +46,8 @@ import timevalarr, {Itimevalarr} from './structs/timevalarr';
 import timespec from './structs/timespec';
 import linux_dirent64, {Ilinux_dirent64} from './structs/linux_dirent64';
 import inotify_event, {Iinotify_event} from './structs/inotify_event';
+import {keventStruct, IkeventStruct} from './structs/kevent';
+import {kevent64_sStruct, Ikevent64_sStruct} from './structs/kevent64_s';
 
 export {
     SYS,
@@ -60,7 +66,6 @@ export {
     IPPORT,
     IPPROTO,
     IPV6,
-    MAP,
     MCAST,
     MSG,
     PF,
@@ -72,6 +77,10 @@ export {
     SO,
     SOCK,
     SOL,
+    EVFILT,
+    EV,
+    KEVENT,
+    NOTE,
 
     ipv4,
     statStruct,
@@ -99,6 +108,10 @@ export {
     Ilinux_dirent64,
     inotify_event,
     Iinotify_event,
+    keventStruct,
+    IkeventStruct,
+    kevent64_sStruct,
+    Ikevent64_sStruct,
 };
 
 export const isLE: boolean;

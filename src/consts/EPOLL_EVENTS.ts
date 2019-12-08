@@ -1,4 +1,4 @@
-const enum EPOLL_EVENTS {
+export enum EPOLL_EVENTS {
     // The associated file is available for read(2) operations
     EPOLLIN = 1,
 
@@ -40,5 +40,3 @@ const enum EPOLL_EVENTS {
 
     // EPOLLEXCLUSIVE = ?
 }
-
-export default EPOLL_EVENTS;

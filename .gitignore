@@ -7,3 +7,4 @@ yarn.lock
 /lib/
 yarn-error.log
 /tmp/*
+.vscode

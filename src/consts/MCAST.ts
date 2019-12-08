@@ -9,5 +9,3 @@ export enum MCAST {
     EXCLUDE = 0,
     INCLUDE = 1,
 }
-
-export default MCAST;

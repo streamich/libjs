@@ -23,34 +23,36 @@ import {StaticBuffer} from './StaticBuffer';
 export function mkdir(pathname: string, mode: number): number {
     return libsys.syscall(SYS.mkdir, pathname, mode);
 }
+
 export function mkdirAsync(pathname: string, mode: number, callback: TCallback) {
     libsys.asyscall(SYS.mkdir, pathname, mode, callback);
 }
+
 export function mkdirat(dirfd: number, pathname: string, mode: number): number {
     return libsys.syscall(SYS.mkdirat, dirfd, pathname, mode);
 }
+
 export function mkdiratAsync(dirfd: number, pathname: string, mode: number, callback: TCallback){
     libsys.asyscall(SYS.mkdirat, dirfd, pathname, mode, callback);
 }
+
 export function rmdir(pathname: string): number {
     return libsys.syscall(SYS.rmdir, pathname);
 }
+
 export function rmdirAsync(pathname: string, callback: TCallback) {
     libsys.asyscall(SYS.rmdir, pathname, callback);
 }
 
-// ### getcwd
-//
-//     getcwd(): string
-//
-// Returns a *current-working-directory* path `string`, on error, throws a negative `number`
-// representing `errno` global variable in `libc`.
-//
-// First we try to read path into a 64-byte buffer, if buffer is too small, we retry
-// using large enough buffer to fit maximum possible file path, `PATH_MAX` is 4096 in `libc`.
-//
-// > Linux has a maximum filename length of 255 characters for most filesystems (including EXT4), and a maximum path of 4096 characters.
-//
+/**
+ * Returns a *current-working-directory* path `string`, on error, throws a negative `number`
+ * representing `errno` global variable in `libc`.
+ * 
+ * First we try to read path into a 64-byte buffer, if buffer is too small, we retry
+ * using large enough buffer to fit maximum possible file path, `PATH_MAX` is 4096 in `libc`.
+ * 
+ * > Linux has a maximum filename length of 255 characters for most filesystems (including EXT4), and a maximum path of 4096 characters.
+ */
 export function getcwd(): string {
     let buf = new Buffer(264);
     let res = libsys.syscall(SYS.getcwd, buf, buf.length);
@@ -69,6 +71,7 @@ export function getcwd(): string {
     // -1 to remove `\0` terminating the string.
     return buf.slice(0, res - 1).toString();
 }
+
 export function getcwdAsync(callback: TCallbackWithError<number, string>) {
     let buf = new Buffer(264);
     libsys.asyscall(SYS.getcwd, buf, buf.length, (res) => {
@@ -104,6 +107,7 @@ export function getcwdAsync(callback: TCallbackWithError<number, string>) {
 export function getdents64(fd: number, dirp: Buffer): number {
     return libsys.syscall(SYS.getdents64, fd, dirp, dirp.length);
 }
+
 export function getdents64Async(fd: number, dirp: Buffer, callback: TCallback) {
     libsys.asyscall(SYS.getdents64, fd, dirp, dirp.length, callback);
 }

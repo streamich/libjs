@@ -1,5 +1,7 @@
-// Constants used in `open` system calls, see [open(2)](http://man7.org/linux/man-pages/man2/open.2.html).
-const enum FLAG {
+/**
+ * Constants used in `open` system calls, see [open(2)](http://man7.org/linux/man-pages/man2/open.2.html).
+ */
+export enum FLAG {
     O_RDONLY        = 0,
     O_WRONLY        = 1,
     O_RDWR          = 2,
@@ -21,5 +23,3 @@ const enum FLAG {
     O_SYNC          = 1052672,
     O_NDELAY        = 2048,
 }
-
-export default FLAG;

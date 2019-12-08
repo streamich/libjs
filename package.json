@@ -8,25 +8,23 @@
   "types": "lib/index.d.ts",
   "typings": "lib/index.d.ts",
   "scripts": {
-    "test": "./src/test/run.sh",
     "semantic-release": "semantic-release",
     "clean": "rimraf lib",
     "build": "yarn clean && tsc && gulp copy-js && gulp copy-dts",
-    "dev:build": "docker build -t libjs .",
-    "dev:start": "docker run -it --rm -v $(pwd):/app -p 8099:8099 libjs"
-  },
-  "dependencies": {
-    "fast-extend": "^0.0.2"
+    "test": "mocha --require ts-node/register src/test/**/*.spec.ts"
   },
   "devDependencies": {
+    "@types/chai": "^4.1.7",
+    "@types/mocha": "^5.2.7",
     "@types/node": "^8.5.2",
-    "tap": "^11.0.1",
-    "typescript": "^3.1.3",
-    "ts-node": "^4.0.2",
-    "libsys": "2.2.2",
-    "semantic-release": "^12.2.2",
+    "chai": "^4.2.0",
+    "gulp": "3.9.1",
+    "libsys": "^2.4.1",
+    "mocha": "^6.1.4",
     "rimraf": "2.6.2",
-    "gulp": "3.9.1"
+    "semantic-release": "^12.2.2",
+    "ts-node": "^4.0.2",
+    "typescript": "^3.1.3"
   },
   "repository": {
     "type": "git",

@@ -1,4 +1,4 @@
-const enum S {
+export enum S {
     IFMT = 61440,   // type of file
     IFBLK = 24576,  // block special
     IFCHR = 8192,   // character special
@@ -24,5 +24,3 @@ const enum S {
     ISGID = 1024,   // set-group-ID on execution
     ISVTX = 512,    // on directories, restricted deletion flag
 }
-
-export default S;

@@ -1,6 +1,6 @@
 // inotify
 // Supported events suitable for MASK parameter of `inotify_init1` and `inotify_add_watch`.
-const enum IN {
+export enum IN {
     /* Flags set in `inotify_init1`. */
     CLOEXEC             = 524288,
     NONBLOCK            = 2048,
@@ -41,5 +41,3 @@ const enum IN {
         IN.CLOSE_NOWRITE | IN.OPEN | IN.MOVED_FROM | IN.MOVED_TO |
         IN.CREATE | IN.DELETE	| IN.DELETE_SELF | IN.MOVE_SELF,
 }
-
-export default IN;

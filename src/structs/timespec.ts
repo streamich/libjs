@@ -1,5 +1,3 @@
-import timeval from './timeval';
+import {timeval} from './timeval';
 
-const timespec = timeval;
-
-export default timespec;
+export const timespec = timeval;

@@ -57,3 +57,4 @@ while (1) {
 // Now telnet to your server and talk to it:
 // ts-node demo/echo.ts
 // telnet 127.0.0.1 8099
+// nc 127.0.0.1 8099

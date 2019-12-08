@@ -11,7 +11,7 @@ import {int32, uint32} from '../basetypes';
 //         char     name[];   /* Optional null-terminated name */
 //     };
 //
-const inotify_event = Struct.define(16, [
+export const inotify_event = Struct.define(16, [
     [0, int32, 'wd'],
     [4, uint32, 'mask'],
     [8, uint32, 'cookie'],
@@ -26,5 +26,3 @@ export interface Iinotify_event {
     len: number;
     name?: string;
 }
-
-export default inotify_event;

@@ -1,4 +1,4 @@
-const enum IP {
+export enum IP {
     OPTIONS = 4, /* ip_opts; IP per-packet options.  */
     HDRINCL = 3, /* int; Header is included with data.  */
     TOS = 1, /* int; IP type of service and precedence.  */
@@ -47,5 +47,3 @@ const enum IP {
     DEFAULT_MULTICAST_LOOP = 1,
     MAX_MEMBERSHIPS = 20,
 }
-
-export default IP;

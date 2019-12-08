@@ -6,33 +6,40 @@
 // that specifies its size in bytes, so even if we are not using some data
 // from C structs, we still produce the correctly sized `Buffers`.
 
+export type JSON = any;
+export type PackFunction = (this: Buffer, data: JSON, offset: number) => void;
+export type UnpackFunction = (this: Buffer, offset: number) => JSON;
+
 export interface IType {
     size: number;
-    unpack(buf:Buffer, offset?:number):any;
-    pack(data: any, buf?: Buffer, offset?);
+    unpack(buf:Buffer, offset?:number): any;
+    pack(data: any, buf?: Buffer, offset?: number): Buffer;
 }
 
 export class Type implements IType {
-    static define(size, unpack, pack): Type {
-        var new_type = new Type;
-        new_type.size = size;
-        new_type.unpackF = unpack;
-        new_type.packF = pack;
+    static define(size: number, unpack: UnpackFunction, pack: PackFunction): Type {
+        const new_type = new Type(size, unpack, pack);
         return new_type;
     }
 
     size = 1; // 1 byte
-    unpackF: (offset: number) => void;
-    packF: (data: any, offset: number) => void;
+    unpackF: UnpackFunction;
+    packF: PackFunction;
 
-    unpack(buf: Buffer, offset: number = 0): any {
+    constructor (size: number, unpack: UnpackFunction, pack: PackFunction) {
+        this.size = size;
+        this.unpackF = unpack;
+        this.packF = pack;
+    }
+
+    unpack(buf: Buffer, offset: number = 0): JSON {
         return this.unpackF.call(buf, offset);
     }
 
-    pack(data: any, buf?: Buffer, offset: number = 0) {
+    pack(data: JSON, buf?: Buffer, offset: number = 0): Buffer {
         if(!buf) buf = new Buffer(this.size);
         if(data instanceof Buffer) data.copy(buf, offset);
-        else if(typeof data == 'object') (data as any).toBuffer().copy(buf, offset);
+        else if(typeof data == 'object') data.toBuffer().copy(buf, offset);
         else this.packF.call(buf, data, offset);
         return buf;
     }
@@ -40,22 +47,20 @@ export class Type implements IType {
 
 export class Arr {
     static define(type: IType, len: number): Arr {
-        const new_arr = new Arr;
-
-        new_arr.len = len;
-        new_arr.type = type;
-        new_arr.size = type.size * len;
-
-        return new_arr;
+        return new Arr(type, len, type.size * len);
     }
 
     type: IType;
-
     len: number;
-
     size: number;
 
-    unpack(buf: Buffer, offset: number = 0): any {
+    constructor (type: IType, len: number, size: number) {
+        this.type = type;
+        this.len = len;
+        this.size = size;
+    }
+
+    unpack(buf: Buffer, offset: number = 0): JSON {
         var arr = [], off;
         for(var i = 0; i < this.len; i++) {
             off = offset + (i * this.type.size);
@@ -64,7 +69,7 @@ export class Arr {
         return arr;
     }
 
-    pack(data: any, buf?: Buffer, offset: number = 0) {
+    pack(data: JSON, buf?: Buffer, offset: number = 0) {
         if(!buf) buf = new Buffer(this.size);
         if(data) {
             var off;
@@ -77,19 +82,27 @@ export class Arr {
     }
 }
 
+export type StructFieldOffset = number;
+export type StructFieldType = IType;
+export type StructFieldName = string;
+export type StructEntry = [StructFieldOffset, StructFieldType, StructFieldName];
+export type StructDefinition = StructEntry[];
+
 export class Struct implements IType {
-    static define(size, defs) {
-        var new_struct = new Struct;
-        new_struct.size = size;
-        new_struct.defs = defs;
-        return new_struct;
+    static define(size: number, defs: StructDefinition) {
+        return new Struct(size, defs);
     }
 
-    defs: any = [];
+    defs: StructDefinition = [];
     size = 0; // Full size, not just the size sum of elements in definitions.
 
-    unpack(buf: Buffer, offset: number = 0):any {
-        var result = {};
+    constructor (size: number, defs: StructDefinition) {
+        this.size = size;
+        this.defs = defs;
+    }
+
+    unpack(buf: Buffer, offset: number = 0): JSON {
+        var result: JSON = {};
         for (var field of this.defs) {
             var [off, type, name] = field;
             result[name] = type.unpack(buf, offset + off);
@@ -97,8 +110,8 @@ export class Struct implements IType {
         return result;
     }
 
-    pack(data: any, buf?: Buffer, offset: number = 0) {
-        if(!buf) buf = new Buffer(this.size);
+    pack(data: JSON, buf?: Buffer, offset: number = 0) {
+        if(!buf) buf = Buffer.allocUnsafe(this.size);
         for (var field of this.defs) {
             var [off, type, name] = field;
             type.pack(data[name], buf, offset + off);
@@ -106,3 +119,18 @@ export class Struct implements IType {
         return buf;
     }
 }
+
+export type Field = [string, IType];
+export const createStruct = (definitions: Field[]): Struct => {
+    let size: number = 0;
+    const defs: StructDefinition = [];
+    for (const [name, type] of definitions) {
+        if (!name) {
+            size += type.size;
+            continue;
+        }
+        defs.push([size, type, name]);
+        size += type.size;
+    }
+    return Struct.define(size, defs);
+};

@@ -1,4 +1,4 @@
-const enum SHM {
+export enum SHM {
     INFO = 14,
     STAT = 13,
     LOCK = 11,
@@ -14,5 +14,3 @@ const enum SHM {
     HUGETLB = 2048,
     NORESERVE = 4096,
 }
-
-export default SHM;

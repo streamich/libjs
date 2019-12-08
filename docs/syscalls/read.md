@@ -1,4 +1,7 @@
-# read
+# `read`
+
+Read data from file associated with `fd` file descriptor into buffer `buf`.
+Up to size of the `buf.length` will be read, or less.
 
 ```ts
 read(fd: number, buf: Buffer): number;
@@ -7,7 +10,9 @@ read(fd: number, buf: Buffer): number;
   - `fd` - file descriptor
   - `buf` - `Buffer` where to place read data
 
-Returns number of bytes read or a negative number on error.
+Returns a `number` which is the actual bytes read into the buffer, if negative,
+represents an error. If zero, represents *end-of-file*, but if `buf` is of length
+zero than zero does not necessarily mean *end-of-file*.
 
 See [`readAsync`](./readAsync.md) for asynchronous variant.
 

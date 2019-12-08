@@ -1,5 +1,5 @@
 // Directories
-const enum DT {
+export enum DT {
     BLK = 6,        // This is a block device.
     CHR = 2,        // This is a character device.
     DIR = 4,        // This is a directory.
@@ -9,5 +9,3 @@ const enum DT {
     SOCK = 12,      // This is a UNIX domain socket.
     UNKNOWN = 0,    // The file type is unknown.
 }
-
-export default DT;

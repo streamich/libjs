@@ -1,6 +1,6 @@
 language: node_js
 os:
-  - linux
+  - osx
 cache:
   yarn: true
   directories:
@@ -15,8 +15,6 @@ script:
 matrix:
   allow_failures: []
   fast_finish: true
-after_success:
-  - npm run semantic-release
 branches:
   except:
     - /^v\d+\.\d+\.\d+$/

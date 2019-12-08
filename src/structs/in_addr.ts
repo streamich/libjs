@@ -14,12 +14,10 @@ import {Ipv4} from '../socket';
 //         unsigned long s_addr;  // load with inet_aton()
 //     };
 //
-const in_addr = Struct.define(4, [
+export const in_addr = Struct.define(4, [
     [0, ipv4, 's_addr'], // load with inet_aton()
 ]);
 
 export interface Iin_addr {
     s_addr: Ipv4;
 }
-
-export default in_addr;
