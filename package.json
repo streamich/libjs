@@ -11,7 +11,8 @@
     "semantic-release": "semantic-release",
     "clean": "rimraf lib",
     "build": "yarn clean && tsc && gulp copy-js && gulp copy-dts",
-    "test": "mocha --require ts-node/register src/test/**/*.spec.ts"
+    "test": "mocha --require ts-node/register src/test/**/*.spec.ts",
+    "test:linux": "mocha --require ts-node/register src/test/linux-x86_64/**/*.spec.ts"
   },
   "devDependencies": {
     "@types/chai": "^4.1.7",
@@ -19,7 +20,7 @@
     "@types/node": "^8.5.2",
     "chai": "^4.2.0",
     "gulp": "3.9.1",
-    "libsys": "^2.4.1",
+    "libsys": "^3.0.0",
     "mocha": "^6.1.4",
     "rimraf": "2.6.2",
     "semantic-release": "^12.2.2",
