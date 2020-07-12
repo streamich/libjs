@@ -49,9 +49,20 @@ export class EpollTcpSocket implements LoopTcpSocket {
 
     constructor(public readonly loop: EpollLoop) {
         this.fd = socket(AF.INET, SOCK.STREAM, 0);
-        if (this.fd < 0) throw new Error(`Could not create socket [errno = ${this.fd}].`);
-        const res = fcntl(this.fd, FCNTL.SETFL, O.NONBLOCK);
-        if (res < 0) throw new Error(`Could not make socket non-blocking [errno = ${res}].`);
+        if (this.fd < 0)
+            throw new Error(`Could not create socket [errno = ${this.fd}].`);
+
+        const fcntlRes = fcntl(this.fd, FCNTL.SETFL, O.NONBLOCK);
+        if (fcntlRes < 0)
+            throw new Error(`Could not make socket non-blocking [errno = ${fcntlRes}].`);
+
+        const event: Iepoll_event = {
+            events: EPOLL_EVENTS.EPOLLIN | EPOLL_EVENTS.EPOLLOUT,
+            data: [this.fd, 0],
+        };
+        const ctlRes = epoll_ctl(this.loop.epfd, EPOLL_CTL.ADD, this.fd, event);
+        if (ctlRes < 0)
+            throw Error(`Could not add socket to epoll loop [errno = ${ctlRes}].`);
     }
 
     bind() {
@@ -72,14 +83,6 @@ export class EpollTcpSocket implements LoopTcpSocket {
         if (res < 0)
             if (res !== -ERROR.EINPROGRESS)
                 throw new Error(`Could not connect socket [errno = ${res}].`);
-
-        const event: Iepoll_event = {
-            events: EPOLL_EVENTS.EPOLLIN | EPOLL_EVENTS.EPOLLOUT,
-            data: [this.fd, 0],
-        };
-        const ctlRes = epoll_ctl(this.loop.epfd, EPOLL_CTL.ADD, this.fd, event);
-        if (ctlRes < 0)
-            throw Error(`Could not add epoll events [errno = ${ctlRes}].`);
     }
 
     getPeerName() { throw new Error('not implemented'); return null as any; }
