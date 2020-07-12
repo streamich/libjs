@@ -13,3 +13,5 @@ export function parseStruct(buf: Buffer, definition): any {
     }
     return result;
 }
+
+export const buffer = (size: number) => Buffer.allocUnsafe(size);

@@ -7,19 +7,20 @@ export enum F {
      * Get file descriptor flags.
      */
     GETFD = 1,
-    // F_SETFD         2               /* set file descriptor flags */
-    // F_GETFL         3               /* get file status flags */
-    // F_SETFL         4               /* set file status flags */
-    // F_GETOWN        5               /* get SIGIO/SIGURG proc/pgrp */
-    // F_SETOWN        6               /* set SIGIO/SIGURG proc/pgrp */
-    // F_GETLK         7               /* get record locking information */
+    /* set file descriptor flags */
+    SETFD =         2, 
+    GETFL =         3,               /* get file status flags */
+    SETFL =         4,               /* set file status flags */
+    GETOWN =        5,               /* get SIGIO/SIGURG proc/pgrp */
+    SETOWN =        6,               /* set SIGIO/SIGURG proc/pgrp */
+    GETLK =         7,               /* get record locking information */
     /**
      * Set record locking information.
      */
     SETLK = 8,
-    // F_SETLKW        9               /* F_SETLK; wait if blocked */
+    SETLKW =        9,               /* F_SETLK; wait if blocked */
 
-    // F_SETLKWTIMEOUT 10              /* F_SETLK; wait if blocked, return on timeout */
+    SETLKWTIMEOUT = 10,              /* F_SETLK; wait if blocked, return on timeout */
 
 
     // F_FLUSH_DATA    40

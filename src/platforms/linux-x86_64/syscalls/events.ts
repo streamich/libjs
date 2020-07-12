@@ -1,6 +1,6 @@
 // Events
-import {SYS, EPOLL, EPOLL_CTL, FCNTL, IN, epoll_event, Iepoll_event} from './platform';
-import {libsys} from './libsys';
+import {SYS, EPOLL, EPOLL_CTL, FCNTL, IN, epoll_event, Iepoll_event} from '../specification';
+import {libsys} from '../libsys';
 
 // ### fcntl
 export function fcntl(fd: number, cmd: FCNTL, arg?: number): number {
