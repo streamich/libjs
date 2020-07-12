@@ -1,10 +1,8 @@
-// Functions for working with directories.
-import {SYS, ERROR, FLAG, linux_dirent64, PATH_MAX} from './platform';
+import {ERROR, FLAG} from '../consts';
+import {SYS, linux_dirent64, PATH_MAX} from '../specification';
 import {open, close, openAsync, closeAsync} from './files';
-import {noop} from './util';
-import {libsys} from './libsys';
-import {TCallback, TCallbackWithError} from './types';
-import {StaticBuffer} from './StaticBuffer';
+import {libsys} from '../../../libsys';
+import {TCallback, TCallbackWithError} from '../../../types';
 
 // ### mkdir, mkdirat and rmdir
 //
@@ -209,11 +207,13 @@ export function readdirList(path: string, encoding = 'utf8'): string[] {
     return list;
 }
 
+const noop = () => {};
+
 export function readdirListAsync(path: string, encoding = 'utf8', callback: TCallbackWithError <number, string[]>) {
     openAsync(path, FLAG.O_DIRECTORY, 0, (fd) => {
         if(fd < 0) return callback(fd);
 
-        const buf = new StaticBuffer(PATH_MAX);
+        const buf = new Buffer(PATH_MAX);
         const {size, unpack} = linux_dirent64;
         const list: string[] = [];
 

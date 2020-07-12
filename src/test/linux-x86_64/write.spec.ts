@@ -7,7 +7,7 @@ import * as fs from 'fs';
 const str = 'Hello world!';
 const filePath = path.join(__dirname, '../fixtures/write.txt');
 
-describe('Darwin > write', () => {
+describe('Linux x86_64 > write', () => {
     it('is a function', () => {
         expect(typeof libjs.write).to.eql('function');
     });

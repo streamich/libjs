@@ -1,6 +1,5 @@
 // Functions for working with directories.
-import {SYS, ERROR, FLAG, linux_dirent64, PATH_MAX} from '../specification';
-import {open, close, openAsync, closeAsync} from './files';
+import {SYS, PATH_MAX} from '../specification';
 import {libsys} from '../../../libsys';
 import {TCallback, TCallbackWithError} from '../../../types';
 

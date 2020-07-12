@@ -4,7 +4,7 @@ import {expect} from 'chai';
 import * as path from 'path';
 import * as fs from 'fs';
 
-describe('Darwin > read', () => {
+describe('Linux x86_64 > read', () => {
     it('is a function', () => {
         expect(typeof libjs.read).to.eql('function');
     });
