@@ -1,5 +1,6 @@
 import {Arr} from './typebase';
 import {isLE as IS_LE, uint8, uint16} from './platform';
+import { bufferFrom } from './util';
 
 export function flip(buf: Buffer, offset = 0, len = buf.length) {
     var mid = len >> 1, tmp, lside, rside;
@@ -47,9 +48,9 @@ export class Ip {
 
     constructor(ip: string|number[]) {
         if(typeof ip === 'string') {
-            this.buf = new Buffer(ip.split(this.sep));
+            this.buf = bufferFrom(ip.split(this.sep));
         } else if(ip instanceof Array) {
-            this.buf = new Buffer(ip);
+            this.buf = bufferFrom(ip);
         }
     }
 

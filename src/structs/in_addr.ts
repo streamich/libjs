@@ -1,5 +1,5 @@
 import {Struct} from '../typebase';
-import ipv4 from './ipv4';
+import {ipv4} from './ipv4';
 import {Ipv4} from '../socket';
 
 // From http://beej.us/guide/bgnet/output/html/multipage/sockaddr_inman.html

@@ -68,18 +68,18 @@ export class EpollTcpSocket implements LoopTcpSocket {
             sin_zero: [0, 0, 0, 0, 0, 0, 0, 0],
         };
         
-        // const res = connect(this.fd, addr_in);
-        // if (res < 0)
-        //     if (res !== -ERROR.EINPROGRESS)
-        //         throw new Error(`Could not connect socket [errno = ${res}].`);
+        const res = connect(this.fd, addr_in);
+        if (res < 0)
+            if (res !== -ERROR.EINPROGRESS)
+                throw new Error(`Could not connect socket [errno = ${res}].`);
 
-        // const event: Iepoll_event = {
-        //     events: EPOLL_EVENTS.EPOLLIN | EPOLL_EVENTS.EPOLLOUT,
-        //     data: [this.fd, 0],
-        // };
-        // const ctlRes = epoll_ctl(this.loop.epfd, EPOLL_CTL.ADD, this.fd, event);
-        // if (ctlRes < 0)
-        //     throw Error(`Could not add epoll events [errno = ${ctlRes}].`);
+        const event: Iepoll_event = {
+            events: EPOLL_EVENTS.EPOLLIN | EPOLL_EVENTS.EPOLLOUT,
+            data: [this.fd, 0],
+        };
+        const ctlRes = epoll_ctl(this.loop.epfd, EPOLL_CTL.ADD, this.fd, event);
+        if (ctlRes < 0)
+            throw Error(`Could not add epoll events [errno = ${ctlRes}].`);
     }
 
     getPeerName() { throw new Error('not implemented'); return null as any; }
